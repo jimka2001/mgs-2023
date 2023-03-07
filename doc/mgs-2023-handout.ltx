@@ -185,12 +185,16 @@ Week & Day & Unit & Activities\\
 %% https://woz-u.com/wp-content/uploads/2020/02/What-Do-Software-Engineers-Do-WOZ-1-min.png
 \end{figure}
 
-
+\clearpage
 
 
 
 \section{GitHub}
 
+In this course we will be experimenting with software together.   You will be able to
+share your code with your classmates, and with the world.  However, you control
+when you want to make your code available to the world, and when you want to
+incorporate your classmate's code into your development area.
 
 
 \begin{figure}[h]
@@ -204,10 +208,6 @@ Week & Day & Unit & Activities\\
 
 
 
-In this course we will be developing software together.   You will be able to
-share your code with your classmates, and with the world.  However, you control
-when you want to make your code available to the world, and when you want to
-incorporate your classmate's code into your development area.
 
 To achieve this goal we have a central repository of code, hosted by
 GitHub on the cloud.  You will download (clone) a copy of this repository,
@@ -228,7 +228,27 @@ How we will edit code in the GitHub project is described in Section~\ref{sec.git
 You must create an account on GitHub (if you don't have one already).  This will be done
 in Section~\ref{sec.setup}.
 
-\section{Setting up the environment}
+
+\section{GitPod}\label{sec.gitpod}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{gitpod-teaser.jpg}
+%%  \url{https://www.gitpod.io/images/blog/cloud-based-development-for-everyone/teaser.jpg}
+  \caption{GitPod provides a web-brower-based development environment
+    which integrates with GitHub.}
+\end{figure}
+
+We will use a development environment entirely on the cloud---
+a web based service called, GitPod to provide an
+environment for working with GitHub.  This environment and all the
+code you develop will still be available to you after MGS-2023 is
+finished.
+
+The GitPod web site is \url{https://www.gitpod.io}.
+
+
+\section{Getting Started}
 \label{sec.setup}
 
 It may be a bit tedious to set up the development environment, because
@@ -261,57 +281,45 @@ set-up, so we'll troubleshoot as we go.
 
 \item Fork the repository. See Figure~\ref{fig.github.fork}.
 
-\item Open the web-ide with GitPod, you may just prepend
-  \url{http://gitpod.io/#} to the URL already in the web browser.
+\begin{figure}
+\centering
+  
+\caption{Prepend to URL in browser{hello.py}}\label{lab.prepend-gitpod}
+\end{figure}
+
+
+\item Open the web-IDE, GitPod. You may just prepend
+\includegraphics[width=0.5\textwidth]{prepend-gitpod.png}
+  to the URL in the web browser.
 
 \begin{figure}
 \centering
   \includegraphics[width=0.5\textwidth]{explorer.png}
-\caption{Opening \code{Main.scala}}\label{lab.explorer}
+\caption{Opening \code{hello.py}}\label{lab.explorer}
 \end{figure}
 
-\item Find the Explorer, and open it to find \code{Main.scala} at
-  \url{src/main/scala/introduction/Main.scala}. See Figure~\ref{lab.explorer}.
+\item Find the Explorer.  Open it to find \code{hello.py} at
+  \url{src/hello/hello.py}. See Figure~\ref{lab.explorer}.
 
 \begin{figure}
 \centering
-  \includegraphics[width=0.85\textwidth]{open-object-Main.png}
-\caption{The editor pane of the \code{Main} object.}\label{lab.object.main}
+  \includegraphics[width=0.85\textwidth]{hello-function.png}
+\caption{The editor pane of the \code{hello} function.}\label{lab.hello}
 \end{figure}
 
-\item Click \code{Main.scala} to open the file in an editor pane.  You
-  should see something like that shown in Figure~\ref{lab.object.main}.
-
-
-\item The \code{run | debug} link between
-  lines 2 and 3 may not appear immediately, you may have to wait a
-  couple of minutes. If you don't see \textbf{run debug}, you may
-  need to restart the build server, and recompile.  Find and click
-  the Metals icon \includegraphics[height=2cm]{metals.png}.  This
-  should open the Metals panel where you can \textbf{Restart the
-    build Server} and \textbf{Cascade compile}. 
-  
-  \includegraphics[width=8cm]{buildserver.png}
-  
-  Thereafter, you should be able to find the \textbf{run|debug} link
-  in the Scala code.
-
-\item Find the definition \code{object Main}.
-  If you click on \code{Main} you should see something like this:
-  
-  \includegraphics[height=1.5cm]{rundebug.png}
-  
-  Click \textbf{run}.  
-
-\item You should see a new window pane appear below the program text
-  showing  \code{hello world}, as shown in Figure~\ref{lab.afterrun}.
+\item Click \code{hello.py} to open the file in an editor pane.  You
+  should see something like that shown in Figure~\ref{lab.hello}.
 
 
 \begin{figure}
 \centering
-  \includegraphics[width=0.85\textwidth]{afterrun.png}
-\caption{The editor pane after running the \code{Main} object.}\label{lab.afterrun}
+  \includegraphics[width=0.85\textwidth]{hello-terminal-output.png}
+\caption{Terminal window output after running \code{hello} function.}\label{lab.afterrun}
 \end{figure}
+
+\item Find the definition \code{hello}.  Find the icon \includegraphics[height=1.0cm]{run-triangle.png}
+  in the top-right of the editor window.  Click the triangle.
+  You should see something like Figure~\ref{lab.afterrun}:
 
 
 \end{enumerate}
@@ -320,44 +328,6 @@ set-up, so we'll troubleshoot as we go.
 
 
 
-
-\section{GitPod}\label{sec.gitpod}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.9\textwidth]{gitpod-teaser.jpg}
-%%  \url{https://www.gitpod.io/images/blog/cloud-based-development-for-everyone/teaser.jpg}
-  \caption{GitPod provides a web-brower-based development environment
-    which integrates with GitHub.}
-\end{figure}
-
-We will use a development environment entirely on the cloud---
-a web based service called, GitPod to provide an
-environment for working with GitHub.  This environment and all the
-code you develop will still be available to you after MGS-2023 is
-finished.
-
-The GitPod web site is \url{https://www.gitpod.io}.
-
-\section{Getting Started}
-
-
-\begin{enumerate}
-\item Create a GitHub account using an abstract user name.  Don't use
-  your real name.    \url{https://github.com/join}.
-
-
-\item Open \url{https://github.com/jimka2001/mgs-2023} with your web browser.
-
-
-\item Fork the repository. See Figure~\ref{fig.github.fork}.
-
-\item Open the web-ide with GitPod, you may just prepend
-  \url{http://gitpod.io/#} to the URL already in the web browser.
-
-
-
-\end{enumerate}
 
 
 \clearpage
@@ -368,6 +338,7 @@ The GitPod web site is \url{https://www.gitpod.io}.
 \includegraphics[width=0.85\textwidth]{math.jpg}
 \end{figure}
 
+\clearpage
 
 In this unit we will look at functions both from a mathematical
 perspective and also from a programming perspective.  There are some
@@ -381,7 +352,17 @@ functions have names, like $\sin$, $\cos$, and $\log$.  Sometimes
 functions lack names but have formulas such as
 $\frac{x^2-1}{x^2+2x+1}$.
 
-\section{Set operations}
+
+
+\section{Set Operations}
+
+We avoid the problem of defining exactly what a set is, cf. Russell's paradox.
+We will instead concentrate on operations we can perform on sets.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{Venn-A-intersect-B.png}
+\end{figure}
 
 \begin{itemize}
 \item is-element-of: $x\in A$
@@ -393,11 +374,11 @@ $\frac{x^2-1}{x^2+2x+1}$.
 \item De Morgan's theorem: $\overline{A\cup B} = \overline{A} \cap \overline{B}$, or dually $\overline{A\cap B} = \overline{A} \cup \overline{B}$.
 \end{itemize}
 
-\section{Specifying functions}
+\section{Functions}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\textwidth]{Function_machine2.png}
+  \includegraphics[width=0.66\textwidth]{Function_machine2.png}
 \end{figure}
 
 
@@ -422,6 +403,9 @@ well-determined, element of~$Y$.
     (the domain) with some of the elements of another set (the range).}
 \end{figure}
 
+
+
+
 Conceptually, a function has three parts
 \begin{enumerate}
 \item A \emph{domain}, i.e., a place from which input values may be taken.
@@ -429,10 +413,8 @@ Conceptually, a function has three parts
 \item A \emph{rule}, i.e., a way of determining the output value given only the input value.
 \end{enumerate}
 
-To implement a function in the Scala programming language we have to
-specify the \emph{domain} and \emph{range} in terms of what are called
-\emph{types}, and we designate the \emph{rule} in terms of a
-procedure.
+
+
 
 
 \section{Mathematical notation}
@@ -483,6 +465,52 @@ functions using cases, like in Equation~\eqref{eq.simple.4}
     -x &\,; \text{if $x<0$}
   \end{cases}
 \end{equation}
+
+\section{What a function is not}
+
+A correspondence which associates multipliple elements of $B$ with
+each element of $A$ is not a function from $A$ to $B$.  However the
+range of a function (or the domain for that matter) may be any set,
+for example we may talk about set-valued functions like a function
+whose value for each input is some subset of a given set.
+
+Consider the function which takes a finite set as input, and outputs
+the size of the set, \ie, the number of elements in the set.
+
+Consider the function that takes a whole number, $n$, as input and returns
+the set of integers between $0$ and $n$ as output.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=8cm]{function.png}
+  \caption{Example of something that is not a function}
+\end{figure}
+
+A function must also be well-defined.  I.e, the value of the function
+for a given input must be a fixed value.  The value may be difficult
+to compute, or perhaps even unknown, but it must be some particular
+value.  A function cannot, for example, return a random integer for
+each input.
+
+
+\section{Functions: Programmatic Representation}
+
+To implement a function in the Python programming language we:
+\begin{itemize}
+\item specify the function name, such as \code{square}
+\item specify zero or more input parameters, such as \code{(x)}
+\item compute output value: \code{return x*x}
+\item follow the correct syntax
+\end{itemize}
+
+Input values come from the \emph{domain};  output values
+come from the \emph{range}.
+
+\begin{verbatim}
+  def square(x):
+    return x * x
+\end{verbatim}
+
 
 
 
@@ -617,10 +645,21 @@ then
 \item Analyze the recursive profile of the Fibonacci generator?
 \item Suppose that one recursive call requires $m$ bytes, and your computer has a total of $M$ bytes of memory,
   can you find a bound for the maximum Fibonacci which is possible to compute?
+\item Can we use memoization to make the Fibonacci generator faster?
+\item We may compute compute any three
+  consecutive Fibonacci numbers: $F_{n-1}$, $F_{n}$, and $F_{n+1}$,
+  \[\begin{bmatrix}1&1\\1&0\end{bmatrix}^n = \begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}\]
+  How can we implement such a multiplication in Python?  Hints:
+  \begin{enumerate}
+  \item How can we represent a $2\times 2$ programmatically?
+  \item How can we multiply two matrices?
+  \item How can we compute  $\begin{bmatrix}1&1\\1&0\end{bmatrix}^n$ with approximately $\log_2 n$ matrix multiplications?
+  \end{enumerate}
+  
 \item Search on the internet and find the Binet's formula for
   computing the nth Fibonacci number.  Implement this function and
   compare the results to the recursive implementation.  
-\item Can you think of another way to make the Fibonacci generator faster?
+
 \item \textbf{Making code faster} Now you have a way which you suspect
   is more efficient (faster).  Devise an experiment to determine which
   of the approaches is faster in terms of execution time?  Hint, you
@@ -821,8 +860,8 @@ List comprehensions.
     $2x + 4y = 28$ has $x=12$, $y=1$ as solution but also $x=2$, $y=6$.
   \end{enumerate}
   
-\item Work as individual or team.
-\item Create a new file in the \code{functions} directory.
+\item Work as team.
+\item Create a new file in the \code{looping} directory.
 \item Try to solve the challenge using \code{any}, \code{all}, \code{next}, \code{for}.
 \item (Optional) If possible, can you make it faster? \Eg, decrease the search space.
 \item When finished and working, submit a \emph{pull request}
