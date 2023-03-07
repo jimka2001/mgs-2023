@@ -67,17 +67,17 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
 
-\title{Advanced Math and Functional Programming}
+\title{Duels and Duals,   Mathematical Abstraction and Programming}
+\subtitle{2023 Mississippi Governor's School}
 \author{Dr. Jim Newton}
 
-\addtobeamertemplate{title page}{\includegraphics[scale=.20]{Mathematics-and-Computing.jpg} \hfill \includegraphics[scale=.23]{lambda}}{}
+\addtobeamertemplate{title page}{\includegraphics[scale=.20]{Mathematics-and-Computing.jpg}}{}
 
 \usepackage{xspace}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 
 \begin{document}
-
 
 \begin{frame}
 \titlepage
@@ -91,7 +91,6 @@
 
 \begin{frame}
   \frametitle{Bias, Inclusion, Belonging}
-
   Mathematics is unbiased.  It is one of the few persuits which is
   free of politics, nationality, religion, gender, sexuality, age,
   race, handicap, or of anything else that so often divides us.
@@ -108,8 +107,7 @@
   \frametitle{Objectives}
 \begin{description}
 \item[Mathematics:] Ameliorate your love for Mathematics.
-\item[Computer Science:] Develop a sense of functional
-  programming.
+\item[Computer Science:] Develop a sense of programming.
 \item[Communication:] Confidently defend your ideas.
 \end{description}
 \end{frame}
@@ -129,19 +127,19 @@
 Week & Day & Unit & Activities\\
 \hline
 ~&&&\\
-1 & Mon & 0, 1 & Environment Set-up, Hello World\\
-1 & Tue & 2 & Sets and Functions, Theory, First Program\\
-1 & Wed & 2 & Coding Exercises, Presentation\\
-1 & Thu & 3 & Abstract Algebra, Theory\\
-1 & Fri & 3 & Group Project, Coding Exercises\\
+1 & Mon & 0, 1 & Hello World on the Cloud\\
+1 & Tue & 2 & Sets and Functions\\
+1 & Wed & 2 & \\
+1 & Thu & 3 & Logic and Loops\\
+1 & Fri & 3 & \\
 ~&&&\\
 \hline
 ~&&&\\
-2 & Mon & 3 & Review, Coding Exercises\\
-2 & Tue & 4,5 & Analysis: Convergence, and Sums\\
-2 & Wed & 4,5 & Coding Exercises, Presentation\\
-2 & Thu & 6,7 & Analysis: Derivative, Integral\\
-2 & Fri & 6,7 & Coding Exercises, Presentation\\
+2 & Mon & 3 & Performance, refactoring\\
+2 & Tue & 4,5 & Monoids\\
+2 & Wed & 4,5 & \\
+2 & Thu & 6,7 & Rings and Fields\\
+2 & Fri & 6,7 & \\
 ~&&&\\
 \hline
 \end{tabular}
@@ -199,20 +197,6 @@ to the URL already in the web browser.
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Ready to edit and run}
-\centering
-  \includegraphics[width=0.85\textwidth]{open-object-Main.png}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Build Server}
-  You may need to restart the guild-server.
-  \centering
-  \includegraphics[width=8cm]{buildserver.png}
-\end{frame}
-
 
 \begin{frame}
   \centering \LARGE
@@ -223,22 +207,6 @@ to the URL already in the web browser.
 
 
 \begin{frame}
-  \frametitle{Text Files}
-  \includegraphics[width=0.95\textwidth]{learning-curve.jpg}
-\end{frame}
-
-\begin{frame}
-  \frametitle{VS Code}
-    \includegraphics[width=0.95\textwidth]{gitpodenv.png}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Version Control}
-  \includegraphics[width=0.95\textwidth]{branching.png}
-\end{frame}
-
-\begin{frame}
   \frametitle{git and GitHub}
   \includegraphics[width=0.75\textwidth]{GitHub-How-to-use-GitHub-Edureka-300x241.png}
 \end{frame}
@@ -247,7 +215,6 @@ to the URL already in the web browser.
   \frametitle{GitPod}
   \includegraphics[width=0.9\textwidth]{gitpod-teaser.jpg}
 \end{frame}
-
 
 \section{Sets and Functions}
 
@@ -417,30 +384,6 @@ well-determined, element of~$Y$.
 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Subsets of size $n$}
-\begin{equation}
-  \mathbb{P}_n(S) = \begin{cases}
-    \{\emptyset\} &\,; \text{if $n=0$}\\
-    \big\{\{x\} \cup y \mid x \in S, y \in \mathbb{P}_{n-1}(S \setminus \{x\})\big\}  &\,; \text{if $n > 0$}
-  \end{cases}
-\end{equation}
-
-\medskip
-
-Equivalently
-
-\medskip
-
-\begin{equation}
-  \mathbb{P}_n(S) = \begin{cases}
-    \{\emptyset\} &\,; \text{if $n=0$}\\
-    \bigcup_{x\in S}\big\{\{x\} \cup y \mid y \in \mathbb{P}_{n-1}(S \setminus \{x\})\big\}  &\,; \text{if $n > 0$}
-  \end{cases}
-\end{equation}
-
-\end{frame}
-
 
 \section{Looping}
 \begin{frame}
@@ -465,11 +408,11 @@ Equivalently
     \end{itemize}
   \item to collect something
     \begin{itemize}
-    \item \code{for} + \code{yield}
+    \item \code{[ ... for ...]}
     \end{itemize}
   \item to detect something
     \begin{itemize}
-    \item \code{exists} and \code{forall}
+    \item \code{any}, \code{all}, and \code{next}
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -481,25 +424,25 @@ Construct simple loops with \code{for}.
   \bigskip
 
 \begin{verbatim}
-  for{ x <- List(10,20,30,40)
-    } println(x)
+  for x in [1, 2, 3, 4]:
+    print(x)
 
-  for{ x <- Set(10,20,30,40)
-    } println( x * x )
+  for x in {10, 20, 30, 40}:
+    print( x * x )
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Concentric loops}
 
-  We can put loops inside loops, and we can use \code{List}, \code{Vector}, \code{Set} etc.
+  We can have loops inside loops.
 
   \bigskip
 
 \begin{verbatim}
-  for{ x <- Set(10,20,30,40)
-       y <- Vector(5,6,7)
-    } println(x + y)
+  for x in {10, 20, 30, 40}:
+    for y in [5, 6, 7]:
+      print(x + y)
 \end{verbatim}
 \end{frame}
 \begin{frame}[fragile]
@@ -509,9 +452,10 @@ Construct simple loops with \code{for}.
   \bigskip
   
 \begin{verbatim}
-  for{ x <- Set(10,20,30,40)
-       y <- Vector(5,6,7)
-    } yield x + y
+  [x + y
+    for x in {10, 20, 30, 40}
+    for y in [5, 6, 7]
+  ]
 \end{verbatim}
 \end{frame}
 
@@ -522,40 +466,27 @@ Use \code{if} to filter out certain iterations.
   \bigskip
   
 \begin{verbatim}
-  for{ x <- Set(10,20,30,40)
-       y <- Vector(5,6,7)
-       if x + y < 30
-    } yield x + y
+  [x + y
+    for x in {10, 20, 30, 40}
+    for y in [5, 6, 7]
+    if (x + y) % 2 == 0 
+  ]
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Loops with temporary variables}
 
-Use \code{=} to capture intermediate values
+Use \code{in [...]} to capture intermediate values
   \bigskip
   
 \begin{verbatim}
-  for{ x <- Set(10,20,30,40)
-       y <- Vector(5,6,7)
-       z = x + y
-       if z > 21
-    } yield x + y
-\end{verbatim}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Loops combining multiple things}
-
-  
-\begin{verbatim}
-  for{ x <- set1
-       y <- set2
-       if y + x < 100
-       z <- set3
-       w = fibonacci(x + y) 
-       if w < factorial(z)
-    } println(List(x,y,z,w))
+  [ x + y
+    for x in {10, 20, 30, 40}
+    for y [5, 6, 7]
+    for z in [x + y]
+    if z > 21
+  ]
 \end{verbatim}
 \end{frame}
 
@@ -563,38 +494,34 @@ Use \code{=} to capture intermediate values
 \begin{frame}[fragile]
   \frametitle{Boolean valued loops}
 
-Use \code{exists} to detect whether \emph{at least one} value in a
+Use \code{any} to detect whether \emph{at least one} value in a
 collection meets some condition: matches a \emph{predicate}
 
   \bigskip
   
 \begin{verbatim}
-  Set(10,20,30,31,32).exists{
-    x => x < 0
-  }
+  any(x < 0
+      for x in {10, 20, 30, 31, 32})
 
-  List(10,20,30,31,32).exists{
-    x => x % 2 == 1
-  }
+  any(x % 2 == 1
+      for x in [10, 20, 30, 31, 32])
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Boolean valued loops}
 
-Use \code{forall} to detect whether \emph{every} value in a collection
+Use \code{all} to detect whether \emph{every} value in a collection
 meets some condition: matches a \emph{predicate}
 
   \bigskip
   
 \begin{verbatim}
-  Set(10,20,30,31,32).forall{
-    x => x > 0
-  }
+  all(x > 0 
+      for x in {10, 20, 30, 31, 32})
 
-  List(10,20,30,31,32).forall{
-    x => x % 2 == 0
-  }
+  all(x % 2 == 0
+      for x in [10, 20, 30, 31, 32])
 \end{verbatim}
 \end{frame}
 
@@ -602,26 +529,24 @@ meets some condition: matches a \emph{predicate}
 \begin{frame}[fragile]
   \frametitle{Looping between bounds}
 
-Use \code{to} create a collection of integers in a \code{Range}.
+Use \code{to} create a collection of integers in a \code{range}.
 
   \bigskip
   
 \begin{verbatim}
-  (0 to 10).forall{
-    x => factorial(x) < 100
-  }
+  all(factorial(x) < 100
+      for x in range(10))
 
-  (1 to 100 by 2).exists{
-    x => x * x == 64
-  }
+  any(x * x == 64
+      for x in range(1, 100 ,2))
 
-  for{ n <- 1000 to 1 by -3
-    if n % 2 == 0
-  } print(n)
+  for x in range(1000, 1, -3):
+    print(n)
 
-  for{ n <- 2 to 1000
-    if n % 2 == 0
-  } yield n
+  [n
+   for n in range(2, 1000)
+   if n % 2 == 0
+  ]
 \end{verbatim}
 \end{frame}
 
@@ -630,13 +555,23 @@ Use \code{to} create a collection of integers in a \code{Range}.
   \frametitle{Concentric Boolean loops}
 
 \begin{verbatim}
-  (1 to 100).exists{
-    a => List(1,2,3,4).forall{
-      b => a*a + b*b > 100
-    }
-  }
+  any(all(a*a + b*b > 100
+          for a in [1, 2, 3, 4])
+      for b in range(1,100))
 \end{verbatim}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Find an element by looping}
+
+\begin{verbatim}
+  next(x
+       for x in range(100)
+       x * x > 56)
+\end{verbatim}
+\end{frame}
+
+
 
 \begin{frame}
   \frametitle{Challenging exercises}
@@ -663,9 +598,9 @@ Use \code{to} create a collection of integers in a \code{Range}.
   \begin{enumerate}
   \item Choose one challenge:
   \item Work as individual or team.
-  \item Create a new file in the \code{functions} directory.
-  \item Try to solve the challenge using \code{for}, \code{yield},
-    \code{exists}, and \code{forall}.
+  \item Create a new file in the \code{looping} directory.
+  \item Try to solve the challenge using \code{for}, \code{[ ... for ...]},
+    \code{any}, and \code{all}.
   \item (Optional) If possible, can you make it faster? \Eg, decrease the search space.
   \item When finished and working, submit a \emph{pull request}
   \item Show, explain, and defend your solution to your fellow scholars.
