@@ -8,3 +8,5 @@ doc/*.out
 doc/*.nav
 doc/*.fls
 doc/*.snm
+*.pyc
+
