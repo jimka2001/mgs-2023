@@ -1,0 +1,10 @@
+doc/*.aux
+doc/*.fdb_latexmk
+doc/*.log
+doc/*.toc
+doc/*.vrb
+doc/*.sta
+doc/*.out
+doc/*.nav
+doc/*.fls
+doc/*.snm
