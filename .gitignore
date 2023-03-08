@@ -10,3 +10,4 @@ doc/*.fls
 doc/*.snm
 *.pyc
 .DS_Store
+.#*
