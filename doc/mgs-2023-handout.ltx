@@ -1292,7 +1292,6 @@ support negative exponents?
 
 \section{Proofs with Monoids}
 \begin{itemize}
-\item Prove the identity of a monoid is unique
 \item Give an example of a 2 element monoid.
 \item Given an example of a 3 element monoid.
 \end{itemize}
@@ -1730,11 +1729,18 @@ additive inverse.
 \section{Compute number of combinations}
 Recall the definition
 \[{n\choose k} = \frac{n!}{k!(n-k)!}\,.\]
-Write function to compute this quanity two different ways.
-\begin{enumerate}
-\item Compute it directly by computing the three factorials and performing
-  the integer division.
-\item Rather than computing $n!$ directly, express it as a list of
+Write function to compute this quanity several different ways.
+
+\subsection{Direct computation}
+Compute $n\choose k$ directly by computing the three factorials and performing
+the integer division.
+
+Examine the values of the numerator and denominators.  How many bits are necessary for these computations to occur successfully.
+
+In Python, integers have arbitrary precision.  What would happen in another language whose integers are limited to 64 or 32 bits?
+
+\subsection{Compute the list of prime factors}
+Rather than computing $n!$ directly, express it as a list of
   prime factors.  \Ie,
   \begin{itemize}
   \item implement a function which, given $n$, uses
@@ -1747,7 +1753,7 @@ Write function to compute this quanity two different ways.
   \item Finally, multiply the remaining
     factors to compute~$n\choose k$.
   \end{itemize}
-\end{enumerate}
+
 
 \Eg,
 \begin{align*}
@@ -1759,7 +1765,37 @@ Write function to compute this quanity two different ways.
   &= 35
 \end{align*}
 
-Compare the two functions both in terms of computation time, and also
+
+\subsection{Recursive computation}
+
+How is $n\choose k$ related to ${n-1} \choose {k-1}$?
+
+Notice that if ${n\choose k} = \frac{n!}{k!(n-k)!}$, and if $n>1$ and $k>1$, then we
+\begin{align*}
+  {{n-1}\choose {k-1}} &= \frac{(n-1)!}{(k-1)!\jparen{\jparen{n-1}-\jparen{k-1}}!}\\
+  &= \frac{(n-1)!}{(k-1)!(n-k)!} \\
+  &= \frac{\frac{n!}{n}}{\frac{k!}{k} (n-k)!} \quad\quad \text{; because $n! = n  (n-1)!$ and $k! = k  (k-1)!$}\\
+  &= \frac{k}{n} \times \frac{n!}{k! (n-k)!}\\
+  &= \frac{k}{n} {n\choose k}
+\end{align*}
+
+So we can solve for ${n\choose k}$ to obtain:
+\begin{equation}
+  {n\choose k} = \frac{n}{k}{{n-1}\choose {k-1}}\,.\label{eq.1784}
+\end{equation}
+
+How can we use equation~\eqref{eq.1784} and the fact that
+${n \choose 1} = n$
+and the fact that ${n \choose {n-k}} = {n \choose k}$
+to write yet another implementation of \code{choose} in Python?
+
+
+
+
+\subsection{Review of different approaches}
+
+
+Compare the functions both in terms of computation time, and also
 find values of $n\choose k$ which are computable by one function but
 not the other because of integer overflow.
 
@@ -1780,85 +1816,6 @@ not the other because of integer overflow.
   
 
 
-
-
-
-\section{Group Interactive Project}
-\begin{itemize}
-\item Implement the polynomial ring, with addition,
-  subtraction, multiplication.
-
-\item What does it mean for two polynomials to be equal?  For example:
-  are these polynomials equal or not?
-  \begin{align}
-    x^3 - 2x + 1\\
-    2x^3 - 4x + 2\\
-    -x^3 + 2x - 1
-  \end{align}
-  Should we consider a polynomial to be the function itself, or should we
-  consider it as an equivalence class of all polynomials with the same roots.
-  I.e., can we consider \emph{normalized} polynomials such that the leading
-  term is 1?
-\item Implement \code{polyAlmostEqual}.  Why do we use
-  \code{polyAlmostEqual}?  Can we detect whether two polynomials are
-  exactly equal?
-\item Every odd degree polynomial has a real root.  Can you justify
-  this claim?  Write a function which uses a binary search to find
-  (estimate) at least one real root of a given odd-degree polynomial.
-\item Can you implement \code{polynomialPower} using
-  \code{fastPower}.  Is it faster than an iterative implementation?
-\item Given a list of roots (perhaps with repeated roots), generate
-  the polynomial.  Do this in two ways:
-  \begin{enumerate}
-  \item Use the polynomial multiply function written above to expand
-    \[(x - r_1)(x - r_2)\ldots(x - r_{n-1})(x - r_n)\,.\]
-  \item Generate the expansion directly by sums of products of subsets.
-    If \[\Pi_{i=1}^n (x - r_i) = \Sigma_{i=0}^n a_{i}x^{n-i}\,\]
-    and if \[S = \{T\in \{r_1\ldots r_n\} \mid~ |T| = n\}\,,\]
-    then
-    \begin{equation}
-      a_k = \begin{cases}
-        1 & \,; \text{if $k=0$}\\
-        \Sigma_{T\in S}\Pi_{k\in T} k & \,; \text{if $1 \leq k \leq n$}
-      \end{cases}
-    \end{equation}
-    
-  \end{enumerate}
-\item Implement a function to generate a randomly selected polynomial
-  of a given degree: \code{randomPoly}.
-\end{itemize}
-
-
-
-\textbf{Discussion:} Is the set of polynomials of degree $n$ with
-integer coefficients an infinite
-set or finite set?  Is this set closed under addition?  Are
-multiplication and addition associative and commutative? Is it
-closed under multiplication?  Does this set form a monoid, group,
-ring, or field?
-
-How does the answer change if addition and multiplication of
-coefficients is done in $\mathbb{Z}/(n+1)$.
-
-How would you generalize to the polynomial ring over a given field?
-
-Consider the set of polynomials of degree $n$ whose scalars are the
-field $\mathbb{Z}/p$.  How would you implement addition, subtraction,
-and multiplication?
-
-What if arithmetic on not only coefficients but also exponents is
-done in $\mathbb{Z}/(n+1)$.
-
-What would you need to do to use the library you've written
-\code{isMonoid}, \code{isGroup} etc to test your hypotheses?  How
-would you write a program to generate all such polynomials?
-
-\textbf{Discussion:} Is the set of $n\times n$ matrices with
-integer content a finite or infinite set?  What if we restrict the
-content to $\mathbb{Z}/(n+1)$?  How would you need to change the
-matrix manipulation code you've already written to accommodate
-arithmetic in $\mathbb{Z}/(n+1)$?
-  
 
 
 
