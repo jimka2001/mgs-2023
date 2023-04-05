@@ -11,3 +11,4 @@ doc/*.snm
 *.pyc
 .DS_Store
 .#*
+.idea
