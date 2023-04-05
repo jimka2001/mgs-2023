@@ -49,7 +49,6 @@
 \maketitle
 \sloppy
 
-
 \pagebreak
 \tableofcontents
 
@@ -251,81 +250,76 @@ The GitPod web site is \url{https://www.gitpod.io}.
 \section{Getting Started}
 \label{sec.setup}
 
-It may be a bit tedious to set up the development environment, because
-before you can learn to use a piece of software, you have to install
-it; necessarily you are installing things you don't yet understand.
-The following steps should help, but often things go wrong with
-set-up, so we'll troubleshoot as we go.
+We need to set up the development environment.
+Vefore you can learn to use a piece of software, you have to install
+it. These steps should help.
 
-\begin{enumerate}
-\item Create a GitHub account using an abstract user name.  Don't use
-  your real name.  This URL,
-  \url{https://git-scm.com/book/en/v2/GitHub-Account-Setup-and-Configuration}
-  explains how to create a GitHub account.  There are many similar
-  web-sites, e.g.,
-  \url{https://www.wikihow.com/Create-an-Account-on-GitHub}.
-  Primarily this is self explanatory at the URL
-  \url{https://github.com/join}.
-\item (Optional) Configure your GitHub account with an profile image.  Don't use
-  a picture of yourself, rather use an abstract avatar
-  such as \url{https://www.flaticon.com/search?word=animal+avatar}.
-\item Open \url{https://github.com/jimka2001/mgs-2023} with your web browser.
-
-
-
-\begin{figure}
-\centering
-  \includegraphics[width=0.85\textwidth]{fork-repo.png}
-\caption{GitHub Fork}\label{fig.github.fork}
-\end{figure}
-
-\item Fork the repository. See Figure~\ref{fig.github.fork}.
-
-\begin{figure}
-\centering
+\subsection{Account Creation}
   
-\caption{Prepend to URL in browser{hello.py}}\label{lab.prepend-gitpod}
-\end{figure}
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.4\textwidth]{github-join.png}}&
+  Create a GitHub account using an abstract user name.  Don't use
+  your real name.  This is self explanatory at the URL
+  \url{https://github.com/join}.
+\end{tabular}
 
 
-\item Open the web-IDE, GitPod. You may just prepend
-\includegraphics[width=0.5\textwidth]{prepend-gitpod.png}
+
+
+\subsection{Open the Repository}
+  
+\begin{tabular}{cp{0.5\textwidth}}
+  \raisebox{-0.5\totalheight}{\includegraphics[width=0.40\textwidth]{github-image.png}}
+  &Open \url{https://github.com/jimka2001/mgs-2023} with your web browser.
+\end{tabular}
+
+
+
+
+\subsection{Fork yourself a Copy}
+  
+\begin{tabular}{cp{5cm}}
+  \raisebox{-0.5\totalheight}{\includegraphics[width=0.5\textwidth]{fork-repo.png}}
+  &  Fork the repository.
+\end{tabular}
+
+
+
+\subsection{Open GitPod}
+
+Open the web-IDE, GitPod. You may just prepend
+\textbf{\Large \texttt{http://gitpod.io/\#}}
   to the URL in the web browser.
-
-\begin{figure}
-\centering
-  \includegraphics[width=0.5\textwidth]{explorer.png}
-\caption{Opening \code{hello.py}}\label{lab.explorer}
-\end{figure}
-
-\item Find the Explorer.  Open it to find \code{hello.py} at
-  \url{src/hello/hello.py}. See Figure~\ref{lab.explorer}.
-
-\begin{figure}
-\centering
-  \includegraphics[width=0.85\textwidth]{hello-function.png}
-\caption{The editor pane of the \code{hello} function.}\label{lab.hello}
-\end{figure}
-
-\item Click \code{hello.py} to open the file in an editor pane.  You
-  should see something like that shown in Figure~\ref{lab.hello}.
+  
 
 
-\begin{figure}
-\centering
-  \includegraphics[width=0.85\textwidth]{hello-terminal-output.png}
-\caption{Terminal window output after running \code{hello} function.}\label{lab.afterrun}
-\end{figure}
+\subsection{Open the Explorer}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.5\totalheight}{    \includegraphics[width=0.5\textwidth]{explorer.png}}&
+  Find the Explorer.  Open it to find \code{hello.py} at
+  \url{src/hello/hello.py}.
+\end{tabular}
 
-\item Find the definition \code{hello}.  Find the icon \includegraphics[height=1.0cm]{run-triangle.png}
+
+
+\subsection{Open a Python File}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{hello-function.png}}
+  &Click \code{hello.py} to open the file in an editor pane.  You
+  should see something like that shown here:
+\end{tabular}
+
+
+
+\subsection{Make a Sample Run}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{hello-terminal-output.png}}
+  &Find the definition \code{hello}.  Find the icon \includegraphics[height=1.0cm]{run-triangle.png}
   in the top-right of the editor window.  Click the triangle.
-  You should see something like Figure~\ref{lab.afterrun}:
-
-
-\end{enumerate}
-
-
-
+\end{tabular}
 
 
 
