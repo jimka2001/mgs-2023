@@ -1789,11 +1789,25 @@ So we can solve for ${n\choose k}$ to obtain:
   {n\choose k} = \frac{n}{k}{{n-1}\choose {k-1}}\,.\label{eq.1784}
 \end{equation}
 
-How can we use equation~\eqref{eq.1784} and the fact that
-${n \choose 1} = n$
-and the fact that ${n \choose {n-k}} = {n \choose k}$
+Notice that that 
+\begin{equation}
+  {n \choose 1} = \frac{n!}{1!~(n-1)!} = \frac{n ~\cancel{(n-1)!}}{1!~\cancel{(n-1)!}} = n\label{eq.1785}
+\end{equation}
+and that 
+\begin{equation}
+{n \choose {n-k}} = {n \choose k}  \,.\label{eq.1786}
+\end{equation}
+
+How can we use the equalities~\eqref{eq.1784}, \eqref{eq.1785}, and~\eqref{eq.1785}
 to write yet another implementation of \code{choose} in Python?
 
+Let's look at an example.
+\begin{equation}
+  {7 \choose 3} =   \frac{7}{3}{6 \choose 2}
+  = \frac{7}{3}\frac{6}{2} {5 \choose 1}
+  = \frac{7}{3}\frac{6}{2} 5
+  = \frac{7}{\cancel{3}}\frac{\cancel{6}}{\cancel{2}} 5 = 7 \times 5 = 35
+\end{equation}
 
 
 
@@ -1811,6 +1825,7 @@ not the other because of integer overflow.
 \item If $n$ is prime, implement division.
 \item A number have  multiple square roots modulo $n$, find such a case.
 \item Implement exponentiation modulo (prime) $p$.  How many multiplications are necessary to compute $a^b \mod{p}$?
+\item If $p$ is prime, and $a\neq 1$, what are $a^0$, $a^1$, $a^2$, \ldots, $a^{p-1}$,  $a^p \mod{p}$ ?
 \item If $p$ is prime, find Pythagorean triples modulo $p$.
 \end{enumerate}
 
