@@ -9,6 +9,7 @@
 \usepackage{xspace}
 \usepackage{amssymb}
 \usepackage{cancel}
+\usepackage{listings}
 \usepackage{color,colortbl}
 \definecolor{code}{rgb}{ 0,0,0}
 \newcommand\code[1]{\textcolor{code}{\texttt{#1}}\xspace}
@@ -36,6 +37,32 @@
 \newcommand\jleft{\mathopen{}\mathclose\bgroup\left}
 \newcommand\jright{\aftergroup\egroup\right}
 \newcommand\jparen[1]{\jleft(#1\jright)}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.92,0.92}
+\lstdefinestyle{mypython}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mypython}
+
 
 
 \title{Duels and Duals, Mathematical Abstraction and Programming,\\
@@ -370,32 +397,30 @@ We will instead concentrate on operations we can perform on sets.
 
 \section{Functions}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.66\textwidth]{Function_machine2.png}
-\end{figure}
-
-
-
-What is a function? A function such as
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{  \includegraphics[width=0.5\textwidth]{Function_machine2.png}}
+  & What is a function? A function such as
 \[f : X \to Y\]
-is a correspondence between two sets.  But it is a special
-correspondence.  In particular the function,~$f$, associates a unique,
+is a correspondence between two sets.  However, it is a special
+correspondence.
+\end{tabular}
+
+In particular the function,~$f$, associates a unique,
 well-determined, element of~$Y$ with each element of~$X$.
 More precisely, if $x\in X$, then~$f(x)$ designates a unique,
 well-determined, element of~$Y$.
 \[x \in X \implies f(x) \in Y\,.\]
 
-\begin{figure}
-  \centering
-  \includegraphics[width=8cm]{Function_color_example_3.png}
+\noindent\begin{tabular}{cp{7cm}}
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.5\textwidth]{Function_color_example_3.png}}
+  &
 %%\url{https://commons.wikimedia.org/w/index.php?curid=20802095}, By
 %%  \texttt{Function\_color\_example\_3.gif}: Wvbailey.
 %%  The original uploader was Wvbailey at English Wikipedia.derivative work: Zerodamage ---
 %%  This file was derived from: Function color example \texttt{3.gif}:, CC BY-SA 3.0.}
-  \caption{A function is a well-defined correspondence of all the elements of one set
-    (the domain) with some of the elements of another set (the range).}
-\end{figure}
+  A function is a well-defined correspondence of all the elements of one set
+  (the domain) with some of the elements of another set (the range).
+\end{tabular}
 
 
 
@@ -474,13 +499,13 @@ the size of the set, \ie, the number of elements in the set.
 Consider the function that takes a whole number, $n$, as input and returns
 the set of integers between $0$ and $n$ as output.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=8cm]{function.png}
-  \caption{Example of something that is not a function}
-\end{figure}
+\noindent\begin{tabular}{cp{7cm}}
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.5\textwidth]{function.png}}
+  &  A function may map several inputs to the same output, but it may not
+  map an input to multiple outputs.
+\end{tabular}
 
-A function must also be well-defined.  I.e, the value of the function
+A function must also be well-defined.  \Ie, the value of the function
 for a given input must be a fixed value.  The value may be difficult
 to compute, or perhaps even unknown, but it must be some particular
 value.  A function cannot, for example, return a random integer for
@@ -766,7 +791,7 @@ We may combine set mechanics and predicates with something called a \emph{set co
 The idea is that we take the subset of some set ($\N$ in this case) by
 taking all the elements of that set which satisfy a given predicate.
 
-\section{Implication}
+\subsection{Implication}
 
 If proposition $q$ is true whenever $p$ is true then we can say that
 $p$ implies $q$, or $p\implies q$.  Note that $p\implies q$ does not
@@ -775,15 +800,25 @@ say anything about what happens if $p$ is false.
 An implication is yet again a proposition, and like any proposition it may be true or false.  For example the following is a false implication:  ${n\in \Z \implies n>1}$. However, the following implication is true: ${n\in N \implies n= 0 \vee n\geq 1}$.
 
 
-\section{Quantifiers}
+\subsection{Quantifiers}
 
+$\forall$ specifies a proposition (whose value is either true or false) that a given predicate
+is true for every element of a set.
 \[\forall x \in N, n > -1\]
 
+$\exists$ specifies a proposition (whose value is either true or false) that a given predicate
+is true for at least one element of a set.
 \[\exists x \in N, n > 42\]
 
+$\forall$ is always true if the set is empty, we can see this with De Morgan's theorem below.
+$\exists$ is always false if the set is empty.
 
 
-\section{De Morgan's theorem}
+\[\forall x \in \emptyset, n > -1\]
+\[\exists x \in \emptyset, n > -1\]
+
+
+\subsection{De Morgan's theorem}
 
 We saw De Morgan's theorem for sets already.  But logic and set theory
 are duals, so De Morgan's theorm can also be stated for propositions
@@ -798,10 +833,11 @@ We may apply De Morgan's theorm to quantifiers
 \[\jparen{\forall x \in N, p(n)} = \neg \jparen{\exists x \in \N, \neg p(n)}\]
 \[\neg \jparen{\forall x \in N, p(n)} = \jparen{\exists x \in \N, \neg p(n)}\]
 
-\[ \jparen{\exists x \in N, p(n)} = \neg \jparen{\forall x \in \N, \neg p(n)}\]
-\[\neq \jparen{\exists x \in N, p(n)} = \jparen{\forall x \in \N, \neg p(n)}\]
+\[\jparen{\exists x \in N, p(n)} = \neg \jparen{\forall x \in \N, \neg p(n)}\]
+\[\neg \jparen{\exists x \in N, p(n)} = \jparen{\forall x \in \N, \neg p(n)}\]
 
-
+Question: How can we use De Morgan's theorem to show that \[\forall x
+\in \emptyset, p(x)\] is true independent of $p$?
 
 \section{Looping}
 
@@ -813,23 +849,138 @@ Three very common styles of loops are
 \item loop for side-effect
 \end{itemize}
 
+In all cases loops may be singular or multiple loops running concentrically.  Loops may
+also contain conditions to skip certain iterations.
+
 \subsection{Loop for detection}
 
-\code{any}, \code{all}, \code{next}
+Sometimes we need to loop to detect some condition or find an element
+which meets some condition.  For such a loop, use one of:
 
-How does De Morgan's theorem apply to \code{any} and \code{all}?
+\begin{enumerate}
+\item \code{any} --- Is something true at least once?
+$\exists a, 0 \leq a < 10, a\equiv 1 \mod{3}$
+\begin{lstlisting}
+  # (exists?) is there a number 0 <= a < 10 for which a%3 == 1
+  any(a % 3 == 1 for a in range(10))
 
-What does \code{next} do when it does not find an element matching the predicate?
+  # can use multiple lines for readablity
+  any(a % 3 == 1
+      for a in range(10))
+\end{lstlisting}
+
+\item  \code{all} --- Is something always true?
+$a > 2, \forall a\in\{2, 5, 12, -34\}$
+
+\begin{lstlisting}
+  # (for every?) is something true for all elements in a list
+  all(a > 2
+      for a in [2, 6, 4, 12, -34])
+\end{lstlisting}
+
+\item \code{next} --- Find an element which makes something true.
+
+
+\begin{lstlisting}
+  # find the first element which satisfies a condition
+  next(a
+       for a in range(12)
+       if a*a > 100)
+\end{lstlisting}
+
+What does \code{next} do when it fails to find an element matching the predicate?
+If \code{next} fails to find an element which satisfies the logical query, an exception is thrown.
+
+\begin{lstlisting}
+  # find the first element which satisfies a condition
+  next(a
+       for a in [1, 2, 3]
+       if a*a > 100)
+\end{lstlisting}
+
+The exception looks something like this in the output window:
+\begin{small}
+\begin{verbatim}
+/usr/local/bin/python3.9 mgs-2023/src/looping/examples.py 
+Traceback (most recent call last):
+  File "mgs-2023/src/looping/examples.py", line 12, in <module>
+    next(a
+StopIteration
+\end{verbatim}
+\end{small}
+\end{enumerate}
+
+We see that \code{any} and \code{all} correspond to the quantifiers $\exists$ and $\forall$,
+and we have seen how De Morgan's theorem applies to quantifiers.   How does De Morgan's theorem
+apply to \code{any} and \code{all}?
+
+
+\begin{lstlisting}
+  # not all not === any
+  not all(a <= 2
+          for a in [2, 6, 4, 12, -34])
+  any(a > 2
+      for a in [2, 6, 4, 12, -34])
+
+  # not any not === all
+  not any(a <= 2
+          for a in [2, 6, 4, 12, -34])
+  all(a > 2
+      for a in [2, 6, 4, 12, -34])
+\end{lstlisting}
+
+
 
 \subsection{Loop for collection}
 
-List comprehensions.
+Similar to set comprehensions in set theory, we can express comprehensions in Python.
+However, the programmer must decide whether to generate a set or a list.
+
+\begin{lstlisting}
+  # generate the list [0, 1, 4, 9, 16, 25]
+  [a*a for a in range(6)]
+
+  # generate the set {0, 1, 4, 9, 16, 25}
+  {a*a for a in range(6)}
+\end{lstlisting}
+
+We sometimes use comprehension build atop concentric loops.
+
+\begin{lstlisting}
+  # generate the sums of pairs
+  [a+b for a in range(6)
+       for b in range(3)
+  ]
+\end{lstlisting}
+
+
+We sometimes use comprehension build atop concentric loops with conditionals.
+
+\begin{lstlisting}
+  # generate the sums of pairs
+  [a+b for a in range(6)
+       for b in range(3)
+       if a+b % 2 == 0
+  ]
+\end{lstlisting}
 
 \subsection{Loop for side-effect}
 
-\code{for}
+Sometimes (often) we need to loop for side-effect:  printing, modifying an array, communicating with web browser,
+updating a database, etc.  To look for side-effect, use \code{for}:
 
-\subsection{Concentric loops}
+\begin{lstlisting}
+  for a in range(6):
+    print(a*a)
+\end{lstlisting}
+
+Of course we may use multiple loops concentrically and with conditionals.
+\begin{lstlisting}
+  for a in range(10):
+    if f(a) > 2:
+      for b in range(a,15):
+        print(a*b)
+\end{lstlisting}
 
 \section{Programming Projects}
 
