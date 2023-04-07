@@ -47,6 +47,7 @@
     backgroundcolor=\color{backcolour},   
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
+    morekeywords={nonlocal},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
@@ -582,9 +583,9 @@ numbers.  Let $F(n)$ denote the n'th Fibonacci number.
 
 \chapter{Programming with Functions}
 
-\begin{figure}[b]
+\begin{figure}[b!]
 \centering
-\includegraphics[width=0.65\textwidth]{cs.jpg}
+\includegraphics[width=0.8\textwidth]{cs.jpg}
 \end{figure}
 
 
@@ -592,27 +593,293 @@ numbers.  Let $F(n)$ denote the n'th Fibonacci number.
 
 \section{Programming constructs}
 
-\begin{enumerate}
+In this section we look at several construction which are essential to
+your programming experience.
 
-\item Conditionals
 
-\item Functions
 
-\item Variables
+\subsection{Variables}
 
-\item Collections: lists, sets, tuples
+A variable is an identifier used to hold a value.  In the Python
+language the value of a variable can either be constant or it can
+change depending on the instructions given by the programmer.
+
+Expressions can contain variables, constants, and function calls
+(which we'll see in Section~\ref{sec.functions}).
+
+\begin{lstlisting}
+  a = 12
+  b = -7
+  print(a*b - 3*a)
+
+  a = 13
+  print(a*b - 3*a)
+\end{lstlisting}
+
+
+An assignment to a variable can also contain the same variable being modified.
+
+\begin{lstlisting}
+  a = 12
+  b = -7
+  a = a + b
+  print(a*b - 3*a)
+\end{lstlisting}
+
+
+Basic arithmetic can be performed using \code{+}, \code{-}, \code{*},
+and \code{**} for plus, minus, times, and exponentiation.
+A double \code{**} can be used for exponentiation such a $3^4$ is coded as \code{3 ** 4}.
+
+\begin{lstlisting}
+  1 + 2    # addition
+  3 - 4    # subtraction
+  5 * 6    # multiplication
+  3 ** 4   # exponentiation
+\end{lstlisting}
+
+There are two types of division.  Floating point division may be
+performed as \code{10 / 5} which evaluates to the floating point
+number \code{2.0}, while \code{10 // 5} evaluates to the
+integer~\code{2}.  An important difference arrises when the
+denominator does not evenly divide the numerator.  \code{20 / 8}
+evaluates to \code{2.5}, but \code{ 20 // 8} evaluates to~\code{2},
+because $20 \div 8 = 2$ with remainder~$4$.  To compute the remainder
+of $20\div 8$, use \code{20 \% 8} which evaluates to~\code{4}.
+
+
+\begin{lstlisting}
+  20 / 8   # division (as floating point)
+  20 // 8  # division (as integer, discarding the remainder)
+  20 % 8   # remainder of division (modulus)
+\end{lstlisting}
+
+
+\subsection{Functions}
+\label{sec.functions}
+
+Whereas a variable evaluates to the same value every time you evaluate
+it, a function's value may be different depending on its input, or the
+variables it references.
+
+A function, defined with \code{def}, has several parts: name,
+parameters (zero or more), body (which may be empty), and an optional \code{return}.
+
+\begin{lstlisting}
+  def f(a,b):
+    return a*b - 3*a
+
+  print(f(12,-7))
+\end{lstlisting}
+
+A function without a \code{return}, returns the special value
+\code{None}.  It is often the case that if a function has no
+\code{return} then the programmer as forgotten something---it is
+normally a bug in the program.
+
+A function may contain other functions within it.  The indentation indicates
+which lines of code are \emph{within} which function.
+
+
+\begin{lstlisting}
+  def f(a):
+    def g(b):
+      return b + 3
+
+    return a + g(-7)
+\end{lstlisting}
+
+
+A function may reference variables defined outside it.  A function
+may reference its parameters, and the paramters of functions it is inside of.
+
+\begin{lstlisting}
+  def f(a):
+    def g(b):
+      return b + a
+
+    return a + g(-7)
+\end{lstlisting}
+
+However, to reference variables (other than parmameters) you must indicate which
+variable you mean, because there may be several variables of the same name.
+
+In the next example, in the expression \code{b+a}, the variables reference the parameters of functions \code{g} and \code{f}
+respectively.
+
+\begin{lstlisting}
+  a = 100
+  b = 12
+
+  def f(a):
+    def g(b):
+      return b + a
+
+    return a + g(-7)
+\end{lstlisting}
+
+In the next example, in the expression \code{a+b+c}, \code{a} is global, \code{b} be is the parameter of
+function \code{g}, and \code{c} is $-7$  as defined within function \code{h}.
+
+\begin{lstlisting}
+  a = 100
+  b = 12
+
+  def h(x):
+    c = -7
+    def g(b):
+      global a
+      nonlocal c
+
+      return a+b+c
+
+    return g(c)
+\end{lstlisting}
+
+
+There are many built-in functions and constants, but you often need to
+\code{import} a library.  The \code{abs} function is built-in without
+importing, but the functions \code{sin}, \code{cos}, \code{log}, as
+well as the constants $\pi$ and $e$ (\code(pi) and \code{e}) are
+available in a library called \code{math}.
+
+\begin{lstlisting}
+from math import sin, cos, log, pi, e
+
+sin(45 * pi / 180)
+cos(0.0)
+log(e ** 2)
+\end{lstlisting}
+
+
+\subsection{Conditionals}
+
+Conditions are important in every programming language, and Python is
+no exception.  A simple conditional is specified as follows using
+\code{if} and \code{else}.  Notice which lines end in a colon,
+\code{:} and which do not.
+
+\begin{lstlisting}
+  if x > 10:
+    print(x)
+\end{lstlisting}
+
+A two-branch branches of the conditional is possible by specifying a
+\emph{condition}, \emph{consequent}, and \emph{alternative}.
+
+\begin{lstlisting}
+  if x > 10:
+    print(x)
+  else:
+    print(y)
+\end{lstlisting}
+
+A multi-branch condition is also supported using \code{if}, \code{elif}, and \code{else}.
+
+\begin{lstlisting}
+  if a > 1:
+    print(a)
+  elif a > 2:
+    print(a-1)
+  elif a > 3:
+    print(a-2)
+  else:
+    print(None)
+\end{lstlisting}
+
+\subsection{Collections: Booleans, tuples, lists, sets}
+
+\subsubsection{Boolean}
+
+We've already seen the integer and float data types, but several more data types are important to understand.
+The \code{bool} (Boolean) data type consists of the special values \code{True} and \code{False}.  Operators such as \code{==} (equivalence test),
+as well as \code{>}, \code{>=}, \code{<}, and \code{<=} evaluate to a \code{bool}.
+
+\begin{lstlisting}
+print(1 > 2)
+print(1 <= 100)
+print(1 == 4)
+a = 1
+print(a == 1)
+\end{lstlisting}
+
+Boolean values are useful in conditions such as the following example.
+
+\begin{lstlisting}
+  a = 0
+  if a > 2:
+    print(a)
   
-\end{enumerate}
+  b = 3
+  if a > b:
+    print(a+b)
+\end{lstlisting}
 
+
+\subsubsection{Tuples}
+
+Tuples are like ordered pairs or ordered triples in math: $(x,y)$ or $(x,y,z)$.  The Python syntax is easy:
+
+\begin{lstlisting}
+  a = 0
+  b = 2
+  c = 4
+  d = (a, b, c)
+  x = (3, 4)
+  y = (c, d, x)
+  print(y)
+  print(y[2])
+\end{lstlisting}
+
+
+
+A tuple is read-only-- you cannot modify the value in a tuple once the
+tuple has been created.  However, you be read the value out of a
+tuple, for example \code{a[2]}.  Careful, the first value in the tuple
+is \code{a[0]} and the second value is \code{a[1]}; so indexing is
+so-called zero-based, not one-based as is customary in mathematics.
+
+\subsubsection{Lists}
+
+A list is like a tuple except that the values can be modified in place if
+necessary.  A list is specified using the square brackets \code{[1, 2, 3]}, whereas
+we use round brackets (called parentheses) for tuples.
+
+\begin{lstlisting}
+  a = 0
+  b = 2
+  c = 4
+  d = [a, b, c]
+  x = [3, 4]
+  y = [c, d, x]
+  print(y)
+  print(y[2])
+  y[2] = 4
+  print(y[2])
+  print(y)
+\end{lstlisting}
+
+\subsubsection{Sets}
+
+A set is like a list except that it contains no duplicate elements, and Python does not
+maintain any particular order of the elements.  Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set.
+
+\begin{lstlisting}
+  a = 0
+  b = 2
+  c = 4
+  d = {a, b, c, a, b, c, c}
+  print(d)
+\end{lstlisting}
 
 
 \section{Implement the Quadratic Formula}\label{sec.quadratic.formula}
 
 As a first program in Scala you will implement the quadratic formula.
 recall that if
-\[ax^2 + bx + c = 0\,,a\ne 0\]
+\[ a x^2 + b x + c = 0\,,a\ne 0\]
 then 
-\[x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\,.\]
+\[x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a}\,.\]
 
 \begin{itemize}
 \item Implement the function \code{quadraticFormula}.
@@ -722,7 +989,23 @@ and ~\ref{sec.binary.search} to find the roots of a cubic equation?
 
 \chapter{Logic and Looping}
 
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=0.9\textwidth]{loops.jpg}
+\end{figure}
+
+
+\clearpage
+
+
 \section{Logic}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{full-adder.png}
+\end{figure}
+
 
 \begin{definition}[proposition]
   A \emph{proposition} is a logical statement which has a truth value of true or false.
@@ -745,7 +1028,7 @@ $q$ true.  The answer is, no.
 
 
 
-Examples of predicates are \emph{prime(x)}, or \emph{x > 42}.  For
+Examples of predicates are \emph{prime(x)}, or \emph{$x > 42$}.  For
 each of these, given an input value, we derive a proposition, then we
 can ask whether that proposition is true or false.  Given the
 predicate $prime(x)$ and given the value 13, we construct the
@@ -845,6 +1128,12 @@ Question: How can we use De Morgan's theorem to show that \[\forall x
 \in \emptyset, p(x)\] is true independent of $p$?
 
 \section{Looping}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{for-num-in-numbers.png}
+\end{figure}
+
 
 Three very common styles of loops are
 
