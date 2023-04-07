@@ -20,6 +20,7 @@
   \addstackgap{\usebox{\mybox}}}}
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
 
 \newcommand\vs{\textit{vs.}\xspace}
 \newcommand\eg{\textit{e.g.}\xspace}
@@ -984,8 +985,18 @@ ${x_{right} - x_{left} < \varepsilon}$.
 
 \section{Roots of a Cubic Polynomial}
 
-Can we combine the technique of Sections~\ref{sec.recursive.functions}
-and ~\ref{sec.binary.search} to find the roots of a cubic equation?
+
+\noindent\begin{tabular}{cp{7cm}}
+  \raisebox{-0.7\totalheight}{\includegraphics[width=0.5\textwidth]{cubic.png}}
+  &  Can we combine the technique of Sections~\ref{sec.recursive.functions}
+  and~\ref{sec.binary.search} to find the roots of a cubic equation?
+
+  If you know one root of a cubic, how can you use the quadratic formula to
+  find the remaining two roots, if they exist.
+\end{tabular}
+
+
+
 
 \chapter{Logic and Looping}
 
@@ -1920,7 +1931,7 @@ divide with the exception that you cannot divide by zero.
 $(F,+,\times)$ is called a \emph{field} if
 \begin{enumerate}
 \item $(F,+, \times)$ is an Abelian Ring.
-\item $(F \setminus 0, \times)$ is a (Abelian) group, where $0$ is the identity under $+$.
+\item $(F \setminus \{0\}, \times)$ is a (Abelian) group, where $0$ is the identity for $+$.
 \end{enumerate}    
 \end{definition}
 
@@ -2072,12 +2083,12 @@ Rather than computing $n!$ directly, express it as a list of
 
 How is $n\choose k$ related to ${n-1} \choose {k-1}$?
 
-Notice that if ${n\choose k} = \frac{n!}{k!(n-k)!}$, and if $n>1$ and $k>1$, then we
+Notice that if ${n\choose k} = \frac{n!}{k!~(n-k)!}$, and if $n>1$ and $k>1$, then we
 \begin{align*}
-  {{n-1}\choose {k-1}} &= \frac{(n-1)!}{(k-1)!\jparen{\jparen{n-1}-\jparen{k-1}}!}\\
-  &= \frac{(n-1)!}{(k-1)!(n-k)!} \\
-  &= \frac{\frac{n!}{n}}{\frac{k!}{k} (n-k)!} \quad\quad \text{; because $n! = n  (n-1)!$ and $k! = k  (k-1)!$}\\
-  &= \frac{k}{n} \times \frac{n!}{k! (n-k)!}\\
+  {{n-1}\choose {k-1}} &= \frac{(n-1)!}{(k-1)!~\jparen{\jparen{n-1}-\jparen{k-1}}!}\\
+  &= \frac{(n-1)!}{(k-1)!~(n-k)!} \\
+  &= \frac{\frac{n!}{n}}{\frac{k!}{k}~(n-k)!} \quad\quad \text{; because $n! = n  (n-1)!$ and $k! = k  (k-1)!$}\\
+  &= \frac{k}{n} \times \frac{n!}{k!~(n-k)!}\\
   &= \frac{k}{n} {n\choose k}
 \end{align*}
 
@@ -2091,21 +2102,47 @@ Notice that that
   {n \choose 1} = \frac{n!}{1!~(n-1)!} = \frac{n ~\cancel{(n-1)!}}{1!~\cancel{(n-1)!}} = n\label{eq.1785}
 \end{equation}
 and that 
-\begin{equation}
-{n \choose {n-k}} = {n \choose k}  \,.\label{eq.1786}
+\begin{equation}\label{eq.2094}
+{n \choose {n-k}} = \frac{n!}{\jparen{n-k}!~\jparen{n-\jparen{n-k}}!} = \frac{n!}{\jparen{n-k}!~k!} = {n \choose k}  \,.
 \end{equation}
 
-How can we use the equalities~\eqref{eq.1784}, \eqref{eq.1785}, and~\eqref{eq.1785}
+Finally by \eqref{eq.2094}, we have
+\begin{equation}\label{eq.1786}
+  {n \choose k} = {n \choose {\min\{k,n-k\}}}
+\end{equation}
+
+As an example of \eqref{eq.1786}, suppose we need to compute $17 \choose 12$.
+We chose the minimum of $12$ and $17-12$ which is 5. We know
+by \eqref{eq.2094} that ${17 \choose 12} = {17 \choose 5}$, and since
+${17 \choose 5}$ is easier to compute than ${17 \choose 12}$, we compute~${17 \choose 5}$.
+
+
+
+How can we use the equalities~\eqref{eq.1784}, \eqref{eq.1785}, and~\eqref{eq.1786}
 to write yet another implementation of \code{choose} in Python?
 
-Let's look at an example.
-\begin{equation}
+\begin{example}
+Let's look at an example: Compute ${7 \choose 3}$.
+\begin{equation*}
   {7 \choose 3} =   \frac{7}{3}{6 \choose 2}
   = \frac{7}{3}\frac{6}{2} {5 \choose 1}
   = \frac{7}{3}\frac{6}{2} 5
-  = \frac{7}{\cancel{3}}\frac{\cancel{6}}{\cancel{2}} 5 = 7 \times 5 = 35
-\end{equation}
+  = \frac{7}{\cancel{3}}\frac{\cancel{6}}{\cancel{2}} 5 = 7 \cdot 5 = 35
+\end{equation*}
 
+However, if we compute ${7 \choose 4}$, we should get the same thing.  Do we?
+
+\begin{equation*}
+  {7 \choose 4} =   \frac{7}{4}{6 \choose 3}
+  = \frac{7}{4} \frac{6}{3} {5 \choose 2}
+  = \frac{7}{4} \frac{6}{3} \frac{5}{2} {4 \choose 1}
+  = \frac{7}{4} \frac{6}{3} \frac{5}{2} 4
+  = \frac{7}{\cancel{4}} \frac{\cancel{6}}{\cancel{3}} \frac{5}{\cancel{2}} \cancel{4}
+  = 7 \cdot 5 = 35
+\end{equation*}
+
+
+\end{example}
 
 
 \subsection{Review of different approaches}
