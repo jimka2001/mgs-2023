@@ -1334,11 +1334,10 @@ Of course we may use multiple loops concentrically and with conditionals.
 
 \clearpage
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{galois.png}
-\caption{Evariste Galois died at 20 years old as a result of a duel.}
-\end{figure}
+
+
+
+
 
 In Section~\ref{sec.quadratic.formula}, you worked with a function
 which computes the (real) roots of a second-degree (quadratic)
@@ -1359,13 +1358,37 @@ non-existence in 1823 at the age of 21.
 Around the same time a young, 20 year old, political activist of
 post-revolutionary France, Evariste Galois, attempted to explain why
 some higher-order polynomials are \emph{solvable in terms of radicals}
-and others are not.  I use the word \emph{attempted} not to imply that
+and others are not.
+
+\bigskip
+
+\noindent\begin{tabular}{cp{6cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.6\textwidth]{revolution.jpg}}&
+  Galois, as a staunch republican, would have wanted to
+  participate in the July Revolution of 1830 but was
+  prevented by the director of the École Normale.
+\end{tabular}
+
+\medskip
+
+
+  I use the word \emph{attempted} not to imply that
 his explanation was wrong.  To the contrary, his ideas were correct
-but nobody understood his treatment of the subject.  An example of his
-writing is shown in Figure~\ref{fig.galois.hand}.  One well-respected
+but nobody understood his treatment of the subject. One well-respected
 mathematician of the time, Joseph Fourier, took home a sizable work of
 Galois to digest it but unfortunately died unexpectedly, and the work
 was nearly lost.
+
+\medskip
+
+\noindent\begin{tabular}{cp{3cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.75\textwidth]{galois.png}}&
+  Evariste Galois died at 20 years old as a result of a duel.
+\end{tabular}
+
+
+\medskip
+
 
 The story of Evariste Galois who quickly wrote down the principles of
 abstract algebra before his death as a result of a duel, is depicted
@@ -1376,16 +1399,17 @@ documentary} \url{https://www.youtube.com/watch?v=J6dsanpnpt0} and
 Math Visualized.
 
 
-It is not surprising that mathematicians did not understand the work
-of Galois during his sort lifetime.  Figure~\ref{fig.galois.hand}
-shows an example of his handwriting.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.75\textwidth]{galois-handwriting.jpg}
-\caption{Galois's confusing handwriting}
-\label{fig.galois.hand}
-\end{figure}
+\medskip
+
+\noindent\begin{tabular}{cp{4cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{galois-handwriting.jpg}}&
+It is not surprising that mathematicians did not understand the work
+of Galois during his sort lifetime. 
+Galois's handwriting was confusing at best.
+\end{tabular}
+
+\bigskip
 
 In this unit we will study sets with mathematical structure.  This
 approach to \emph{abstract algebra} is of course much cleaner than
@@ -1398,11 +1422,7 @@ There are several mathematical structures defined by axioms.  We will
 thereafter write programs as individuals and as teams to manipulate
 these structures.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.75\textwidth]{revolution.jpg}
-\caption{Galois, as a staunch republican, would have wanted to participate in the July Revolution of 1830 but was prevented by the director of the École Normale.}
-\end{figure}
+
 
 
 \clearpage
@@ -1413,12 +1433,6 @@ these structures.
 \end{figure}
 
 
-\begin{figure}
-  \centering
-\includegraphics[width=0.75\textwidth]{Algebraic-structures-magma-to-group.png}
-%%\footnote{\url{https://en.wikipedia.org/wiki/Monoid#/media/File:Magma_to_group4.svg} by Ethaniel, Wikipedia.}
-\caption{There are many algebraic structures which are linked by subset relations.}
-\end{figure}
 
 \section{Monoid}
 \label{sec.monoid}
@@ -1485,12 +1499,7 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 
   Is it a commutative monoid?
   
-\begin{figure}
-\centering
-\includegraphics[width=10cm]{512px-Big_Ben_Closeup.jpg}
-%% \footnote{Arturo Mann, CC BY-SA 3.0 \url{http://creativecommons.org/licenses/by-sa/3.0/}, via Wikimedia Commons}
-\caption{The movement of the hands of the clock is an example of a monoid arithmetic.}
-\end{figure}
+
 
 
 \item  The integers on the face of the clock form a
@@ -1518,6 +1527,13 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
     \end{tabular}
   \end{center}
   
+\noindent\begin{tabular}{cp{4cm}}
+%% \footnote{Arturo Mann, CC BY-SA 3.0 \url{http://creativecommons.org/licenses/by-sa/3.0/}, via Wikimedia Commons}
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.6\textwidth]{512px-Big_Ben_Closeup.jpg}}&
+  The movement of the hands of the clock is an example of a monoid arithmetic.
+\end{tabular}
+
+
     We may verify that every $a\in\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$
     we have  $12 + a = a + 12 = a$.
 
@@ -1617,6 +1633,16 @@ support negative exponents?
 
 \section{Group}
 
+
+\begin{tabular}{cp{5cm}}
+%%\footnote{\url{https://en.wikipedia.org/wiki/Monoid#/media/File:Magma_to_group4.svg} by Ethaniel, Wikipedia.}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.6\textwidth]{Algebraic-structures-magma-to-group.png}}&
+  There are many algebraic structures which are linked by subset relations.
+\end{tabular}
+
+
+
+
 A notable property missing from a monoid is the ability solve equations.  As an example,
 take the 12-clock above.  Which of these equations can be solved in the integers?
 \begin{enumerate}
@@ -1690,18 +1716,19 @@ integer addition.   Why?
 
 \item The integers under multiplication is not a group.  Why?
 
-  \begin{figure}
-    \centering
+\item The set of rotations of the $n\times n$ Rubik's cube is a group.
+
+\noindent\begin{tabular}{cp{4cm}}
   %% This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.
   %% From https://en.wikipedia.org/wiki/Rubik%27s_Cube_group
   %% Converted to png
-  \includegraphics[width=6cm]{Rubiks_cube.png}
-  \caption{The set of rotations of the Rubik's cube is a group.}
-\end{figure}
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.4\textwidth]{Rubiks_cube.png}}&
+  The set of rotations of the Rubik's cube is a group.
+\end{tabular}
 
-\item The set of rotations of the $n\times n$ Rubik's cube is a group.   Every rotation has an inverse rotation, and the null-rotation is the identity.
+  Every rotation has an inverse rotation, and the null-rotation is the identity.
 
-\item The set of $3\times 3$ matrices of real numbers is not a group.  Why?
+\item The set of $3\times 3$ matrices of real numbers is not a group.  Why?   What about the set of \emph{invertible} $3\times 3$ real matrices?
 
 \item The set of subsets of a given set using the operation of union is not a group.  Why?
 \item The set of subsets of a given set using the operation of intersection is not a group.  Why?
@@ -2044,10 +2071,12 @@ additive inverse.
 \clearpage
 \chapter{Coding Exercises}\label{sec.coding.2}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.85\textwidth]{coding.jpg}
+\includegraphics[width=\textwidth]{coding.jpg}
 \end{figure}
+
+\clearpage
 
 \section{Compute number of combinations}
 Recall the definition
