@@ -896,12 +896,31 @@ recall that if
 then 
 \[x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a}\,.\]
 
-\begin{itemize}
-\item Implement the function \code{quadraticFormula}.
+\subsection{A Python function for roots of quadratic}
+
+Implement the function \code{quadraticFormula}.
   The function should implement the mathematical
   function $x_{1,2}(a,b,c) = \frac{-b \pm \sqrt{b^2 - 4a c}}{2a}$.  The function computes the roots
   of the polynomial $a x^2 + b x + c$, assuming $a>0$, and assuming $b^2 \geq 4a c$.
 
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def quadraticFormula(a, b, c):
+    from math import sqrt
+    # warning, this is a poor implementation,
+    # the student should improve this function by refactoring
+    return List((-b + sqrt(b*b - 4*a*c)/(2*a),
+                (-b + sqrt(b*b - 4*a*c)/(2*a))
+\end{lstlisting}\end{minipage}
+
+What are the problems with this implementation?  What does it do if there are no
+real roots?  What does it do if the there is only one root.
+
+
+\subsection{Excercises for the Student}
+
+Implement the following by refactoring the code above.
+
+\begin{itemize}
 
 \item Enhance \code{quadraticFormula}: Notice that the current
   implementation is inefficient, because it computes almost the same
@@ -926,12 +945,49 @@ then
 
 \section{Recursive Functions}
 \label{sec.recursive.functions}
+
+A recursive function is a function which calls itself.
+
+\subsection{Recursive implementation of exponentiation}
+
+As an example, let's look at a function which computes $a^n$ for
+some integer or floating point number $a$, and for some integer $n\ge 0$.
+We saw a similar function in Equation~\eqref{eq.simple.5} on page~\pageref{eq.simple.5}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def power(a, n):
+    if n == 0:
+      return 1
+    elif n == 1:
+      return a
+    else:
+      return a * power(a, n-1)
+\end{lstlisting}\end{minipage}
+
+This function can be extended to handle negative exponents, provided $a\in\R$; \ie if
+\code{a} is a floating point number.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def power(a, n):
+    if n == 0:
+      return 1
+    elif n < 0:
+      return power(1/a, -n)
+    elif n == 1:
+      return a
+    else:
+      return a * power(a, n-1)
+\end{lstlisting}\end{minipage}
+
+\subsection{Excercises for the Student}
+
+Follow the pattern shown in the \code{power} function to implement 
+the following functions.
+
 \begin{itemize}
-\item Implement \code{power}.  You should also handle the case of a
-  negative exponent.
 \item Implement \code{String} concatenation using the power model.
 \item Implement \code{List} concatenation using the power model.
-  \item Implement \code{factorial}. 
+\item Implement \code{factorial}. 
 \end{itemize}
   
 \textbf{Discussion:} In the \code{factorial} function, do we
@@ -1182,6 +1238,7 @@ which meets some condition.  For such a loop, use one of:
 \begin{enumerate}
 \item \code{any} --- Is something true at least once?
 $\exists a, 0 \leq a < 10, a\equiv 1 \mod{3}$
+
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   # (exists?) is there a number 0 <= a < 10 for which a%3 == 1
   any(a % 3 == 1 for a in range(10))
@@ -1266,7 +1323,7 @@ However, the programmer must decide whether to generate a set or a list.
   {a*a for a in range(6)}
 \end{lstlisting}\end{minipage}
 
-We sometimes use comprehension build atop concentric loops.
+We sometimes use comprehension built atop concentric loops.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   # generate the sums of pairs
@@ -1416,11 +1473,12 @@ Math Visualized.
 
 \medskip
 
-\noindent\begin{tabular}{cp{4cm}}
-  \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{galois-handwriting.jpg}}&
+\noindent\begin{tabular}{p{4cm}c}
+
 It is not surprising that mathematicians did not understand the work
 of Galois during his sort lifetime. 
 Galois's handwriting was confusing at best.
+&  \raisebox{-0.8\totalheight}{\includegraphics[width=0.65\textwidth]{galois-handwriting.jpg}}
 \end{tabular}
 
 \bigskip
@@ -1477,27 +1535,28 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 
 
 \begin{enumerate}
-\item $(\mathbb{N},+)$, the set of natural numbers under addition is a monoid.
+\item $\N$, the set of natural numbers is a monoid.  What is the operation?  What is the identity element?
 
-\item $(\mathbb{Z},-)$, the set of integers under subtraction is not a monoid.  Why?
+\item $(\mathbb{Z},-)$, the set of integers under subtraction is not a monoid.  Why? Which axiom(s) fail?
 
-\item The set of even integers under addition is a monoid.
+\item The set of even integers is a monoid.  What is the operation?  What is the identity element?
 
 \item The set of even integers under multiplication is a not monoid.  Why? Which axiom(s) fail?
   
 \item The set of integers under exponentiation is not monoid. Why? Which axiom(s) fail?
 
-\item ${(\mathbb{R},\times)}$, the set of positive real numbers under multiplication is a monoid.
+\item $\R$, the set of positive real numbers is a monoid.  What is the operation?  What is the identity element?
 
-\item The set of $2\times 3$ matrices under addition is a monoid.  
+\item The set of $2\times 3$ matrices under addition is a monoid.    What is the operation?  What is the identity element?
 
-\item The set of $2\times 3$ matrices under multiplication is not a monoid.  However the set of $3\times 3$  matrices under multiplication is a monoid. Why? 
+\item The set of $2\times 3$ matrices under multiplication is not a monoid.   Which axiom(s) fail? However the set of $3\times 3$  matrices under multiplication is a monoid. Why? 
 
 
-\item The set of logical predicates.  What is the identity element?
-  
 \item The set of subsets of a given set using the operation of union is a monoid.  What is the identity element?
 \item The set of subsets of a given set using the operation of intersection is a monoid.  What is the identity element?
+
+\item The set of logical predicates is a monoid.  There are multiple possible operations. Which operations? What is the identity element for each operation?   
+  
 
 \item Let $\Sigma$ be any set of distinguishable elements: ${\Sigma = \{a,b,c,d\}}$.
   Now consider the set, ${\mathcal{L}(\Sigma)}$, of all sequences of finite length
