@@ -175,7 +175,8 @@ learn a lot.
 
 
 
-We will probably proceed through several units which mix three important experiences:
+We will probably proceed through several units which mix three
+important experiences:
 
 \begin{itemize}
 \item Theory --- Learn mathematics and computer science concepts.
@@ -226,10 +227,11 @@ Week & Day & Unit & Activities\\
 
 \section{GitHub}
 
-In this course we will be experimenting with software together.   You will be able to
-share your code with your classmates, and with the world.  However, you control
-when you want to make your code available to the world, and when you want to
-incorporate your classmate's code into your development area.
+In this course we will be experimenting with software together.  You
+will be able to share your code with your classmates, and with the
+world.  However, you control when you want to make your code available
+to the world, and when you want to incorporate your classmate's code
+into your development area.
 
 
 \begin{figure}[h]
@@ -245,23 +247,23 @@ incorporate your classmate's code into your development area.
 
 
 To achieve this goal we have a central repository of code, hosted by
-GitHub on the cloud.  You will download (clone) a copy of this repository,
-edit existing code, and create new code, and then occasionally upload your
-contributions back to the central repository, making your
-contributions available to everyone else.
+GitHub on the cloud.  You will download (clone) a copy of this
+repository, edit existing code, and create new code, and then
+occasionally upload your contributions back to the central repository,
+making your contributions available to everyone else.
 
-GitHub is a web based service which hosts thousands of projects, small and large, in the cloud.
-Typically, users have a development environment on their local computer
-(laptop or desktop) and periodically upload and download changes to
-the cloud.
+GitHub is a web based service which hosts thousands of projects, small
+and large, in the cloud.  Typically, users have a development
+environment on their local computer (laptop or desktop) and
+periodically upload and download changes to the cloud.
 
 The URL \url{https://github.com/jimka2001/mgs-2023}, is the public
 entry point to the GitHub project which we will work on in this
-MGS-2023 course.
-How we will edit code in the GitHub project is described in Section~\ref{sec.gitpod}.
+MGS-2023 course.  How we will edit code in the GitHub project is
+described in Section~\ref{sec.gitpod}.
 
-You must create an account on GitHub (if you don't have one already).  This will be done
-in Section~\ref{sec.setup}.
+You must create an account on GitHub (if you don't have one already).
+This will be done in Section~\ref{sec.setup}.
 
 
 \section{GitPod}\label{sec.gitpod}
@@ -274,11 +276,10 @@ in Section~\ref{sec.setup}.
     which integrates with GitHub.}
 \end{figure}
 
-We will use a development environment entirely on the cloud---
-a web based service called, GitPod to provide an
-environment for working with GitHub.  This environment and all the
-code you develop will still be available to you after MGS-2023 is
-finished.
+We will use a development environment entirely on the cloud--- a web
+based service called, GitPod to provide an environment for working
+with GitHub.  This environment and all the code you develop will still
+be available to you after MGS-2023 is finished.
 
 The GitPod web site is \url{https://www.gitpod.io}.
 
@@ -286,9 +287,9 @@ The GitPod web site is \url{https://www.gitpod.io}.
 \section{Getting Started}
 \label{sec.setup}
 
-We need to set up the development environment.
-Vefore you can learn to use a piece of software, you have to install
-it. These steps should help.
+We need to set up the development environment.  Before you can learn
+to use a piece of software, you have to install it. These steps should
+help.
 
 \subsection{Account Creation}
   
@@ -375,7 +376,8 @@ perspective and also from a programming perspective.  There are some
 important similarities and some important differences.
 
 
-We would like to talk about functions.  But where should we start the conversation?
+We would like to talk about functions.  But where should we start the
+conversation?
 
 You may already have some intuition about functions.  Sometimes
 functions have names, like $\sin$, $\cos$, and $\log$.  Sometimes
@@ -386,8 +388,9 @@ $\frac{x^2-1}{x^2+2x+1}$.
 
 \section{Set Operations}
 
-We avoid the problem of defining exactly what a set is; see Russell's paradox.
-We will instead concentrate on operations we can perform on sets.
+We avoid the problem of defining exactly what a set is; see Russell's
+paradox.  We will instead concentrate on operations we can perform on
+sets.
 
 \begin{figure}
 \centering
@@ -401,7 +404,8 @@ We will instead concentrate on operations we can perform on sets.
 \item union: $A\cup B$
 \item intersection: $A\cap B$
 \item complement: $A\setminus B$ or $\overline{B}$
-\item De Morgan's theorem: $\overline{A\cup B} = \overline{A} \cap \overline{B}$, or dually $\overline{A\cap B} = \overline{A} \cup \overline{B}$.
+\item De Morgan's theorem: $\overline{A\cup B} = \overline{A} \cap \overline{B}$,
+  or dually $\overline{A\cap B} = \overline{A} \cup  \overline{B}$.
 \end{itemize}
 
 \section{Functions}
@@ -414,10 +418,9 @@ is a correspondence between two sets.  However, it is a special
 correspondence.
 \end{tabular}
 
-In particular the function,~$f$, associates a unique,
-well-determined, element of~$Y$ with each element of~$X$.
-More precisely, if $x\in X$, then~$f(x)$ designates a unique,
-well-determined, element of~$Y$.
+In particular the function,~$f$, associates a unique, well-determined,
+element of~$Y$ with each element of~$X$.  More precisely, if $x\in X$,
+then~$f(x)$ designates a unique, well-determined, element of~$Y$.
 \[x \in X \implies f(x) \in Y\,.\]
 
 \noindent\begin{tabular}{cp{7cm}}
@@ -458,12 +461,13 @@ written in a mathematical notation where the domain and range are not
 specified.  The same notation can be used for different choices of
 domain and range.  For example, this function works for integers,
 $\mathbb{Z}$, as input, but it will also work for natural numbers,
-$\mathbb{N}$, rational numbers, $\mathbb{Q}$, real numbers, $\mathbb{R}$,
-complex numbers, $\mathbb{C}$.  The same function will also work for
-matrices or for functions themselves.
+$\mathbb{N}$, rational numbers, $\mathbb{Q}$, real numbers,
+$\mathbb{R}$, complex numbers, $\mathbb{C}$.  The same function will
+also work for matrices or for functions themselves.
 
 
-If we want to be more precise, we can use a more descriptive notation as in~\eqref{eq.simple.2}
+If we want to be more precise, we can use a more descriptive notation
+as in~\eqref{eq.simple.2}
 
 \begin{align}
   f:\mathbb{N}\to\mathbb{N}~\text{by}~ f(x) &= 3x + 1 \label{eq.simple.2}
@@ -473,7 +477,7 @@ If we want to be more precise, we can use a more descriptive notation as in~\eqr
 The domain and range of a function need not be the same, and need not
 be a set of simple numbers.  For example, we use the symbol
 $\mathbb{R}^2$ to denote the set of ordered pairs of real numbers;
-i.e.,
+\ie,
 \[\mathbb{R}^2 = \{(x,y)\mid x\in \mathbb{R} \wedge y\in\mathbb{R}\}\,.\]
 Equation~\eqref{eq.simple.3} shows an example of such a function.
 
@@ -545,8 +549,8 @@ come from the \emph{range}.
 \section{Specifying functions by recurrence}
 \label{sec.recurrence}
 
-Functions can be defined in terms of themselves.  We might use an intuitive definition
-such as Equation~\eqref{eq.simple.5}.
+Functions can be defined in terms of themselves.  We might use an
+intuitive definition such as Equation~\eqref{eq.simple.5}.
 
 \begin{equation}\label{eq.simple.5}
 x^n = \underbrace{x \times x \times \ldots \times x}_{n~\text{times}}\,.
@@ -625,7 +629,8 @@ Expressions can contain variables, constants, and function calls
 \end{lstlisting}\end{minipage}
 
 
-An assignment to a variable can also contain the same variable being modified.
+An assignment to a variable can also contain the same variable being
+modified.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   a = 12
@@ -636,8 +641,9 @@ An assignment to a variable can also contain the same variable being modified.
 
 
 Basic arithmetic can be performed using \code{+}, \code{-}, \code{*},
-and \code{**} for plus, minus, times, and exponentiation.
-A double \code{**} can be used for exponentiation such a $3^4$ is coded as \code{3 ** 4}.
+and \code{**} for plus, minus, times, and exponentiation.  A double
+\code{**} can be used for exponentiation such a $3^4$ is coded as
+\code{3 ** 4}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   1 + 2    # addition
@@ -671,7 +677,8 @@ it, a function's value may be different depending on its input, or the
 variables it references.
 
 A function, defined with \code{def}, has several parts: name,
-parameters (zero or more), body (which may be empty), and an optional \code{return}.
+parameters (zero or more), body (which may be empty), and an optional
+\code{return}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def f(a,b):
@@ -685,8 +692,8 @@ A function without a \code{return}, returns the special value
 \code{return} then the programmer as forgotten something---it is
 normally a bug in the program.
 
-A function may contain other functions within it.  The indentation indicates
-which lines of code are \emph{within} which function.
+A function may contain other functions within it.  The indentation
+indicates which lines of code are \emph{within} which function.
 
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
@@ -698,8 +705,9 @@ which lines of code are \emph{within} which function.
 \end{lstlisting}\end{minipage}
 
 
-A function may reference variables defined outside it.  A function
-may reference its parameters, and the paramters of functions it is inside of.
+A function may reference variables defined outside it.  A function may
+reference its parameters, and the paramters of functions it is inside
+of.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def f(a):
@@ -712,7 +720,8 @@ may reference its parameters, and the paramters of functions it is inside of.
 However, to reference variables (other than parmameters) you must indicate which
 variable you mean, because there may be several variables of the same name.
 
-In the next example, in the expression \code{b+a}, the variables reference the parameters of functions \code{g} and \code{f}
+In the next example, in the expression \code{b+a}, the variables
+reference the parameters of functions \code{g} and \code{f},
 respectively.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
@@ -728,8 +737,9 @@ respectively.
 \end{minipage}
 
 
-In the next example, in the expression \code{a+b+c}, \code{a} is global, \code{b} be is the parameter of
-function \code{g}, and \code{c} is $-7$  as defined within function \code{h}.
+In the next example, in the expression \code{a+b+c}, \code{a} is
+global, \code{b} be is the parameter of function \code{g}, and
+\code{c} is $-7$ as defined within function \code{h}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   a = 100
@@ -804,9 +814,11 @@ A multi-branch condition is also supported using \code{if}, \code{elif}, and \co
 
 \subsubsection{Boolean}
 
-We've already seen the integer and float data types, but several more data types are important to understand.
-The \code{bool} (Boolean) data type consists of the special values \code{True} and \code{False}.  Operators such as \code{==} (equivalence test),
-as well as \code{>}, \code{>=}, \code{<}, and \code{<=} evaluate to a \code{bool}.
+We've already seen the integer and float data types, but several more
+data types are important to understand.  The \code{bool} (Boolean)
+data type consists of the special values \code{True} and \code{False}.
+Operators such as \code{==} (equivalence test), as well as \code{>},
+\code{>=}, \code{<}, and \code{<=} evaluate to a \code{bool}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
 print(1 > 2)
@@ -831,7 +843,8 @@ Boolean values are useful in conditions such as the following example.
 
 \subsubsection{Tuples}
 
-Tuples are like ordered pairs or ordered triples in math: $(x,y)$ or $(x,y,z)$.  The Python syntax is easy:
+Tuples are like ordered pairs or ordered triples in math: $(x,y)$ or
+$(x,y,z)$.  The Python syntax is easy:
 
 \begin{minipage}[c]{0.95\textwidth}
 \begin{lstlisting}
@@ -875,8 +888,9 @@ we use round brackets (called parentheses) for tuples.
 
 \subsubsection{Sets}
 
-A set is like a list except that it contains no duplicate elements, and Python does not
-maintain any particular order of the elements.  Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set.
+A set is like a list except that it contains no duplicate elements,
+and Python does not maintain any particular order of the elements.
+Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set.
 
 \begin{minipage}[c]{0.95\textwidth}
 \begin{lstlisting}
@@ -898,10 +912,11 @@ then
 
 \subsection{A Python function for roots of quadratic}
 
-Implement the function \code{quadraticFormula}.
-  The function should implement the mathematical
-  function $x_{1,2}(a,b,c) = \frac{-b \pm \sqrt{b^2 - 4a c}}{2a}$.  The function computes the roots
-  of the polynomial $a x^2 + b x + c$, assuming $a>0$, and assuming $b^2 \geq 4a c$.
+Implement the function \code{quadraticFormula}.  The function should
+implement the mathematical function $x_{1,2}(a,b,c) = \frac{-b \pm
+  \sqrt{b^2 - 4a c}}{2a}$.  The function computes the roots of the
+polynomial $a x^2 + b x + c$, assuming $a>0$, and assuming $b^2 \geq
+4a c$.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def quadraticFormula(a, b, c):
@@ -912,8 +927,9 @@ Implement the function \code{quadraticFormula}.
                 (-b + sqrt(b*b - 4*a*c)/(2*a))
 \end{lstlisting}\end{minipage}
 
-What are the problems with this implementation?  What does it do if there are no
-real roots?  What does it do if the there is only one root.
+What are the problems with this implementation?  What does it do if
+there are no real roots?  What does it do if the there is only one
+root.
 
 
 \subsection{Excercises for the Student}
@@ -950,9 +966,10 @@ A recursive function is a function which calls itself.
 
 \subsection{Recursive implementation of exponentiation}
 
-As an example, let's look at a function which computes $a^n$ for
-some integer or floating point number $a$, and for some integer $n\ge 0$.
-We saw a similar function in Equation~\eqref{eq.simple.5} on page~\pageref{eq.simple.5}.
+As an example, let's look at a function which computes $a^n$ for some
+integer or floating point number $a$, and for some integer $n\ge 0$.
+We saw a similar function in Equation~\eqref{eq.simple.5} on
+page~\pageref{eq.simple.5}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def power(a, n):
@@ -964,8 +981,8 @@ We saw a similar function in Equation~\eqref{eq.simple.5} on page~\pageref{eq.si
       return a * power(a, n-1)
 \end{lstlisting}\end{minipage}
 
-This function can be extended to handle negative exponents, provided $a\in\R$; \ie if
-\code{a} is a floating point number.
+This function can be extended to handle negative exponents, provided
+$a\in\R$; \ie if \code{a} is a floating point number.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def power(a, n):
@@ -1002,8 +1019,9 @@ the following functions.
 \item Implement a recursive function such that given $n$, the function
   returns the nth Fibonacci number, $F_n$.
 \item Analyze the recursive profile of the Fibonacci generator?
-\item Suppose that one recursive call requires $m$ bytes, and your computer has a total of $M$ bytes of memory,
-  can you find a bound for the maximum Fibonacci which is possible to compute?
+\item Suppose that one recursive call requires $m$ bytes, and your
+  computer has a total of $M$ bytes of memory, can you find a bound
+  for the maximum Fibonacci which is possible to compute?
 \item Can we use memoization to make the Fibonacci generator faster?
 \item We may compute any three
   consecutive Fibonacci numbers: $F_{n-1}$, $F_{n}$, and $F_{n+1}$,
@@ -1012,7 +1030,8 @@ the following functions.
   \begin{enumerate}
   \item How can we represent a $2\times 2$ programmatically?
   \item How can we multiply two matrices?
-  \item How can we compute  $\begin{bmatrix}1&1\\1&0\end{bmatrix}^n$ with approximately $\log_2 n$ matrix multiplications?
+  \item How can we compute $\begin{bmatrix}1&1\\1&0\end{bmatrix}^n$
+    with approximately $\log_2 n$ matrix multiplications?
   \end{enumerate}
   
 \item Search on the internet and find the Binet's formula for
@@ -1033,9 +1052,9 @@ the following functions.
 
 A binary search algorithm is a divide an conquer algorithm.  Suppose
 we know that some \emph{event} occurs at a number between $x_{left}$
-and $x_{right}$.  For example, suppose $f(x) = 0$ for some
-$x_{left} < x < x_{right}$.  Then if we take $x_{mid} = \frac{x_{left} + x_{right}}{2}$, then
-at least one of the following is true.
+and $x_{right}$.  For example, suppose $f(x) = 0$ for some $x_{left} < x < x_{right}$.
+Then if we take
+$x_{mid} = \frac{x_{left} + x_{right}}{2}$, then at least one of the following is true.
 
 \begin{align}
   f(x) & = 0 & \text{ for some } x_{left} < x \leq x_{mid}\\
@@ -1092,7 +1111,8 @@ ${x_{right} - x_{left} < \varepsilon}$.
 
 
 \begin{definition}[proposition]
-  A \emph{proposition} is a logical statement which has a truth value of true or false.
+  A \emph{proposition} is a logical statement which has a truth value
+  of true or false.
 \end{definition}
 
 For example, let $p$ be the proposition: Light travels at 300,000 km/s
@@ -1154,7 +1174,8 @@ is false, then its logical negative is true.  The if $p$ is a
 predicate then either $p$ is true or $\neg p$ is true.
 
 
-We may combine set mechanics and predicates with something called a \emph{set comprehension}.
+We may combine set mechanics and predicates with something called a
+\emph{set comprehension}.
 \[\{m\in\N \mid m > 42\}\]
 
 The idea is that we take the subset of some set ($\N$ in this case) by
@@ -1174,16 +1195,18 @@ implication is true: ${n\in N \implies n= 0 \vee n\geq 1}$.
 
 \subsection{Quantifiers}
 
-$\forall$ specifies a proposition (whose value is either true or false) that a given predicate
-is true for every element of a set.
+$\forall$ specifies a proposition (whose value is either true or
+false) that a given predicate is true for every element of a set.
 \[\forall x \in N, n > -1\]
 
-$\exists$ specifies a proposition (whose value is either true or false) that a given predicate
-is true for at least one element of a set.
+$\exists$ specifies a proposition (whose value is either true or
+false) that a given predicate is true for at least one element of a
+set.
 \[\exists x \in N, n > 42\]
 
-$\forall$ is always true if the set is empty, we can see this with De Morgan's theorem below.
-$\exists$ is always false if the set is empty.
+$\forall$ is always true if the set is empty, we can see this with De
+Morgan's theorem below.  $\exists$ is always false if the set is
+empty.
 
 
 \[\forall x \in \emptyset, n > -1\]
@@ -1227,8 +1250,9 @@ Three very common styles of loops are
 \item loop for side-effect
 \end{itemize}
 
-In all cases loops may be singular or multiple loops running concentrically.  Loops may
-also contain conditions to skip certain iterations.
+In all cases loops may be singular or multiple loops running
+concentrically.  Loops may also contain conditions to skip certain
+iterations.
 
 \subsection{Loop for detection}
 
@@ -1267,8 +1291,9 @@ $a > 2, \forall a\in\{2, 5, 12, -34\}$
        if a*a > 100)
 \end{lstlisting}\end{minipage}
 
-What does \code{next} do when it fails to find an element matching the predicate?
-If \code{next} fails to find an element which satisfies the logical query, an exception is thrown.
+What does \code{next} do when it fails to find an element matching the
+predicate?  If \code{next} fails to find an element which satisfies
+the logical query, an exception is thrown.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   # find the first element which satisfies a condition
@@ -1289,9 +1314,10 @@ StopIteration
 \end{small}
 \end{enumerate}
 
-We see that \code{any} and \code{all} correspond to the quantifiers $\exists$ and $\forall$,
-and we have seen how De Morgan's theorem applies to quantifiers.   How does De Morgan's theorem
-apply to \code{any} and \code{all}?
+We see that \code{any} and \code{all} correspond to the quantifiers
+$\exists$ and $\forall$, and we have seen how De Morgan's theorem
+applies to quantifiers.  How does De Morgan's theorem apply to
+\code{any} and \code{all}?
 
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
@@ -1312,8 +1338,9 @@ apply to \code{any} and \code{all}?
 
 \subsection{Loop for collection}
 
-Similar to set comprehensions in set theory, we can express comprehensions in Python.
-However, the programmer must decide whether to generate a set or a list.
+Similar to set comprehensions in set theory, we can express
+comprehensions in Python.  However, the programmer must decide whether
+to generate a set or a list.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   # generate the list [0, 1, 4, 9, 16, 25]
@@ -1345,8 +1372,9 @@ We sometimes use comprehension build atop concentric loops with conditionals.
 
 \subsection{Loop for side-effect}
 
-Sometimes (often) we need to loop for side-effect:  printing, modifying an array, communicating with web browser,
-updating a database, etc.  To look for side-effect, use \code{for}:
+Sometimes (often) we need to loop for side-effect: printing, modifying
+an array, communicating with web browser, updating a database, etc.
+To look for side-effect, use \code{for}:
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   for a in range(6):
@@ -1535,27 +1563,40 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 
 
 \begin{enumerate}
-\item $\N$, the set of natural numbers is a monoid.  What is the operation?  What is the identity element?
+\item $\N$, the set of natural numbers is a monoid.  What is the
+  operation?  What is the identity element?
 
-\item $(\mathbb{Z},-)$, the set of integers under subtraction is not a monoid.  Why? Which axiom(s) fail?
+\item $(\mathbb{Z},-)$, the set of integers under subtraction is not a
+  monoid.  Why? Which axiom(s) fail?
 
-\item The set of even integers is a monoid.  What is the operation?  What is the identity element?
+\item The set of even integers is a monoid.  What is the operation?
+  What is the identity element?
 
-\item The set of even integers under multiplication is a not monoid.  Why? Which axiom(s) fail?
+\item The set of even integers under multiplication is a not monoid.
+  Why? Which axiom(s) fail?
   
-\item The set of integers under exponentiation is not monoid. Why? Which axiom(s) fail?
+\item The set of integers under exponentiation is not monoid. Why?
+  Which axiom(s) fail?
 
-\item $\R$, the set of positive real numbers is a monoid.  What is the operation?  What is the identity element?
+\item $\R$, the set of positive real numbers is a monoid.  What is the
+  operation?  What is the identity element?
 
-\item The set of $2\times 3$ matrices under addition is a monoid.    What is the operation?  What is the identity element?
+\item The set of $2\times 3$ matrices under addition is a monoid.
+  What is the operation?  What is the identity element?
 
-\item The set of $2\times 3$ matrices under multiplication is not a monoid.   Which axiom(s) fail? However the set of $3\times 3$  matrices under multiplication is a monoid. Why? 
+\item The set of $2\times 3$ matrices under multiplication is not a
+  monoid.  Which axiom(s) fail? However the set of $3\times 3$
+  matrices under multiplication is a monoid. Why?
 
 
-\item The set of subsets of a given set using the operation of union is a monoid.  What is the identity element?
-\item The set of subsets of a given set using the operation of intersection is a monoid.  What is the identity element?
+\item The set of subsets of a given set using the operation of union
+  is a monoid.  What is the identity element?
+\item The set of subsets of a given set using the operation of
+  intersection is a monoid.  What is the identity element?
 
-\item The set of logical predicates is a monoid.  There are multiple possible operations. Which operations? What is the identity element for each operation?   
+\item The set of logical predicates is a monoid.  There are multiple
+  possible operations. Which operations? What is the identity element
+  for each operation?
   
 
 \item Let $\Sigma$ be any set of distinguishable elements: ${\Sigma = \{a,b,c,d\}}$.
@@ -1645,10 +1686,9 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 \section{Fast Exponentiation in a Monoid}
 \label{sec.monoid.exponent}
 Recall the definition of exponentiation in
-Equation~\eqref{eq.slow.exponent}.  In any monoid with operation $\circ$ and identity
-element $e$, we can compute an
-integer power of an element more efficiently according to the
-following formula.
+Equation~\eqref{eq.slow.exponent}.  In any monoid with operation
+$\circ$ and identity element $e$, we can compute an integer power of
+an element more efficiently according to the following formula.
 
 
 
@@ -1784,7 +1824,8 @@ different inverses?  No, but why?
 integer addition.   Why?
 \begin{itemize}
 \item $(\mathbb{Z},+)$ is a monoid with $0$ being the identity.
-\item If $a \in \mathbb{Z}$ there exists $b\in\mathbb{Z}$ such that $a+b=0$.  E.g.   ${12 + (-12) = 0}$
+\item If $a \in \mathbb{Z}$ there exists $b\in\mathbb{Z}$ such that
+  $a+b=0$.  E.g.  ${12 + (-12) = 0}$
 \end{itemize}
 
 \item The integers under multiplication is not a group.  Why?
@@ -1801,13 +1842,16 @@ integer addition.   Why?
 
   Every rotation has an inverse rotation, and the null-rotation is the identity.
 
-\item The set of $3\times 3$ matrices of real numbers is not a group.  Why?   What about the set of \emph{invertible} $3\times 3$ real matrices?
+\item The set of $3\times 3$ matrices of real numbers is not a group.
+  Why?  What about the set of \emph{invertible} $3\times 3$ real
+  matrices?
 
 \item The set of subsets of a given set using the operation of union is not a group.  Why?
 \item The set of subsets of a given set using the operation of intersection is not a group.  Why?
 \item The set subsets of a given set, $G$, using
   \[A\circ B = (A\cap  \overline{B}) \cup (\overline{A}\cap B)\]
-  as the operation, is a group.  Every element is its own inverse.  The identity element is the empty set, $\emptyset$.
+  as the operation, is a group.  Every element is its own inverse.
+  The identity element is the empty set, $\emptyset$.
 
 
 
@@ -1885,7 +1929,8 @@ monoid) has exactly 3 elements?
 
 \section{Exponentiation in a Group}
 
-Create an exponentiation function for a group which also handles negative exponents.
+Create an exponentiation function for a group which also handles
+negative exponents.
 
 Why can we compute negative exponents in a group but not in a monoid?
 Recall Section~\ref{sec.monoid.exponent}.
@@ -1932,7 +1977,8 @@ for rings.  In particular $-1 \cdot -1 = 1$
 (Theorem~\ref{th.ring.-a}).
 
 \begin{theorem}\label{th.ring.annihilation}
-  For ring, $S$ with additive identity $z$ and multiplicative identity $e$, we have $za = az = z$ for all $a\in S$.
+  For ring, $S$ with additive identity $z$ and multiplicative identity
+  $e$, we have $za = az = z$ for all $a\in S$.
 \end{theorem}
 Let's denote the additive inverse of any element $x$ by $\overline{x}$
 \begin{proof}
@@ -2043,7 +2089,8 @@ divide with the exception that you cannot divide by zero.
 $(F,+,\times)$ is called a \emph{field} if
 \begin{enumerate}
 \item $(F,+, \times)$ is an Abelian Ring.
-\item $(F \setminus \{0\}, \times)$ is a (Abelian) group, where $0$ is the identity for $+$.
+\item $(F \setminus \{0\}, \times)$ is a (Abelian) group, where $0$ is
+  the identity for $+$.
 \end{enumerate}    
 \end{definition}
 
@@ -2052,7 +2099,8 @@ $(F,+,\times)$ is called a \emph{field} if
 \begin{enumerate}
 \item The rational numbers, $\mathbb{Q}$.
 \item The set of $n\times n$ matrices is not a field.  Why?
-\item The set of $2\times 2$ matrices of the form $\begin{bmatrix}a&-b\\b&a\end{bmatrix}$ where $a,b\in\mathbb{Q}$.
+\item The set of $2\times 2$ matrices of the form
+  $\begin{bmatrix}a&-b\\b&a\end{bmatrix}$ where $a,b\in\mathbb{Q}$.
 \item The integers modulo $12$.
 \item The integers modulo any prime such as $7$.
 
@@ -2157,8 +2205,8 @@ Recall the definition
 Write function to compute this quantity several different ways.
 
 \subsection{Direct computation}
-Compute $n\choose k$ directly by computing the three factorials and performing
-the integer division.
+Compute $n\choose k$ directly by computing the three factorials and
+performing the integer division.
 
 Examine the values of the numerator and denominators.  How many bits
 are necessary for these computations to occur successfully.
@@ -2172,8 +2220,8 @@ Rather than computing $n!$ directly, express it as a list of
   \begin{itemize}
   \item Implement a function which, given $n$, uses
     recursion to compute and return the list of prime factors of $n$.
-  \item Use that function to implement a function which, given $n$, returns
-    the prime factors of $n!$.
+  \item Use that function to implement a function which, given $n$,
+    returns the prime factors of $n!$.
   \item Effectively perform the division by
     removing all the prime factors in the denominator, $k!(n-k)!$, from
     those of the denominator, $n!$.
@@ -2271,12 +2319,16 @@ not the other because of integer overflow.
 \section{Modulo Arithmetic}
 
 \begin{enumerate}
-\item For a given $n$, implement addition, subtraction, and multiplication modulo $n$.
+\item For a given $n$, implement addition, subtraction, and
+  multiplication modulo $n$.
 \item If $n$ is prime, implement division.
 \item A number have  multiple square roots modulo $n$, find such a case.
-\item Implement exponentiation modulo (prime) $p$.  How many multiplications are necessary to compute $a^b \mod{p}$?
-\item If $p$ is prime, and $a\neq 1$, what are $a^0$, $a^1$, $a^2$, \ldots, $a^{p-1}$,  $a^p \mod{p}$ ?
-\item If $n$ is composite, and $a^b = a^c$ for $a\neq 1$, what do we know about $b$ and $c$?
+\item Implement exponentiation modulo (prime) $p$.  How many
+  multiplications are necessary to compute $a^b \mod{p}$?
+\item If $p$ is prime, and $a\neq 1$, what are $a^0$, $a^1$, $a^2$,
+  \ldots, $a^{p-1}$,  $a^p \mod{p}$ ?
+\item If $n$ is composite, and $a^b = a^c$ for $a\neq 1$, what do we
+  know about $b$ and $c$?
 \item If $p$ is prime, find Pythagorean triples modulo $p$.
 \end{enumerate}
 
