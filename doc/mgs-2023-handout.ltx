@@ -104,27 +104,27 @@
 \section{Objectives}
 
 
-There are several objectives of this course:
+There are several objectives in this course:
 \begin{description}
 \item[Mathematics:] Ameliorate your love for Mathematics.
-\item[Computer Science:] Develop a sense programming.
+\item[Computer Science:] Develop a sense for programming.
 \item[Communication:] Confidently defend your ideas.
 \end{description}
 
-Why math?  We assume that you as a student already loves math, and we
+Why math?  We assume that you already love math, and we
 will use examples in abstract math as source of ideas to write
 computer programs.
 
 
 The mathematical and computer science topics have been chosen for this
-course complement each other.  You will enforce what you've learned by
+course to complement each other.  You will enforce what you've learned by
 writing computer programs using the ideas and also by explaining to
 your peers what it is that you have done.
 
 
 It is important that the leaders of tomorrow, especially the leaders
-in the technology sector, understand the impact on humans of
-technological development.  We must know how to apply abstract
+in the technology sector, understand the impact of
+technological development on humans.  We must know how to apply abstract
 concepts to real computation problems, and how to explain their ideas
 and defend their decisions to their peers.
 
@@ -241,7 +241,7 @@ into your development area.
   \centering
   \includegraphics[width=0.9\textwidth]{GitHub-How-to-use-GitHub-Edureka-300x241.png}
 %%  \url{https://www.edureka.co/blog/how-to-use-github/}
-  \caption{GitHub is a cloud service which hosts code repositories.
+  \caption{GitHub is a cloud service that hosts code repositories.
     You connect to GitHub either by web browser or directly from
     \emph{git}.}
 \end{figure}
@@ -251,7 +251,7 @@ into your development area.
 
 To achieve this goal we have a central repository of code, hosted by
 GitHub on the cloud.  You will download (clone) a copy of this
-repository, edit existing code, and create new code, and then
+repository, edit existing code, create new code, and then
 occasionally upload your contributions back to the central repository,
 making your contributions available to everyone else.
 
@@ -348,7 +348,7 @@ Open the web-IDE, GitPod. You may just prepend
 \begin{tabular}{cp{7cm}}
   \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{hello-function.png}}
   &Click \code{hello.py} to open the file in an editor pane.  You
-  should see something like that shown here:
+  should see something like what is shown here:
 \end{tabular}
 
 
@@ -465,7 +465,7 @@ specified.  The same notation can be used for different choices of
 domain and range.  For example, this function works for integers,
 $\mathbb{Z}$, as input, but it will also work for natural numbers,
 $\mathbb{N}$, rational numbers, $\mathbb{Q}$, real numbers,
-$\mathbb{R}$, complex numbers, $\mathbb{C}$.  The same function will
+$\mathbb{R}$, and complex numbers, $\mathbb{C}$.  The same function will
 also work for matrices or for functions themselves.
 
 
@@ -488,8 +488,7 @@ Equation~\eqref{eq.simple.3} shows an example of such a function.
   f:\mathbb{R}^2\to\mathbb{R}~\text{by}~ f(x,y) &= 3x - 2y + 1 \label{eq.simple.3}
 \end{align}
 
-Mathematical notation such as $a+b$, $a\times b$, $a-b$, $a^3$, and
-$\frac{x^2-1}{x^2+2x+1}$, but we may also specify
+We may also specify
 functions using cases, like in Equation~\eqref{eq.simple.4}
 
 
@@ -504,7 +503,7 @@ functions using cases, like in Equation~\eqref{eq.simple.4}
 \section{What a function is not}
 
 A correspondence which associates multiple elements of $B$ with
-each element of $A$ is not a function from $A$ to $B$.  However the
+an element of $A$ is not a function from $A$ to $B$.  However the
 range of a function (or the domain for that matter) may be any set,
 for example we may talk about set-valued functions like a function
 whose value for each input is some subset of a given set.
@@ -585,7 +584,7 @@ or we can define it as
 \end{equation}
 
 The first case need not be $n=0$.  We can define the Fibonacci
-numbers.  Let $F(n)$ denote the n'th Fibonacci number.
+numbers.  Let $F(n)$ denote the nth Fibonacci number.
 
 
 \begin{equation}
@@ -608,7 +607,7 @@ numbers.  Let $F(n)$ denote the n'th Fibonacci number.
 
 \section{Programming constructs}
 
-In this section we look at several construction which are essential to
+In this section we look at several constructions which are essential to
 your programming experience.
 
 
@@ -644,8 +643,7 @@ modified.
 
 
 Basic arithmetic can be performed using \code{+}, \code{-}, \code{*},
-and \code{**} for plus, minus, times, and exponentiation.  A double
-\code{**} can be used for exponentiation such a $3^4$ is coded as
+and \code{**} for plus, minus, times, and exponentiation.  For example, $3^4$ is coded as
 \code{3 ** 4}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
@@ -658,7 +656,7 @@ and \code{**} for plus, minus, times, and exponentiation.  A double
 There are two types of division.  Floating point division may be
 performed as \code{10 / 5} which evaluates to the floating point
 number \code{2.0}, while \code{10 // 5} evaluates to the
-integer~\code{2}.  An important difference arrises when the
+integer~\code{2}.  An important difference arises when the
 denominator does not evenly divide the numerator.  \code{20 / 8}
 evaluates to \code{2.5}, but \code{ 20 // 8} evaluates to~\code{2},
 because $20 \div 8 = 2$ with remainder~$4$.  To compute the remainder
@@ -692,8 +690,8 @@ parameters (zero or more), body (which may be empty), and an optional
 
 A function without a \code{return}, returns the special value
 \code{None}.  It is often the case that if a function has no
-\code{return} then the programmer as forgotten something---it is
-normally a bug in the program.
+\code{return} then the programmer has forgotten something---it is
+often a bug in the program.
 
 A function may contain other functions within it.  The indentation
 indicates which lines of code are \emph{within} which function.
@@ -708,8 +706,8 @@ indicates which lines of code are \emph{within} which function.
 \end{lstlisting}\end{minipage}
 
 
-A function may reference variables defined outside it.  A function may
-reference its parameters, and the paramters of functions it is inside
+A function may reference variables defined outside itself.  A function may
+reference its parameters, and the parameters of functions it is inside
 of.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
@@ -720,7 +718,7 @@ of.
     return a + g(-7)
 \end{lstlisting}\end{minipage}
 
-However, to reference variables (other than parmameters) you must indicate which
+However, to reference variables (other than parameters) you must indicate which
 variable you mean, because there may be several variables of the same name.
 
 In the next example, in the expression \code{b+a}, the variables
@@ -763,7 +761,7 @@ global, \code{b} be is the parameter of function \code{g}, and
 There are many built-in functions and constants, but you often need to
 \code{import} a library.  The \code{abs} function is built-in without
 importing, but the functions \code{sin}, \code{cos}, \code{log}, as
-well as the constants $\pi$ and $e$ (\code(pi) and \code{e}) are
+well as the constants $\pi$ and $e$ (\code{pi} and \code{e}) are
 available in a library called \code{math}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
@@ -787,7 +785,7 @@ no exception.  A simple conditional is specified as follows using
     print(x)
 \end{lstlisting}\end{minipage}
 
-A two-branch branches of the conditional is possible by specifying a
+A two-branch conditional is possible by specifying a
 \emph{condition}, \emph{consequent}, and \emph{alternative}.
 
 \begin{minipage}[c]{0.95\textwidth}
@@ -803,11 +801,11 @@ A two-branch branches of the conditional is possible by specifying a
 A multi-branch condition is also supported using \code{if}, \code{elif}, and \code{else}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
-  if a > 1:
+  if a < 1:
     print(a)
-  elif a > 2:
+  elif a < 2:
     print(a-1)
-  elif a > 3:
+  elif a < 3:
     print(a-2)
   else:
     print(None)
@@ -817,8 +815,8 @@ A multi-branch condition is also supported using \code{if}, \code{elif}, and \co
 
 \subsubsection{Boolean}
 
-We've already seen the integer and float data types, but several more
-data types are important to understand.  The \code{bool} (Boolean)
+We've already seen the integer and float data types, but there several more
+data types which are important to understand.  The \code{bool} (Boolean)
 data type consists of the special values \code{True} and \code{False}.
 Operators such as \code{==} (equivalence test), as well as \code{>},
 \code{>=}, \code{<}, and \code{<=} evaluate to a \code{bool}.
@@ -847,7 +845,8 @@ Boolean values are useful in conditions such as the following example.
 \subsubsection{Tuples}
 
 Tuples are like ordered pairs or ordered triples in math: $(x,y)$ or
-$(x,y,z)$.  The Python syntax is easy:
+$(x,y,z)$.  Triples are not limited to three elements; you may have as many
+elements as you need. The Python syntax is easy:
 
 \begin{minipage}[c]{0.95\textwidth}
 \begin{lstlisting}
@@ -863,8 +862,8 @@ $(x,y,z)$.  The Python syntax is easy:
 \end{minipage}
 
 
-A tuple is read-only-- you cannot modify the value in a tuple once the
-tuple has been created.  However, you be read the value out of a
+A tuple is read-only---you cannot modify the value stored in a tuple once the
+tuple has been created.  You can read any value out of a
 tuple, for example \code{a[2]}.  Careful, the first value in the tuple
 is \code{a[0]} and the second value is \code{a[1]}; so indexing is
 so-called zero-based, not one-based as is customary in mathematics.
@@ -893,7 +892,8 @@ we use round brackets (called parentheses) for tuples.
 
 A set is like a list except that it contains no duplicate elements,
 and Python does not maintain any particular order of the elements.
-Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set.
+Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set, and note how
+Python ignores duplicate elements in a set.
 
 \begin{minipage}[c]{0.95\textwidth}
 \begin{lstlisting}
@@ -905,9 +905,45 @@ Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set.
 \end{lstlisting}
 \end{minipage}
 
+\subsection{Trees}
+
+Lists and tuples are not limited to containing numbers.  You may have
+lists of lists of tuples of lists as deep as you like.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  a = [1, 2, 5, 7]
+  b = (10, 20, 50, 70, 100)
+  c = [a, b, a, a]
+  d = (a, b, c, [(1, [2, 3, [c, a]])])
+  print(d)
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Challenge for the student}
+
+If you construct a list containing the same list multiple times, what happens
+if you modify one of the elements?  Evaluate the following code and explain
+the results.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  a = [1, 2, 5, 7]
+  b = [a, a, a, [1, 2, 5, 7]]
+  b[0] = 100
+  print(b)
+  b[1][0] = 200
+  print(b)
+\end{lstlisting}
+\end{minipage}
+
+We have seen that you can create lists of tuples and tuples of lists.
+Can you also create sets of lists, sets of tupleslists, tuples of sets, and sets
+of tuples.  Experiment and find out.
+
 \section{Implement the Quadratic Formula}\label{sec.quadratic.formula}
 
-As a first program in Scala you will implement the quadratic formula.
+As a first program in Python you will implement the quadratic formula.
 recall that if
 \[ a x^2 + b x + c = 0\,,a\ne 0\]
 then 
@@ -927,7 +963,7 @@ polynomial $a x^2 + b x + c$, assuming $a>0$, and assuming $b^2 \geq
     # warning, this is a poor implementation,
     # the student should improve this function by refactoring
     return List((-b + sqrt(b*b - 4*a*c))/(2*a),
-                (-b + sqrt(b*b - 4*a*c))/(2*a))
+                (-b - sqrt(b*b - 4*a*c))/(2*a))
 \end{lstlisting}\end{minipage}
 
 What are the problems with this implementation?  What does it do if
@@ -935,7 +971,7 @@ there are no real roots?  What does it do if the there is only one
 root.
 
 
-\subsection{Exercises for the Student}
+\subsection{Challenges for the Student}
 
 Implement the following by refactoring the code above.
 
@@ -956,9 +992,8 @@ Implement the following by refactoring the code above.
   real roots it returns an empty list; if there is a unique 
   solution, return a list of one number; and if there are two
   distinct solutions, return a list of those two solutions
-  \textbf{in increasing order}.  \Ie, if you return \code{[a,b]}
-  assure that $a < b$.  Also update the test case to check for
-  $a<b$.
+  \textbf{in increasing order}.  \Ie, if the function returns \code{[a,b]},
+  assure that $a < b$.
 \end{itemize}
 
 
@@ -971,8 +1006,8 @@ A recursive function is a function which calls itself.
 
 As an example, let's look at a function which computes $a^n$ for some
 integer or floating point number $a$, and for some integer $n\ge 0$.
-We saw a similar function in Equation~\eqref{eq.simple.5} on
-page~\pageref{eq.simple.5}.
+We saw a similar function in Equation~\eqref{eq.slow.exponent} on
+page~\pageref{eq.slow.exponent}.
 
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def power(a, n):
@@ -999,7 +1034,7 @@ $a\in\R$; \ie if \code{a} is a floating point number.
       return a * power(a, n-1)
 \end{lstlisting}\end{minipage}
 
-\subsection{Exercises for the Student}
+\subsection{Challenges for the Student}
 
 Follow the pattern shown in the \code{power} function to implement 
 the following functions.
@@ -1024,14 +1059,14 @@ the following functions.
 \item Analyze the recursive profile of the Fibonacci generator?
 \item Suppose that one recursive call requires $m$ bytes, and your
   computer has a total of $M$ bytes of memory, can you find a bound
-  for the maximum Fibonacci which is possible to compute?
+  for the maximum Fibonacci number which is possible to compute?
 \item Can we use memoization to make the Fibonacci generator faster?
 \item We may compute any three
-  consecutive Fibonacci numbers: $F_{n-1}$, $F_{n}$, and $F_{n+1}$,
+  consecutive Fibonacci numbers as: $F_{n-1}$, $F_{n}$, and $F_{n+1}$,
   \[\begin{bmatrix}1&1\\1&0\end{bmatrix}^n = \begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}\]
   How can we implement such a multiplication in Python?  Hints:
   \begin{enumerate}
-  \item How can we represent a $2\times 2$ programmatically?
+  \item How can we represent a $2\times 2$ matrix programmatically?
   \item How can we multiply two matrices?
   \item How can we compute $\begin{bmatrix}1&1\\1&0\end{bmatrix}^n$
     with approximately $\log_2 n$ matrix multiplications?
@@ -1045,7 +1080,7 @@ the following functions.
   is more efficient (faster).  Devise an experiment to determine which
   of the approaches is faster in terms of execution time?  Hint, you
   may need to construct a loop to do the same computation 100 times
-  or 1000 times, and the divide the total time by 100 or 1000 to
+  or 1000 times, and then divide the total time by 100 or 1000 to
   compute the average time per computation.
 
 \end{itemize}
@@ -1053,7 +1088,7 @@ the following functions.
 \section{Binary Search}
 \label{sec.binary.search}
 
-A binary search algorithm is a divide an conquer algorithm.  Suppose
+A binary search algorithm is a \emph{divide and conquer} algorithm.  Suppose
 we know that some \emph{event} occurs at a number between $x_{left}$
 and $x_{right}$.  For example, suppose $f(x) = 0$ for some $x_{left} < x < x_{right}$.
 Then if we take
@@ -1122,8 +1157,8 @@ For example, let $p$ be the proposition: Light travels at 300,000 km/s
 in free space; and let $q$ be the proposition: the atomic number of
 carbon is 33.
 
-We may ask: is $p$ true.  The answer is, yes.  Likewise, we may ask: is
-$q$ true.  The answer is, no.
+We may ask: Is $p$ true?  The answer is, yes.  Likewise, we may ask: Is
+$q$ true?  The answer is, no.
 
 \begin{definition}
   A \emph{predicate} is a proposition valued function.  We talk about
@@ -1139,7 +1174,7 @@ Examples of predicates are \emph{prime(x)}, or \emph{$x > 42$}.  For
 each of these, given an input value, we derive a proposition, then we
 can ask whether that proposition is true or false.  Given the
 predicate $prime(x)$ and given the value 13, we construct the
-proposition: 13 is prime; then we may as whether that proposition is
+proposition: 13 is prime; then we may ask whether that proposition is
 true. Given the value 15, we may as: Is 15 prime?  Given the value
 -12, we may ask: Is -12 greater than 42?
 
@@ -1156,7 +1191,7 @@ Since $p$ true, and $q$ is false, the
 proposition \emph{conjoining} the two, $p\wedge q$, is consequently false.
 
 Likewise, predicates can be conjoined (or intersected).  If we can
-compute whether given an integer $n$, whether it is prime, and we can
+compute whether given an integer $n$, it is prime, and we can
 also compute whether it is greater than 42, we can therefore compute
 whether it is prime and greater than 42.
 
@@ -1168,7 +1203,7 @@ propositions is true if either of the original propositions is true.
 For example, given $p$ and $q$ as above, the disjunction $p\vee q$ is
 true because at least one of $p$ and $q$ is true.
 
-Similarly given an integer, $n$, we can decide whether it is prime and
+Similarly given an integer, $n$, we can decide whether it is prime or
 greater than 42, by testing both predicates and combining the output
 by disjunction.
 
@@ -1199,11 +1234,11 @@ implication is true: ${n\in N \implies n= 0 \vee n\geq 1}$.
 \subsection{Quantifiers}
 
 $\forall$ specifies a proposition (whose value is either true or
-false) that a given predicate is true for every element of a set.
+false) for which a given predicate is true for every element of a set.
 \[\forall x \in N, n > -1\]
 
 $\exists$ specifies a proposition (whose value is either true or
-false) that a given predicate is true for at least one element of a
+false) for which a given predicate is true for at least one element of a
 set.
 \[\exists x \in N, n > 42\]
 
@@ -1222,17 +1257,16 @@ We saw De Morgan's theorem for sets already.  But logic and set theory
 are duals, so De Morgan's theorem can also be stated for propositions
 and predicates.
 
-\[\neg \jparen{p(x) \vee q(x)} = \neg p(x) \wedge \neq q(x)\]
-
-\[\neg \jparen{p(x) \wedge q(x)} = \neg p(x) \vee \neq q(x)\]
+\[\neg \jparen{p(x) \vee q(x)} = \neg p(x) \wedge \neg q(x)\]
+\[\neg \jparen{p(x) \wedge q(x)} = \neg p(x) \vee \neg q(x)\]
 
 We may apply De Morgan's theorem to quantifiers
 
-\[\jparen{\forall x \in N, p(n)} = \neg \jparen{\exists x \in \N, \neg p(n)}\]
-\[\neg \jparen{\forall x \in N, p(n)} = \jparen{\exists x \in \N, \neg p(n)}\]
+\[\jparen{\forall x \in \N, p(n)} = \neg \jparen{\exists x \in \N, \neg p(n)}\]
+\[\neg \jparen{\forall x \in \N, p(n)} = \jparen{\exists x \in \N, \neg p(n)}\]
 
-\[\jparen{\exists x \in N, p(n)} = \neg \jparen{\forall x \in \N, \neg p(n)}\]
-\[\neg \jparen{\exists x \in N, p(n)} = \jparen{\forall x \in \N, \neg p(n)}\]
+\[\jparen{\exists x \in \N, p(n)} = \neg \jparen{\forall x \in \N, \neg p(n)}\]
+\[\neg \jparen{\exists x \in \N, p(n)} = \jparen{\forall x \in \N, \neg p(n)}\]
 
 Question: How can we use De Morgan's theorem to show that \[\forall x
 \in \emptyset, p(x)\] is true independent of $p$?
@@ -1253,7 +1287,7 @@ Three very common styles of loops are
 \item loop for side-effect
 \end{itemize}
 
-In all cases loops may be singular or multiple loops running
+In all cases, the loops may be singular, or they may multiple loops running
 concentrically.  Loops may also contain conditions to skip certain
 iterations.
 
@@ -1385,6 +1419,7 @@ To look for side-effect, use \code{for}:
 \end{lstlisting}\end{minipage}
 
 Of course we may use multiple loops concentrically and with conditionals.
+
 \begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   for a in range(10):
     if f(a) > 2:
@@ -1419,7 +1454,7 @@ Of course we may use multiple loops concentrically and with conditionals.
 \item Create a new file in the \code{looping} directory.
 \item Try to solve the challenge using \code{any}, \code{all}, \code{next}, \code{for}.
 \item (Optional) If possible, can you make it faster? \Eg, decrease the search space.
-\item When finished and working, submit a \emph{pull request}
+\item When finished and and the code is working, submit a \emph{pull request}.
 \item Show, explain, and defend your solution to your fellow scholars.
 \end{enumerate}
 
@@ -1504,17 +1539,17 @@ Math Visualized.
 
 \medskip
 
-\noindent\begin{tabular}{p{4cm}c}
+\noindent\begin{tabular}{p{5cm}c}
 
 It is not surprising that mathematicians did not understand the work
-of Galois during his sort lifetime. 
+of Galois during his short lifetime. 
 Galois's handwriting was confusing at best.
 &  \raisebox{-0.8\totalheight}{\includegraphics[width=0.65\textwidth]{galois-handwriting.jpg}}
 \end{tabular}
 
 \bigskip
 
-In this unit we will study sets with mathematical structure.  This
+In this unit, we will study sets with mathematical structure.  This
 approach to \emph{abstract algebra} is of course much cleaner than
 that introduced by Galois.  Galois somewhat flippantly introduced the
 \emph{group} and the \emph{field} just as a tool to talk about the
@@ -1557,9 +1592,9 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 \end{theorem}
 \begin{proof}
   Suppose $e_1$ and $e_2$ are both identities of monoid, $M$.
-  Since $e_1$ is an identity, then $e_1e_2=e_2$.  But since $e_2$ is an identity,
-  then $e_1e_2 = e_1$. Thus
-  \[e_1 = e_1e_2 = e_2\]
+  Since $e_1$ is an identity, then $e_1\circ e_2=e_2$.  But since $e_2$ is an identity,
+  then $e_1\circ e_2 = e_1$. Thus
+  \[e_1 = e_1\circ e_2 = e_2\]
 \end{proof}
 
 \section{Examples of monoids}
@@ -1578,13 +1613,13 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 \item The set of even integers under multiplication is a not monoid.
   Why? Which axiom(s) fail?
   
-\item The set of integers under exponentiation is not monoid. Why?
-  Which axiom(s) fail?
+\item The set of integers under exponentiation is not a monoid. Why?
+  Which axioms fail?
 
 \item $\R$, the set of positive real numbers is a monoid.  What is the
   operation?  What is the identity element?
 
-\item The set of $2\times 3$ matrices under addition is a monoid.
+\item The set of $2\times 3$ matrices is a monoid.
   What is the operation?  What is the identity element?
 
 \item The set of $2\times 3$ matrices under multiplication is not a
@@ -1651,7 +1686,7 @@ identity element: $e_1$ and $e_2$?  The answer is no, but why?
 \end{tabular}
 
 
-    We may verify that every $a\in\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$
+    We may verify that for every $a\in\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$
     we have  $12 + a = a + 12 = a$.
 
 
@@ -1706,8 +1741,8 @@ an element more efficiently according to the following formula.
 
 If the monoid is also group, then inverse elements exist, so we can
 talk about \emph{negative} exponents in the sense that $x^{-n} =
-(x^{-1})^n = (x^n)^{-1}$, in which case we can compute positive and
-negative powers efficiently.  Either we compute $x^{|n|}$ and then
+(x^{-1})^n = (x^n)^{-1}$, in which case we can efficiently compute both positive and
+negative powers.  Either we compute $x^{|n|}$ and then
 compute its inverse, or we can compute $x^{-1}$ and then raise that to
 the power of $|n|$.
 
@@ -1759,7 +1794,7 @@ support negative exponents?
 
 
 
-A notable property missing from a monoid is the ability solve equations.  As an example,
+A notable property missing from a monoid is the ability to solve equations.  As an example,
 take the 12-clock above.  Which of these equations can be solved in the integers?
 \begin{enumerate}
 \item Solve for $a$ in $a\times 3 = 7$.
@@ -1802,8 +1837,8 @@ $(G,\circ)$ is called a \emph{group} if
 
 A group has an identity which is also the identity of the monoid,
 which we already know to be unique.  See
-Theorem~\ref{th.identity.unique}.  But we can ask a similar uniqueness
-question about the inverse.  Can an element $a\in S$ have two
+Theorem~\ref{th.identity.unique}.  But we can ask a similar question about uniquenes
+of the inverse.  Can an element $a\in S$ have two
 different inverses?  No, but why?
 
 \begin{theorem}
@@ -1831,7 +1866,7 @@ integer addition.   Why?
   $a+b=0$.  E.g.  ${12 + (-12) = 0}$
 \end{itemize}
 
-\item The integers under multiplication is not a group.  Why?
+\item The set of integers under multiplication is not a group.  Why?
 
 \item The set of rotations of the $n\times n$ Rubik's cube is a group.
 
@@ -1851,12 +1886,10 @@ integer addition.   Why?
 
 \item The set of subsets of a given set using the operation of union is not a group.  Why?
 \item The set of subsets of a given set using the operation of intersection is not a group.  Why?
-\item The set subsets of a given set, $G$, using
+\item The set of subsets of a given set, $G$, using
   \[A\circ B = (A\cap  \overline{B}) \cup (\overline{A}\cap B)\]
   as the operation, is a group.  Every element is its own inverse.
   The identity element is the empty set, $\emptyset$.
-
-
 
 \item Imagine a clock going from 1 to 11, rather than 1 to 12.
   Similar to the clock monoid seen above, here is the multiplication
@@ -1974,14 +2007,13 @@ ring axioms are satisfied, the ring is valid.
 In the integers $0\cdot a = a\cdot 0 = 0$.  Actually this principle,
 called \emph{annihilation} is true for rings in general as shown in
 Theorem~\ref{th.ring.annihilation}.  Several other familiar
-connections between multiplication and addition also hold in general
-for rings.  In particular $-1 \cdot -1 = 1$
+connections between multiplication and addition also hold 
+for rings, in general.  In particular $-1 \cdot -1 = 1$
 (Theorem~\ref{th.ring.-1}), and $-1\cdot a = -a$
 (Theorem~\ref{th.ring.-a}).
 
 \begin{theorem}\label{th.ring.annihilation}
-  For ring, $S$ with additive identity $z$ and multiplicative identity
-  $e$, we have $za = az = z$ for all $a\in S$.
+  For ring, $S$ with additive identity, $z$, we have $za = az = z$ for all $a\in S$.
 \end{theorem}
 Let's denote the additive inverse of any element $x$ by $\overline{x}$
 \begin{proof}
@@ -1995,7 +2027,7 @@ Let's denote the additive inverse of any element $x$ by $\overline{x}$
   \end{align*}
   Likewise,
   \begin{align*}
-    a a &= a z + z\\
+    a z &= a z + z\\
     &= a z + (a z + \overline{a z})\\
     &= (a z + a z) + \overline{a z}\\
     &= a(z + z)  + \overline{a z}\\
@@ -2023,13 +2055,16 @@ Let's denote the additive inverse of any element $x$ by $\overline{x}$
 \end{proof}
 
 \begin{theorem}\label{th.ring.-a}
-  For ring, $S$, with 
+  For ring, $S$, with multiplicative identity,
   $e$, we have $\overline{e}\cdot a = \overline{a}$ for all $a\in S$.
 \end{theorem}
 \begin{proof}
+  Let $z$ be the additive identity.
   \begin{align*}
-    \overline{e}\cdot a &=     \overline{e}\cdot a + a + \overline{a}\\
-    &=     \overline{e}\cdot a + e\cdot a + \overline{a}\\
+    \overline{e}\cdot a &=     \overline{e}\cdot a  + z \\
+    &=     \overline{e}\cdot a + (a + \overline{a})\\
+    &=     (\overline{e}\cdot a + a) + \overline{a}\\
+    &=     (\overline{e}\cdot a + e\cdot a) + \overline{a}\\
     &=     (\overline{e} + e)\cdot a + \overline{a}\\
     &=     z\cdot a + \overline{a}\\
     &=     z + \overline{a} & \text{By Theorem~\ref{th.ring.annihilation}}\\
@@ -2053,7 +2088,7 @@ Let's denote the additive inverse of any element $x$ by $\overline{x}$
 \item The set of subsets of a given set using intersection as
   multiplication and exclusive or as addition forms a ring.
 \item The set of 8-bit sequences (bytes) consisting of 0 and 1, such
-  as 00101101, with the two operations AND and XOR, defined bitwise
+  as 00101101, with the two operations AND and XOR, defined as bit-wise operations,
   using the following tables is a ring.
 \begin{center}
     \begin{tabular}{c||c|c|}
@@ -2084,7 +2119,7 @@ For example
 \section{Field}
 
 The most complicated structure we will examine is the field.  You can
-think of a field as set which is a ring but more than that.  In a ring
+think of a field as a set which is a ring but more than that.  In a ring
 you can add, subtract, and multiply.  But in a field you can also
 divide with the exception that you cannot divide by zero. 
 
@@ -2155,7 +2190,7 @@ that
   In particular
   \begin{align*}
   (a_1 + b_1\sqrt{2}) + (a_2 + b_2\sqrt{2}) &= \underbrace{(a_1+a_2)}_{\in \mathbb{Q}}+\underbrace{(b_1+b_2)}_{\in \mathbb{Q}}\sqrt{2}\\
-  -(a + b\sqrt{2}) &= \underbrace{-a}_{\in \mathbb{Q}} + \underbrace{-b}_{\in \mathbb{Q}}\sqrt{2}\\
+  -(a + b\sqrt{2}) &= \underbrace{\jparen{-a}}_{\in \mathbb{Q}} + \underbrace{\jparen{-b}}_{\in \mathbb{Q}}\sqrt{2}\\
   (a_1 + b_1\sqrt{2}) \times (a_2 + b_2\sqrt{2}) &= \underbrace{(a_1a_2+2b_1b_2)}_{\in \mathbb{Q}} + \underbrace{(a_1b_2+a_2b_1)}_{\in \mathbb{Q}}\sqrt{2}\\
   \frac{1}{a + b\sqrt{2}} &= \underbrace{\frac{a}{a^2-2b^2}}_{\in \mathbb{Q}} + \underbrace{\frac{-b}{a^2-2b^2}}_{\in \mathbb{Q}}\sqrt{2}
   \end{align*}
@@ -2178,22 +2213,18 @@ For simplicity we omit the formal definition of \emph{semi-ring} which is a
 set in which we can add and multiply, but not necessarily subtract and divide.
 
 These summaries are vague.  For example when we say ``add'' in a
-monoid, the actual multiplication may be addition, multiplication,
+monoid, the actual operation may be addition, multiplication,
 concatenation, or many other operations depending on the actual
 monoid.  The distinction between adding and multiplying requires that
 both exist, thus they can only be distinguished in a semi-ring.
 
-If a set has both a $1$ and a $0$ then dividing by $0$ does not make
+If a set has both a $1$ and a $0$, then dividing by $0$ does not make
 sense.  For example, in a field, we require all non-zero elements to
-have and multiplicative inverse even though all elements have an
+have a multiplicative inverse even though all elements have an
 additive inverse.
 
-
-
-
-
 \clearpage
-\chapter{Coding Exercises}\label{sec.coding.2}
+\chapter{Coding Challenges}\label{sec.coding.2}
 
 \begin{figure}[h]
 \centering
@@ -2212,7 +2243,7 @@ Compute $n\choose k$ directly by computing the three factorials and
 performing the integer division.
 
 Examine the values of the numerator and denominators.  How many bits
-are necessary for these computations to occur successfully.
+are necessary for these computations to occur successfully?
 
 In Python, integers have arbitrary precision.  What would happen in
 another language whose integers are limited to 64 or 32 bits?
@@ -2223,11 +2254,11 @@ Rather than computing $n!$ directly, express it as a list of
   \begin{itemize}
   \item Implement a function which, given $n$, uses
     recursion to compute and return the list of prime factors of $n$.
-  \item Use that function to implement a function which, given $n$,
+  \item Use that function to implement another function which, given $n$,
     returns the prime factors of $n!$.
   \item Effectively perform the division by
     removing all the prime factors in the denominator, $k!(n-k)!$, from
-    those of the denominator, $n!$.
+    those of the numerator, $n!$.
   \item Finally, multiply the remaining
     factors to compute~$n\choose k$.
   \end{itemize}
@@ -2248,7 +2279,7 @@ Rather than computing $n!$ directly, express it as a list of
 
 How is $n\choose k$ related to ${n-1} \choose {k-1}$?
 
-Notice that if ${n\choose k} = \frac{n!}{k!~(n-k)!}$, and if $n>1$ and $k>1$, then we
+Notice that if ${n\choose k} = \frac{n!}{k!~(n-k)!}$, and if $n>1$ and $k>1$, then we have
 \begin{align*}
   {{n-1}\choose {k-1}} &= \frac{(n-1)!}{(k-1)!~\jparen{\jparen{n-1}-\jparen{k-1}}!}\\
   &= \frac{(n-1)!}{(k-1)!~(n-k)!} \\
@@ -2325,12 +2356,12 @@ not the other because of integer overflow.
 \item For a given $n$, implement addition, subtraction, and
   multiplication modulo $n$.
 \item If $n$ is prime, implement division.
-\item A number have  multiple square roots modulo $n$, find such a case.
+\item A number can have  multiple square roots modulo $n$, find such a case.
 \item Implement exponentiation modulo (prime) $p$.  How many
   multiplications are necessary to compute $a^b \mod{p}$?
-\item If $p$ is prime, and $a\neq 1$, what are $a^0$, $a^1$, $a^2$,
+\item If $p$ is prime, and $a\not\in\{0,1\}$, what are $a^0$, $a^1$, $a^2$,
   \ldots, $a^{p-1}$,  $a^p \mod{p}$ ?
-\item If $n$ is composite, and $a^b = a^c$ for $a\neq 1$, what do we
+\item If $n$ is composite, and $a^b = a^c$ for $a\not\in\{0,1\}$, what do we
   know about $b$ and $c$?
 \item If $p$ is prime, find Pythagorean triples modulo $p$.
 \end{enumerate}
@@ -2342,7 +2373,7 @@ not the other because of integer overflow.
 \label{sec.team.project.structures}
 \begin{itemize}
 \item Implement functions to detect monoid, group,
-  ring, and field given a finite set, and the $+$ and $\cdot$
+  ring, and field given a finite set, and the $+$ and $\times$
   operations.
 \item When finished with your function, commit, push, and send a
   pull request.
