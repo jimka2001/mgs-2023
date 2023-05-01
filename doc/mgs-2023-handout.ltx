@@ -3,8 +3,6 @@
 %%
 %% Contributors
 %%   Jim Newton, EPITA jnewton@lrde.epita.fr, jimka.issy@gmail.com
-%%   Debalina Basu
-
 \documentclass[14pt]{extreport}
 \usepackage[margin=3cm]{geometry}
 \usepackage{graphicx}
@@ -18,7 +16,7 @@
 \usepackage{cancel}
 \usepackage{listings}
 \usepackage{lineno}
-\linenumbers
+%\linenumbers
 \usepackage{color,colortbl}
 \definecolor{code}{rgb}{ 0,0,0}
 \newcommand\code[1]{\textcolor{code}{\texttt{#1}}\xspace}
@@ -93,8 +91,8 @@
 \chapter{Introduction}
 
 \begin{figure}[h]
-\centering\includegraphics[width=0.9\textwidth]{Mathematics-and-Computing.jpg}
-%% https://leverageedu.com/blog/mathematics-and-computing/
+\centering\includegraphics[width=0.9\textwidth]{Mathematics-and-Computing.jpg}\\
+\small\code{https://leverageedu.com/blog/mathematics-and-computing/}
 \end{figure}
 
 
@@ -220,8 +218,8 @@ Week & Day & Unit & Activities\\
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\textwidth]{developers.png}
-%% https://woz-u.com/wp-content/uploads/2020/02/What-Do-Software-Engineers-Do-WOZ-1-min.png
+  \includegraphics[width=0.9\textwidth]{developers.png}\\
+  \small\code{https://woz-u.com/wp-content}
 \end{figure}
 
 \clearpage
@@ -390,6 +388,7 @@ Question:  What is the difference between a synax error and a logical error?
 \begin{figure}[b!]
 \centering
 \includegraphics[width=0.85\textwidth]{math.jpg}
+\caption{\code{https://www.freepik.com}}
 \end{figure}
 
 \clearpage
@@ -417,7 +416,8 @@ sets.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{Venn-A-intersect-B.png}
+\includegraphics[width=0.85\textwidth]{A_union_B.png}\\
+\small By Svjo - Own work, CC BY-SA 3.0, \code{https://commons.wikimedia.org/w/index.php?curid=20749188}
 \end{figure}
 
 \begin{itemize}
@@ -434,6 +434,7 @@ sets.
 \section{Functions}
 
 \begin{tabular}{cp{7cm}}
+  %% Creative commons https://en.wikipedia.org/wiki/File:Function_machine2.svg
   \raisebox{-0.8\totalheight}{  \includegraphics[width=0.5\textwidth]{Function_machine2.png}}
   & What is a function? A function such as
 \[f : X \to Y\]
@@ -447,6 +448,7 @@ then~$f(x)$ designates a unique, well-determined, element of~$Y$.
 \[x \in X \implies f(x) \in Y\,.\]
 
 \noindent\begin{tabular}{cp{7cm}}
+  %% Creative commons https://en.wikipedia.org/wiki/File:Function_color_example_3.svg
   \raisebox{-0.6\totalheight}{\includegraphics[width=0.5\textwidth]{Function_color_example_3.png}}
   &
 %%\url{https://commons.wikimedia.org/w/index.php?curid=20802095}, By
@@ -535,6 +537,7 @@ Consider the function that takes a whole number, $n$, as input and returns
 the set of integers between $0$ and $n$ as output.
 
 \noindent\begin{tabular}{cp{7cm}}
+  %%https://commons.wikimedia.org/wiki/File:Relación_binaria_12.svg
   \raisebox{-0.6\totalheight}{\includegraphics[width=0.5\textwidth]{function.png}}
   &  A function may map several inputs to the same output, but it may not
   map an input to multiple outputs.
@@ -560,13 +563,10 @@ To implement a function in the Python programming language we:
 Input values come from the \emph{domain};  output values
 come from the \emph{range}.
 
-\begin{verbatim}
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
   def square(x):
     return x * x
-\end{verbatim}
-
-
-
+\end{lstlisting}\end{minipage}
 
 \section{Specifying functions by recurrence}
 \label{sec.recurrence}
@@ -619,7 +619,8 @@ numbers.  Let $F(n)$ denote the nth Fibonacci number.
 
 \begin{figure}[b!]
 \centering
-\includegraphics[width=0.8\textwidth]{cs.jpg}
+\includegraphics[width=0.8\textwidth]{cs.png}\\
+\small Image by Freepik, \code{https://www.freepik.com/free-vector}
 \end{figure}
 
 
@@ -963,6 +964,11 @@ of tuples.  Experiment and find out.
 
 \section{Implement the Quadratic Formula}\label{sec.quadratic.formula}
 
+\includegraphics[width=0.8\textwidth]{school-quadratic.png}\\
+{\small \code{https://leverageedu.com/blog/mathematics-and-computing/}}
+
+\medskip
+
 As a first program in Python you will implement the quadratic formula.
 recall that if
 \[ a x^2 + b x + c = 0\,,a\ne 0\]
@@ -1134,6 +1140,7 @@ ${x_{right} - x_{left} < \varepsilon}$.
 
 
 \noindent\begin{tabular}{cp{7cm}}
+  %% Creative commons https://en.wikipedia.org/wiki/File:Polynomialdeg3.svg
   \raisebox{-0.95\totalheight}{\includegraphics[width=0.5\textwidth]{cubic.png}}
   &  Can we combine the technique of Sections~\ref{sec.recursive.functions}
   and~\ref{sec.binary.search} to find the roots of a cubic equation?
@@ -1153,7 +1160,8 @@ ${x_{right} - x_{left} < \varepsilon}$.
 
 \begin{figure}[b!]
 \centering
-\includegraphics[width=0.9\textwidth]{loops.jpg}
+\includegraphics[width=0.9\textwidth]{loops.png}\\
+\small \code{https://en.wikipedia.org/wiki/File:Polynomialdeg3.svg}
 \end{figure}
 
 
@@ -1293,12 +1301,10 @@ Question: How can we use De Morgan's theorem to show that \[\forall x
 
 \section{Looping}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{for-num-in-numbers.png}
-\end{figure}
-
-
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.4\textwidth]{for-num-in-numbers.png}}&
+%% From Wikimedia Commons, the free media repository
+%% https://commons.wikimedia.org/wiki/File:Flowchart_en.svg
 Three very common styles of loops are
 
 \begin{itemize}
@@ -1306,6 +1312,11 @@ Three very common styles of loops are
 \item loop for collection
 \item loop for side-effect
 \end{itemize}
+
+
+\end{tabular}
+
+
 
 In all cases, the loops may be singular, or they may multiple loops running
 concentrically.  Loops may also contain conditions to skip certain
@@ -1485,7 +1496,8 @@ Of course we may use multiple loops concentrically and with conditionals.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\textwidth]{escher.jpg}
-%% https://www.researchgate.net/publication/339436680_A_1d_Up_Approach_to_Conformal_Geometric_Algebra_Applications_in_Line_Fitting_and_Quantum_Mechanics/figures?lo=1
+\small \code{https://www.researchgate.net}
+%% /publication/339436680_A_1d_Up_Approach_to_Conformal_Geometric_Algebra_Applications_in_Line_Fitting_and_Quantum_Mechanics/figures?lo=1
 \end{figure}
 
 
@@ -1526,7 +1538,7 @@ and others are not.
   prevented by the director of the École Normale.
 \end{tabular}
 
-\medskip
+\bigskip
 
 
   I use the word \emph{attempted} not to imply that
@@ -1587,7 +1599,8 @@ these structures.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\textwidth]{math.jpg}
+\includegraphics[width=0.85\textwidth]{math.jpg}\\
+\small \code{\code{https://www.freepik.com}}
 \end{figure}
 
 
@@ -1795,6 +1808,7 @@ support negative exponents?
 
 \begin{figure}[h]
 \centering
+%% https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_4,9.svg
 \includegraphics[width=0.8\textwidth]{Symmetric-group.png}
 \end{figure}
 
@@ -2248,7 +2262,8 @@ additive inverse.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{coding.jpg}
+\includegraphics[width=\textwidth]{coding.jpg}\\
+\small \code{https://beaccessible.com/post/html-css-accessibility/}
 \end{figure}
 
 \clearpage
