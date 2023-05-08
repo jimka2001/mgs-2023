@@ -1,9 +1,15 @@
 # mgs-2023
 
-Prepend ![gitpod](doc/img/prepend-gitpod.png) 
+Prepend the following to the github url.
+```
+http://gitpod.io/#
+```
 
+For example
 ```
 http://gitpod.io/#https://github.com/jimka2001/mgs-2023
-```
-[Open gitpod](http://gitpod.io/#https://github.com/jimka2001/mgs-2023)
+http://gitpod.io/#https://github.com/fred/mgs-2023
+http://gitpod.io/#https://github.com/sally/mgs-2023
+http://gitpod.io/#https://github.com/gertrude/mgs-2023
 
+```
