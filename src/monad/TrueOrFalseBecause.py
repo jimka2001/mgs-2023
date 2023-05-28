@@ -56,7 +56,7 @@ def existsM(items, p):
 
 def forallM(items, p):
     return existsM(items, lambda i:
-    p(i).Not()).Not()
+        p(i).Not()).Not()
 
 
 print(TrueBecause("xxx") or FalseBecause("yyy"))
