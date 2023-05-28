@@ -46,21 +46,24 @@ class FalseBecause(TrueOrFalseBecause):
         return TrueBecause(self.because)
 
 
-def forallM(items, p):
-    for i in items:
-        acc = p(i)
-        print(f"i={i}  p->{p(i)}")
-        if not acc:
-            return acc + f"example {i}"
-    return TrueBecause("")
+
+
 
 print(
-  all(i for i in [TrueBecause("xxx"), FalseBecause("yyy")])
+    all(i for i in [TrueBecause("xxx"), FalseBecause("yyy")])
 )
 
+
 def existsM(items, p):
-    q = lambda x: p(x).Not()
-    return forallM(items, q).Not()
+    tf = next((p(i) for i in items), FalseBecause(""))
+    if tf:
+        TrueBecause("example " + tf.because)
+    else:
+        tf
+
+def forallM(items, p):
+    return existsM(items, lambda i:
+               p(i).Not()).Not()
 
 print(TrueBecause("xxx"))
 print(FalseBecause("yyy"))
