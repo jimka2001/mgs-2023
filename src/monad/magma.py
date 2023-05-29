@@ -57,7 +57,7 @@ class Magma:
             return None
         return self.findInverse2(z, a)
 
-    def isInverter(self, z, invert:Callable[[Any],Optional[Any]]) -> TrueOrFalseBecause:
+    def isInverter(self, z, invert: Callable[[Any], Optional[Any]]) -> TrueOrFalseBecause:
         def f(a) -> TrueOrFalseBecause:
             b = invert(a)
             if b is None:
