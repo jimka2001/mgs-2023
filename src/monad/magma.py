@@ -117,7 +117,7 @@ class DynMagma (Magma):
         return self.op1(a, b)
 
     def member(self, a) -> TrueOrFalseBecause:
-        if self.member1():
+        if self.member1(a):
             return TrueBecause(f"{a} is a member")
         else:
             return FalseBecause(f"{a} is not a member")
