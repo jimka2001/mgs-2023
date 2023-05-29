@@ -128,7 +128,7 @@ class AdditionModP (ModP):
     def __repr__(self):
         return f"AdditionModP({self.p})"
 
-    def op(self,a:int,b:int) -> int:
+    def op(self, a: int, b: int) -> int:
         return (a+b) % self.p
 
 
