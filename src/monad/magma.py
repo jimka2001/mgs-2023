@@ -21,28 +21,37 @@ class Magma:
             return FalseBecause(f"{a} != {b}")
 
     def isClosed(self) -> TrueOrFalseBecause:
-        return forallM(self.gen(), lambda a:
-            forallM(self.gen(), lambda b:
-                self.member(self.op(a, b))).mapIfFalse(lambda str: f"not closed because {str}")) and TrueBecause(f"{self} is closed")
+        return forallM(self.gen(),
+                       lambda a: forallM(self.gen(),
+                                         lambda b: self.member(self.op(a, b))
+                                         ).mapIfFalse(lambda str: f"not closed because {str}")
+                       ) and TrueBecause(f"{self} is closed")
 
     def isAssociative(self) -> TrueOrFalseBecause:
-        return forallM(self.gen(), lambda a:
-            forallM(self.gen(), lambda b:
-                forallM(self.gen(), lambda c:
-                    self.equiv(self.op(self.op(a, b), c),
-                               self.op(a, self.op(b, c))).mapIfFalse(lambda str: f"not associative: {a}, {b}, {c} "))) and TrueBecause(f"{self} is associative")
+        return forallM(self.gen(),
+                       lambda a: forallM(self.gen(),
+                                         lambda b: forallM(self.gen(),
+                                                           lambda c: self.equiv(self.op(self.op(a, b), c),
+                                                                                self.op(a, self.op(b, c))
+                                                                                ).mapIfFalse(lambda str: f"not associative: {a}, {b}, {c} ")))
+                       ) and TrueBecause(f"{self} is associative")
 
     def isAbelian(self) -> TrueOrFalseBecause:
-        return forallM(self.gen(), lambda a:
-            forallM(self.gen(), lambda b:
-                self.equiv(self.op(a, b),
-                           self.op(b, a)).mapIfFalse(lambda str: f"not Abelian, e.g., {a},{b}"))) and TrueBecause(f"{self} is Abelian")
+        return forallM(self.gen(),
+                       lambda a: forallM(self.gen(),
+                                         lambda b: self.equiv(self.op(a, b),
+                                                              self.op(b, a)
+                                                              ).mapIfFalse(lambda str: f"not Abelian, e.g., {a},{b}"))
+                       ) and TrueBecause(f"{self} is Abelian")
 
     def isIdentity(self, z) -> TrueOrFalseBecause:
         comment = f"{z} is not an identity because"
-        return forallM(self.gen(), lambda a:
-        (self.equiv(self.op(z, a), a).mapIfFalse(lambda str: f"{comment} op({a},{a}) = {self.op(z, a)}")
-         and self.equiv(self.op(a, z), a).mapIfFalse(lambda str: f"{comment} op({a},{z}) = {self.op(a, z)}"))) and TrueBecause(f"{z} is the identity")
+        return forallM(self.gen(),
+                       lambda a: (self.equiv(self.op(z, a), a
+                                             ).mapIfFalse(lambda str: f"{comment} op({a},{a}) = {self.op(z, a)}")
+                         and self.equiv(self.op(a, z), a
+                                        ).mapIfFalse(lambda str: f"{comment} op({a},{z}) = {self.op(a, z)}"))
+                       ) and TrueBecause(f"{z} is the identity")
 
     def findIdentity(self):
         for z in self.gen():
@@ -65,22 +74,33 @@ class Magma:
             b = invert(a)
             if b is None:
                 return FalseBecause(f"{a} has no inverse")
-            return self.member(b) and self.equiv(z, self.op(a,b)) and self.equiv(z, self.op(b,a))
-        return forallM(self.gen(), f)
+            return self.member(b) and self.equiv(z, self.op(a, b)) and self.equiv(z, self.op(b, a))
+
+        return forallM(self.gen(), f) and TrueBecause(f"{self} is invertible")
 
     def isSemiGroup(self) -> TrueOrFalseBecause:
-        return (self.isClosed() and self.isAssociative()).map(lambda str: f"{self} is not a semigroup because {str}")
+        return (self.isClosed() and
+                self.isAssociative() and
+                TrueBecause(f"{self} is a semigroup")
+                ).ifFalse(lambda str: FalseBecause(f"{self} is not a semigroup because {str}"))
 
     def isMonoid(self, z) -> TrueOrFalseBecause:
-        return (self.isSemiGroup() and self.isIdentity(z)).map(lambda str: f"{self} is not a monoid because {str}")
+        return (self.isSemiGroup() and
+                self.isIdentity(z) and
+                TrueBecause(f"{self} is a monoid")
+                ).mapIfFalse(lambda str: f"{self} is not a monoid because {str}")
 
     def isGroup(self, z, invert) -> TrueOrFalseBecause:
-        return (self.isMonoid(z) and self.isInverter(z, invert)).map(lambda str: f"{self} is not a group because {str}")
+        return (self.isMonoid(z) and
+                self.isInverter(z, invert)
+                and TrueBecause(f"{self} is a group")
+                ).mapIfFalse(lambda str: f"{self} is not a group because {str}")
+
 
 class DynMagma (Magma):
     def __init__(self,
                  gen1: Callable[[], Iterator[Any]],
-                 op1: Callable[[Any,Any],Any],
+                 op1: Callable[[Any, Any], Any],
                  member1: Callable[[Any], bool]):
         self.gen1 = gen1
         self.op1 = op1
@@ -94,7 +114,7 @@ class DynMagma (Magma):
             yield i
 
     def op(self, a, b) -> Any:
-        return self.op1(a,b)
+        return self.op1(a, b)
 
     def member(self, a) -> TrueOrFalseBecause:
         if self.member1():
@@ -102,8 +122,9 @@ class DynMagma (Magma):
         else:
             return FalseBecause(f"{a} is not a member")
 
+
 class ModP (Magma):
-    def __init__(self, p:int):
+    def __init__(self, p: int):
         self.p = p
 
     def __repr__(self):
@@ -112,13 +133,13 @@ class ModP (Magma):
     def gen(self) -> Iterator[int]:
         return range(self.p)
 
-    def equiv(self, a:int, b:int) -> TrueOrFalseBecause:
+    def equiv(self, a: int, b: int) -> TrueOrFalseBecause:
         if a == b:
             return TrueBecause(f"{a} equiv {b}")
         else:
             return FalseBecause(f"{a} not equiv {b}")
 
-    def member(self, a:int) -> TrueOrFalseBecause:
+    def member(self, a: int) -> TrueOrFalseBecause:
         if a < 0:
             return FalseBecause(f"{a} is not a member because {a}<0")
         elif a >= self.p:
@@ -147,9 +168,11 @@ class MultiplicationModP(ModP):
     def op(self, a: int, b: int) -> int:
         return (a * b) % self.p
 
-def genFinite(n:int) -> Iterator[int]:
+
+def genFinite(n: int) -> Iterator[int]:
     for i in range(n):
         yield i
+
 
 def cayleyTable(elements, dyn_op) -> str:
     header = '*|' + ' '.join(f"{i}" for i in elements)
@@ -160,10 +183,12 @@ def cayleyTable(elements, dyn_op) -> str:
 
     return '\n' + header + '\n' + divider + '\n' + '\n'.join(row(x) for x in elements)
 
+
 def testModP():
     for p in range(2, 11):
         add = AdditionModP(p)
         mult = MultiplicationModP(p)
+
         assert add.isClosed()
         assert add.isSemiGroup()
         assert add.isMonoid(0)
