@@ -1,6 +1,6 @@
 from typing import Iterator, Any, Callable, Optional
 
-from TrueOrFalseBecause import TrueOrFalseBecause, TrueBecause, FalseBecause, forallM, existsM
+from TrueOrFalseBecause import TrueOrFalseBecause, TrueBecause, FalseBecause, forallM
 
 
 class Magma:
@@ -185,22 +185,19 @@ def cayleyTable(elements, dyn_op) -> str:
 
 
 def testModP():
-    for p in range(2, 11):
+    for p in range(2, 12):
         add = AdditionModP(p)
         mult = MultiplicationModP(p)
 
         assert add.isClosed()
         assert add.isSemiGroup()
         assert add.isMonoid(0)
-        aig = add.isGroup(0, lambda a: (p-a) % p)
-        if aig:
-            print(f"{add} is a group")
-        else:
-            print(aig)
-        mig = mult.isGroup(1, lambda a: next((b for b in range(1,p) if (a*b)%p == 1), None))
-        if mig:
-            print(f"{mult} is a group")
-        else:
-            print(mig)
+        print(add.isGroup(0, lambda a: (p-a) % p).because)
 
+        def invert(a):
+            return next((b for b in range(1, p) if (a*b) % p == 1), None)
 
+        mig = mult.isGroup(1, invert)
+        # print(cayleyTable(range(1, p), mult.op))
+
+        print(mig.because)
