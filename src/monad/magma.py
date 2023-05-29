@@ -149,7 +149,7 @@ def genFinite(n:int) -> Iterator[int]:
         yield i
 
 def cayleyTable(elements, dyn_op) -> str:
-    header = '*|' + ' '.join(elements)
+    header = '*|' + ' '.join(f"{i}" for i in elements)
     divider = '-+' + '-'.join('-' for _ in elements)
 
     def row(x):
