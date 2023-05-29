@@ -1,3 +1,6 @@
+from typing import Callable, Any
+
+
 class TrueOrFalseBecause:
     def __init__(self, because):
         self.because = because
@@ -5,14 +8,23 @@ class TrueOrFalseBecause:
     def __eq__(self, other):
         return other.because == self.because
 
-    def Not(self):
+    def Not(self) -> 'TrueOrFalseBecause':
         raise NotImplemented
 
-    def __add__(self, other):
+    def __add__(self, other) -> 'TrueOrFalseBecause':
         raise NotImplemented
 
-    def __add__(self, because):
-        return FalseBecause(self.because + " " + because)
+    def map(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        raise NotImplemented
+
+    def flatMap(self, f: Callable[[str], 'TrueOrFalseBecause']):
+        return f(self.because)
+
+    def ifFalse(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
+        return self
+
+    def ifTrue(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
+        return self
 
 
 class TrueBecause(TrueOrFalseBecause):
@@ -31,6 +43,12 @@ class TrueBecause(TrueOrFalseBecause):
     def __add__(self, because):
         return TrueBecause(self.because + " " + because)
 
+    def map(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        return TrueBecause(f(self.because))
+
+    def ifTrue(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
+        return self.flatMap(f)
+
 
 class FalseBecause(TrueOrFalseBecause):
     def __eq__(self, other):
@@ -42,11 +60,20 @@ class FalseBecause(TrueOrFalseBecause):
     def __bool__(self):
         return False
 
+    def __add__(self, because) -> 'TrueOrFalseBecause':
+        return FalseBecause(self.because + " " + because)
+
     def Not(self):
         return TrueBecause(self.because)
 
+    def map(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        return FalseBecause(f(self.because))
 
-def existsM(items, p):
+    def ifFalse(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
+        return self.flatMap(f)
+
+
+def existsM(items, p: Callable[[Any], TrueOrFalseBecause]) -> TrueOrFalseBecause:
     tf = next((p(i) for i in items), FalseBecause(""))
     if tf:
         return TrueBecause("example " + tf.because)
@@ -54,9 +81,8 @@ def existsM(items, p):
         return tf
 
 
-def forallM(items, p):
-    return existsM(items, lambda i:
-        p(i).Not()).Not()
+def forallM(items, p: Callable[[Any], TrueOrFalseBecause]) -> TrueOrFalseBecause:
+    return existsM(items, lambda i: p(i).Not()).Not()
 
 
 print(TrueBecause("xxx") or FalseBecause("yyy"))
