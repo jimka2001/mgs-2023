@@ -23,6 +23,12 @@ class TrueOrFalseBecause:
     def ifFalse(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
         return self
 
+    def mapIfTrue(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        return self
+
+    def mapIfFalse(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        return self
+
     def ifTrue(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
         return self
 
@@ -49,6 +55,8 @@ class TrueBecause(TrueOrFalseBecause):
     def ifTrue(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
         return self.flatMap(f)
 
+    def mapIfTrue(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        return self.ifTrue(lambda str: FalseBecause(f(str)))
 
 class FalseBecause(TrueOrFalseBecause):
     def __eq__(self, other):
@@ -72,13 +80,17 @@ class FalseBecause(TrueOrFalseBecause):
     def ifFalse(self, f: Callable[[str], 'TrueOrFalseBecause']) -> 'TrueOrFalseBecause':
         return self.flatMap(f)
 
+    def mapIfFalse(self, f: Callable[[str], str]) -> 'TrueOrFalseBecause':
+        return self.ifFalse(lambda str: FalseBecause(f(str)))
+
 
 def existsM(items, p: Callable[[Any], TrueOrFalseBecause]) -> TrueOrFalseBecause:
-    tf = next((p(i) for i in items), FalseBecause(""))
-    if tf:
-        return TrueBecause("example " + tf.because)
-    else:
-        return tf
+    for i in items:
+        r = p(i)
+        if r:
+            return TrueBecause(f"example {i} because {r.because}")
+
+    return FalseBecause("")
 
 
 def forallM(items, p: Callable[[Any], TrueOrFalseBecause]) -> TrueOrFalseBecause:

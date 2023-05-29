@@ -23,26 +23,26 @@ class Magma:
     def isClosed(self) -> TrueOrFalseBecause:
         return forallM(self.gen(), lambda a:
             forallM(self.gen(), lambda b:
-                self.member(self.op(a, b))).ifFalse(lambda str: f"not closed because {str}"))
+                self.member(self.op(a, b))).mapIfFalse(lambda str: f"not closed because {str}")) and TrueBecause(f"{self} is closed")
 
     def isAssociative(self) -> TrueOrFalseBecause:
         return forallM(self.gen(), lambda a:
             forallM(self.gen(), lambda b:
                 forallM(self.gen(), lambda c:
                     self.equiv(self.op(self.op(a, b), c),
-                               self.op(a, self.op(b, c))) + f"not associative: {a}, {b}, {c} ")))
+                               self.op(a, self.op(b, c))).mapIfFalse(lambda str: f"not associative: {a}, {b}, {c} "))) and TrueBecause(f"{self} is associative")
 
     def isAbelian(self) -> TrueOrFalseBecause:
         return forallM(self.gen(), lambda a:
-        forallM(self.gen(), lambda b:
-        self.equiv(self.op(a, b),
-                   self.op(b, a)) + f"not Abelian, e.g., {a},{b}"))
+            forallM(self.gen(), lambda b:
+                self.equiv(self.op(a, b),
+                           self.op(b, a)).mapIfFalse(lambda str: f"not Abelian, e.g., {a},{b}"))) and TrueBecause(f"{self} is Abelian")
 
     def isIdentity(self, z) -> TrueOrFalseBecause:
         comment = f"{z} is not an identity because"
         return forallM(self.gen(), lambda a:
-        (self.equiv(self.op(z, a), a).map(lambda str: f"{comment} op({a},{a}) = {self.op(z, a)}")
-         and self.equiv(self.op(a, z), a).map(lambda str: f"{comment} op({a},{z}) = {self.op(a, z)}")))
+        (self.equiv(self.op(z, a), a).mapIfFalse(lambda str: f"{comment} op({a},{a}) = {self.op(z, a)}")
+         and self.equiv(self.op(a, z), a).mapIfFalse(lambda str: f"{comment} op({a},{z}) = {self.op(a, z)}"))) and TrueBecause(f"{z} is the identity")
 
     def findIdentity(self):
         return next((self.gen(), lambda z: self.isIdentity(z)), None)
