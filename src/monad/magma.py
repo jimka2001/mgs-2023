@@ -45,7 +45,10 @@ class Magma:
          and self.equiv(self.op(a, z), a).mapIfFalse(lambda str: f"{comment} op({a},{z}) = {self.op(a, z)}"))) and TrueBecause(f"{z} is the identity")
 
     def findIdentity(self):
-        return next((self.gen(), lambda z: self.isIdentity(z)), None)
+        for z in self.gen():
+            if self.isIdentity(z):
+                return z
+        return None
 
     def findInverse2(self, z, a):
         return next((b for b in self.gen() if self.equiv(z, self.op(a, b)) and self.equiv(z, self.op(b, a))),
