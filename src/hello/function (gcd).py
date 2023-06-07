@@ -6,8 +6,9 @@ def gcd(a,b):
         return b
     else:
         return (gcd(b, a % b))
-a=1400
-b=590
+a=43830
+b=690
 c= gcd(a,b)
-print (f" The GCD of {a} and {b} is {c}." )
+print (f" The GCD of {a} and {b} is {c}.")
+
 
