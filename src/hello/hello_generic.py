@@ -3,6 +3,10 @@ def hello(first, last):
     print("hello, " + first + " " + last)
 
 # call the function with an argument
-hello("generic", "student")
-hello("fred", "smith")
+hello(input("""
+First Name
+>>>"""), input("""
+Last Name
+>>>"""))
+
 
