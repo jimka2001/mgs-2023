@@ -6,10 +6,8 @@ def roots(a, b, c):
     if discr < 0:
         return {}
     else:
-
-        r = {(-b + sqrt(b*b - 4*a*c))/(2*a),
-             (-b - sqrt(b*b - 4*a*c))/(2*a)}
-        print(r)
+        r = {(-b + sqrt(discr))/(2*a),
+             (-b - sqrt(discr))/(2*a)}
         return r
 
 
@@ -24,4 +22,3 @@ def testRoots():
 
 
 testRoots()
-
