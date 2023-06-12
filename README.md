@@ -2,7 +2,7 @@
 
 Prepend the following to the github url.
 ```
-http://gitpod.io/#
+[http://gitpod.io/#](https://github.com/npc48c/mgs-2023)
 ```
 
 For example
