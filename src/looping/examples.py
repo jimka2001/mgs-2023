@@ -1,3 +1,4 @@
+
 any(a % 3 == 1 for a in range(10))
 
 # can use multiple lines for readablity
@@ -12,3 +13,4 @@ all(a > 2
 next(a
      for a in [1,2,3]
      if a * a > 100)
+     
