@@ -5,7 +5,7 @@ def LDE(a,b,c,n):
         return(any(print((x,y))
         for x in range(n+1)
         for y in range(n+1)
-        if a * x + b *y == c))
+        if a * x + b * y == c))
     else:
         print('No solution')
 LDE(10,15,55,int(input('''>>>''')))
