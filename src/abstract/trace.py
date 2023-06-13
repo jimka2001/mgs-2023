@@ -12,7 +12,7 @@ def trace(func):
         depth[name] += 1
         print(f"{depth[name]}: {'[' * depth[name]} {name}{args}")
         val = func(*args, **kwargs)
-        print(f"{depth[name]}: {']' * depth[name]} {name} --> {val}")
+        print(f"{depth[name]}: {']' * depth[name]} {name} --> [{type(val).__name__}] {val}")
         depth[name] -= 1
         return val
 
