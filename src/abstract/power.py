@@ -35,9 +35,24 @@ def monoid_power(b, p, e, op):
         return op(b, monoid_power(b, p - 1, e, op))
 
 
-@trace
+def monoid_slow_power(b, p, e, op):
+    if p == 0:
+        return e
+    else:
+        return op(b, monoid_slow_power(b, p - 1, e, op))
+
+
 def float_mult(a, b):
     return a * b
 
 
-print(monoid_power(1.012, 255, 1.0, float_mult))
+print(monoid_power(1.012, 31, 1.0, float_mult))
+print(monoid_slow_power(1.012, 31, 1.0, float_mult))
+
+
+def mult_mod_12(a, b):
+    prod = (a * b) % 12
+    if prod == 0:
+        return 12
+    else:
+        return prod

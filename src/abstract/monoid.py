@@ -1,3 +1,5 @@
+from trace import trace
+
 items = ("e", "a", "b")
 
 def is_associative(op):
@@ -7,7 +9,11 @@ def is_associative(op):
                for c in items)
 
 def is_abelian(op):
-    return all(op(x,y) == op(y,x)
+    @trace
+    def commutes(x,y):
+        return op(x,y) == op(y,x)
+
+    return all(commutes(x,y)
                for x in items
                for y in items
                )
