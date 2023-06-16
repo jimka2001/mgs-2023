@@ -24,6 +24,9 @@ def clock_mult(x,y):
 
 #print(clock_12_slow_power(9,2))
 
+def concat_str(str1,str2):
+    return str1 + str2
+
 def monoid_slow_power(b,p,e,op):
     if p == 0:
         return e
@@ -32,8 +35,20 @@ def monoid_slow_power(b,p,e,op):
     else:
         return op(b,monoid_slow_power(b,p-1,e,op))
 
-def concat_str(str1,str2):
-    return str1 + str2
 
 
-print(monoid_slow_power("hello-",6,"",concat_str))
+
+#print(monoid_slow_power("hello-",6,"",concat_str))
+#print(monoid_slow_power())
+
+def monoid_fast_power(b,p,e,op):
+    if p == 0:
+        return e
+    elif p == 1:
+        return 
+    elif p%2 == 0:
+        return monoid_fast_power(op(b,b), p//2,e,op)
+    else: # if odd
+        return op(b, monoid_fast_power(b,p-1,e,op))
+
+print(monoid_fast_power(3,256,1,clock_mult))
