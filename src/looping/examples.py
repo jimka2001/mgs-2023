@@ -1,3 +1,4 @@
+
 any(a % 3 == 1 for a in range(10))
 
 # can use multiple lines for readablity
