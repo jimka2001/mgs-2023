@@ -1,6 +1,6 @@
 from typing import Iterator, Any, Callable, Optional
 
-from TrueOrFalseBecause import TrueOrFalseBecause, TrueBecause, FalseBecause, forallM
+from TrueOrFalseBecause import BoolBecause, TrueBecause, FalseBecause, forallM
 
 
 class Magma:
@@ -11,23 +11,23 @@ class Magma:
     def op(self, a, b) -> Any:
         raise NotImplemented
 
-    def member(self, a) -> TrueOrFalseBecause:
+    def member(self, a) -> BoolBecause:
         raise NotImplemented
 
-    def equiv(self, a, b) -> TrueOrFalseBecause:
+    def equiv(self, a, b) -> BoolBecause:
         if a == b:
             return TrueBecause(f"{a} == {b}")
         else:
             return FalseBecause(f"{a} != {b}")
 
-    def isClosed(self) -> TrueOrFalseBecause:
+    def isClosed(self) -> BoolBecause:
         return forallM(self.gen(),
                        lambda a: forallM(self.gen(),
                                          lambda b: self.member(self.op(a, b))
                                          ).mapIfFalse(lambda str: f"not closed because {str}")
                        ) and TrueBecause(f"{self} is closed")
 
-    def isAssociative(self) -> TrueOrFalseBecause:
+    def isAssociative(self) -> BoolBecause:
         return forallM(self.gen(),
                        lambda a: forallM(self.gen(),
                                          lambda b: forallM(self.gen(),
@@ -36,7 +36,7 @@ class Magma:
                                                                                 ).mapIfFalse(lambda str: f"not associative: {a}, {b}, {c} ")))
                        ) and TrueBecause(f"{self} is associative")
 
-    def isAbelian(self) -> TrueOrFalseBecause:
+    def isAbelian(self) -> BoolBecause:
         return forallM(self.gen(),
                        lambda a: forallM(self.gen(),
                                          lambda b: self.equiv(self.op(a, b),
@@ -44,7 +44,7 @@ class Magma:
                                                               ).mapIfFalse(lambda str: f"not Abelian, e.g., {a},{b}"))
                        ) and TrueBecause(f"{self} is Abelian")
 
-    def isIdentity(self, z) -> TrueOrFalseBecause:
+    def isIdentity(self, z) -> BoolBecause:
         comment = f"{z} is not an identity because"
         return forallM(self.gen(),
                        lambda a: (self.equiv(self.op(z, a), a
@@ -69,8 +69,8 @@ class Magma:
             return None
         return self.findInverse2(z, a)
 
-    def isInverter(self, z, invert: Callable[[Any], Optional[Any]]) -> TrueOrFalseBecause:
-        def f(a) -> TrueOrFalseBecause:
+    def isInverter(self, z, invert: Callable[[Any], Optional[Any]]) -> BoolBecause:
+        def f(a) -> BoolBecause:
             b = invert(a)
             if b is None:
                 return FalseBecause(f"{a} has no inverse")
@@ -78,19 +78,19 @@ class Magma:
 
         return forallM(self.gen(), f) and TrueBecause(f"{self} is invertible")
 
-    def isSemiGroup(self) -> TrueOrFalseBecause:
+    def isSemiGroup(self) -> BoolBecause:
         return (self.isClosed() and
                 self.isAssociative() and
                 TrueBecause(f"{self} is a semigroup")
                 ).ifFalse(lambda str: FalseBecause(f"{self} is not a semigroup because {str}"))
 
-    def isMonoid(self, z) -> TrueOrFalseBecause:
+    def isMonoid(self, z) -> BoolBecause:
         return (self.isSemiGroup() and
                 self.isIdentity(z) and
                 TrueBecause(f"{self} is a monoid")
                 ).mapIfFalse(lambda str: f"{self} is not a monoid because {str}")
 
-    def isGroup(self, z, invert) -> TrueOrFalseBecause:
+    def isGroup(self, z, invert) -> BoolBecause:
         return (self.isMonoid(z) and
                 self.isInverter(z, invert)
                 and TrueBecause(f"{self} is a group")
@@ -116,7 +116,7 @@ class DynMagma (Magma):
     def op(self, a, b) -> Any:
         return self.op1(a, b)
 
-    def member(self, a) -> TrueOrFalseBecause:
+    def member(self, a) -> BoolBecause:
         if self.member1(a):
             return TrueBecause(f"{a} is a member")
         else:
@@ -133,13 +133,13 @@ class ModP (Magma):
     def gen(self) -> Iterator[int]:
         return range(self.p)
 
-    def equiv(self, a: int, b: int) -> TrueOrFalseBecause:
+    def equiv(self, a: int, b: int) -> BoolBecause:
         if a == b:
             return TrueBecause(f"{a} equiv {b}")
         else:
             return FalseBecause(f"{a} not equiv {b}")
 
-    def member(self, a: int) -> TrueOrFalseBecause:
+    def member(self, a: int) -> BoolBecause:
         if a < 0:
             return FalseBecause(f"{a} is not a member because {a}<0")
         elif a >= self.p:
