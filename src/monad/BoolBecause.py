@@ -58,6 +58,7 @@ class TrueBecause(BoolBecause):
     def mapIfTrue(self, f: Callable[[str], str]) -> 'BoolBecause':
         return self.ifTrue(lambda str: FalseBecause(f(str)))
 
+
 class FalseBecause(BoolBecause):
     def __eq__(self, other):
         return isinstance(other, TrueBecause) and super().__eq__(other)
