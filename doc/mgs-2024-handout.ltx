@@ -1,0 +1,2471 @@
+%% This file is text for the Mississippi Governors School 2023
+%% Major course: Duels and Duals, Mathematical Abstraction and Programming
+%%
+%% Contributors
+%%   Jim Newton, EPITA jnewton@lrde.epita.fr, jimka.issy@gmail.com
+\documentclass[14pt]{extreport}
+\usepackage[margin=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{svg}
+\usepackage{xspace}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{lineno}
+%\linenumbers
+\usepackage{color,colortbl}
+\definecolor{code}{rgb}{ 0,0,0}
+\newcommand\code[1]{\textcolor{code}{\texttt{#1}}\xspace}
+\usepackage{stackengine}
+\newsavebox\mybox
+\newcommand\Includegraphics[2][]{\sbox{\mybox}{%
+  \includegraphics[#1]{#2}}\abovebaseline[-.5\ht\mybox]{%
+  \addstackgap{\usebox{\mybox}}}}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+
+\newcommand\vs{\textit{vs.}\xspace}
+\newcommand\eg{\textit{e.g.}\xspace}
+\newcommand\Eg{\textit{E.g.}\xspace}
+\newcommand\ie{\textit{i.e.}\xspace}
+\newcommand\Ie{\textit{I.e.}\xspace}
+
+\newcommand\R{\mathbb{R}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\C{\mathbb{C}}
+\newcommand\F{\mathbb{F}}
+
+\newcommand\jleft{\mathopen{}\mathclose\bgroup\left}
+\newcommand\jright{\aftergroup\egroup\right}
+\newcommand\jparen[1]{\jleft(#1\jright)}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.92,0.92}
+\lstdefinestyle{mypython}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    morekeywords={nonlocal},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mypython}
+
+
+
+\title{Duels and Duals, Mathematical Abstraction and Programming,\\
+2023 Mississippi Governor's School}
+
+\author{\includegraphics[width=\textwidth]{MGSSUMMER-2024}\\Dr.\ Jim\ Newton}
+\setcounter{tocdepth}{2}
+\setcounter{chapter}{-1}
+\begin{document}
+
+\maketitle
+\sloppy
+
+\pagebreak
+\tableofcontents
+
+\chapter{Introduction}
+
+\begin{figure}[h]
+\centering\includegraphics[width=0.9\textwidth]{Mathematics-and-Computing.jpg}\\
+\small\code{https://leverageedu.com/blog/mathematics-and-computing/}
+\end{figure}
+
+
+\clearpage
+
+
+\section{Objectives}
+
+
+There are several objectives in this course:
+\begin{description}
+\item[Mathematics:] Ameliorate your love for Mathematics.
+\item[Computer Science:] Develop a sense for programming.
+\item[Communication:] Confidently defend your ideas.
+\end{description}
+
+Why math?  We assume that you already love math, and we
+will use examples in abstract math as source of ideas to write
+computer programs.
+
+
+The mathematical and computer science topics have been chosen for this
+course to complement each other.  You will enforce what you've learned by
+writing computer programs using the ideas and also by explaining to
+your peers what it is that you have done.
+
+
+It is important that the leaders of tomorrow, especially the leaders
+in the technology sector, understand the impact of
+technological development on humans.  We must know how to apply abstract
+concepts to real computation problems, and how to explain their ideas
+and defend their decisions to their peers.
+
+Don't forget that you are working not only with machines but also with
+humans.  In this course, we will maintain a respectful, inclusive, and
+safe environment.  Remember that different people have different
+strengths and weaknesses.  Scientific discussions can sometimes become
+heated and experts might disagree about the best course of action.
+We will keep disagreements objective and use science to test
+ideas, rather than relying on emotions.
+
+Good ideas that are never explained die and are forgotten.  It is my
+belief that you don't understand something until you can explain it.
+From time to time, some students will present their solutions to their
+peers.  This means defending your choices, recognizing strengths and
+shortcomings, and being subjected to peer review (important in the
+scientific process).  This exercise is intended not only to learn to
+accept constructive criticism but also to build confidence.
+
+
+\pagebreak
+\section{Note from your Instructor}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{jimka-porto}
+\end{figure}
+I'm Dr. Jim Newton, and I will be your instructor and coach for two
+weeks as explore mathematical applications in programming.
+
+I am a Mississippi native, and a graduate of Mississippi State
+University where in 1988 I received a BS in Electrical Engineering and
+in 1992 an MA in Mathematics.  Years later, in 2015, I received my PhD in
+Computer Science from Sorbonne University in Paris, France.  I
+currently live in Issy les Moulineaux, France, and work as an
+assistant professor and researcher at EPITA (\url{www.epita.fr}), a
+French engineering school.
+
+In 1981, I was a scholar at the first ever Mississippi Governor's
+School.  I've designed this course remembering my own experience at
+MGS, back in the day. I realize that different students coming from
+different high schools in Mississippi have been exposed to various
+levels of mathematics and computer science courses. I 
+hope that regardless of your background and previous experience, you
+will find this course interesting and challenging.  I am confident that
+if you apply yourself and remain self-confident, you will succeed and
+learn a lot.
+
+
+\pagebreak
+\section{Overview}
+
+
+
+We will probably proceed through several units which mix three
+important experiences:
+
+\begin{itemize}
+\item Theory --- Learn mathematics and computer science concepts.
+\item Practice --- Create code relating to the theory of various units.
+\item Presentation --- Show and explain what you have done.
+\end{itemize}
+
+We will primarily cover an introduction to Abstract Algebra.  Our
+practical treatment of Algebra will help you prepare for a more
+theoretical treatment at the university level.
+
+
+
+\section{Proposed Syllabus}
+
+\begin{tabular}{ll|l|l}
+Week & Day & Unit & Activities\\
+\hline
+~&&&\\
+1 & Mon & 0, 1 & Hello World on the Cloud\\
+1 & Tue & 2 & Sets and Functions\\
+1 & Wed & 2 & \\
+1 & Thu & 3 & Logic and Loops\\
+1 & Fri & 3 & \\
+~&&&\\
+\hline
+~&&&\\
+2 & Mon & 3 & Performance, refactoring\\
+2 & Tue & 4,5 & Monoids\\
+2 & Wed & 4,5 & \\
+2 & Thu & 6,7 & Rings and Fields\\
+2 & Fri & 6,7 & \\
+~&&&\\
+\hline
+\end{tabular}
+
+\chapter{Environment}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{developers.png}\\
+  \small\code{https://woz-u.com/wp-content}
+\end{figure}
+
+\clearpage
+
+
+
+\section{GitHub}
+
+In this course we will be experimenting with software together.  You
+will be able to share your code with your classmates, and with the
+world.  However, you control when you want to make your code available
+to the world, and when you want to incorporate your classmate's code
+into your development area.
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{GitHub-How-to-use-GitHub-Edureka-300x241.png}
+%%  \url{https://www.edureka.co/blog/how-to-use-github/}
+  \caption{GitHub is a cloud service that hosts code repositories.
+    You connect to GitHub either by web browser or directly from
+    \emph{git}.}
+\end{figure}
+
+
+
+
+To achieve this goal we have a central repository of code, hosted by
+GitHub on the cloud.  You will download (clone) a copy of this
+repository, edit existing code, create new code, and then
+occasionally upload your contributions back to the central repository,
+making your contributions available to everyone else.
+
+GitHub is a web based service which hosts thousands of projects, small
+and large, in the cloud.  Typically, users have a development
+environment on their local computer (laptop or desktop) and
+periodically upload and download changes to the cloud.
+
+The URL \url{https://github.com/jimka2001/mgs-2023}, is the public
+entry point to the GitHub project which we will work on in this
+MGS-2023 course.  How we will edit code in the GitHub project is
+described in Section~\ref{sec.gitpod}.
+
+You must create an account on GitHub (if you don't have one already).
+This will be done in Section~\ref{sec.setup}.
+
+
+\section{GitPod}\label{sec.gitpod}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{gitpod-teaser.jpg}
+%%  \url{https://www.gitpod.io/images/blog/cloud-based-development-for-everyone/teaser.jpg}
+  \caption{GitPod provides a web-browser-based development environment
+    which integrates with GitHub.}
+\end{figure}
+
+We will use a development environment entirely on the cloud--- a web
+based service called, GitPod to provide an environment for working
+with GitHub.  This environment and all the code you develop will still
+be available to you after MGS-2023 is finished.
+
+The GitPod web site is \url{https://www.gitpod.io}.
+
+
+\section{Getting Started}
+\label{sec.setup}
+
+We need to set up the development environment.  Before you can learn
+to use a piece of software, you have to install it. These steps should
+help.
+
+\subsection{Account Creation}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.4\textwidth]{github-join.png}}&
+  Create a GitHub account using an abstract user name.  Don't use
+  your real name.  This is self explanatory at the URL
+  \url{https://github.com/join}.
+\end{tabular}
+
+
+
+
+\subsection{Open the Repository}
+  
+\begin{tabular}{cp{0.5\textwidth}}
+  \raisebox{-0.5\totalheight}{\includegraphics[width=0.40\textwidth]{github-image.png}}
+  &Open \url{https://github.com/jimka2001/mgs-2023} with your web browser.
+\end{tabular}
+
+
+
+
+\subsection{Fork yourself a Copy}
+  
+\begin{tabular}{cp{5cm}}
+  \raisebox{-0.5\totalheight}{\includegraphics[width=0.5\textwidth]{fork-repo.png}}
+  &  Fork the repository.
+\end{tabular}
+
+
+
+\subsection{Open GitPod}
+
+Open the web-IDE, GitPod. You may just prepend
+\textbf{\Large \texttt{http://gitpod.io/\#}}
+  to the URL in the web browser.
+  
+
+
+\subsection{Open the Explorer}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.5\totalheight}{    \includegraphics[width=0.5\textwidth]{explorer.png}}&
+  Find the Explorer.  Open it to find \code{hello.py} at
+  \url{src/hello/hello.py}.
+\end{tabular}
+
+
+
+\subsection{Open a Python File}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{hello-function.png}}
+  &Click \code{hello.py} to open the file in an editor pane.  You
+  should see something like what is shown here:
+\end{tabular}
+
+
+
+\subsection{Make a Sample Run}
+  
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.5\textwidth]{hello-terminal-output.png}}
+  &Find the definition \code{hello}.  Find the icon \includegraphics[height=1.0cm]{run-triangle.png}
+  in the top-right of the editor window.  Click the triangle.
+\end{tabular}
+
+
+\subsection{Challenges for the Student}
+
+Understanding errors and debugging is difficult, but it is part of programming.
+
+Experiment with the simple pieces of code in the above sections.
+Insert spaces and press the run button.  Look at the error messages
+produced. Remove some quotation marks or parenthese (leaving
+unbalanced quotations marks or parentheses)---again look at what error
+messages you see when you try to run invalid code.
+
+
+\begin{itemize}
+\item remove and add some spaces at the beginning of a line
+\item change the indentation
+\item unbalance the parentheses
+\item unbalance the quotation marks
+\item put extra spaces inside the quotation marks
+\item change the name of the \code{hello} function at definition site or call site.
+\item figure out how to undo your changes in the test editor to make the code work again.
+\end{itemize}
+
+Question:  What is the difference between a synax error and a logical error?
+\clearpage
+
+\chapter{Mathematical Sets and Functions}
+\begin{figure}[b!]
+\centering
+\includegraphics[width=0.85\textwidth]{math.jpg}
+\caption{\code{https://www.freepik.com}}
+\end{figure}
+
+\clearpage
+
+In this unit we will look at functions both from a mathematical
+perspective and also from a programming perspective.  There are some
+important similarities and some important differences.
+
+
+We would like to talk about functions.  But where should we start the
+conversation?
+
+You may already have some intuition about functions.  Sometimes
+functions have names, like $\sin$, $\cos$, and $\log$.  Sometimes
+functions lack names but have formulas such as
+$\frac{x^2-1}{x^2+2x+1}$.
+
+
+
+\section{Set Operations}
+
+We avoid the problem of defining exactly what a set is; see Russell's
+paradox.  We will instead concentrate on operations we can perform on
+sets.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{A_union_B.png}\\
+\small By Svjo - Own work, CC BY-SA 3.0, \code{https://commons.wikimedia.org/w/index.php?curid=20749188}
+\end{figure}
+
+\begin{itemize}
+\item is-element-of: $x\in A$
+\item is-subset-of: $A\subset B$
+\item empty-set: $\emptyset$
+\item union: $A\cup B$
+\item intersection: $A\cap B$
+\item complement: $A\setminus B$ or $\overline{B}$
+\item De Morgan's theorem: $\overline{A\cup B} = \overline{A} \cap \overline{B}$,
+  or dually $\overline{A\cap B} = \overline{A} \cup  \overline{B}$.
+\end{itemize}
+
+\section{Functions}
+
+\begin{tabular}{cp{7cm}}
+  %% Creative commons https://en.wikipedia.org/wiki/File:Function_machine2.svg
+  \raisebox{-0.8\totalheight}{  \includegraphics[width=0.5\textwidth]{Function_machine2.png}}
+  & What is a function? A function such as
+\[f : X \to Y\]
+is a correspondence between two sets.  However, it is a special
+correspondence.
+\end{tabular}
+
+In particular the function,~$f$, associates a unique, well-determined,
+element of~$Y$ with each element of~$X$.  More precisely, if $x\in X$,
+then~$f(x)$ designates a unique, well-determined, element of~$Y$.
+\[x \in X \implies f(x) \in Y\,.\]
+
+\noindent\begin{tabular}{cp{7cm}}
+  %% Creative commons https://en.wikipedia.org/wiki/File:Function_color_example_3.svg
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.5\textwidth]{Function_color_example_3.png}}
+  &
+%%\url{https://commons.wikimedia.org/w/index.php?curid=20802095}, By
+%%  \texttt{Function\_color\_example\_3.gif}: Wvbailey.
+%%  The original uploader was Wvbailey at English Wikipedia.derivative work: Zerodamage ---
+%%  This file was derived from: Function color example \texttt{3.gif}:, CC BY-SA 3.0.}
+  A function is a well-defined correspondence of all the elements of one set
+  (the domain) with some of the elements of another set (the range).
+\end{tabular}
+
+
+
+
+Conceptually, a function has three parts
+\begin{enumerate}
+\item A \emph{domain}, i.e., a place from which input values may be taken.
+\item A \emph{range}, i.e., places where output values are found.
+\item A \emph{rule}, i.e., a way of determining the output value given only the input value.
+\end{enumerate}
+
+
+
+
+
+\section{Mathematical notation}
+
+\begin{align}
+  f(x) &= 3x + 1 \label{eq.simple.1}
+\end{align}
+
+
+Let's start with a very simple function~\eqref{eq.simple.1}.
+Actually, the only thing specified here is the rule.  This function is
+written in a mathematical notation where the domain and range are not
+specified.  The same notation can be used for different choices of
+domain and range.  For example, this function works for integers,
+$\mathbb{Z}$, as input, but it will also work for natural numbers,
+$\mathbb{N}$, rational numbers, $\mathbb{Q}$, real numbers,
+$\mathbb{R}$, and complex numbers, $\mathbb{C}$.  The same function will
+also work for matrices or for functions themselves.
+
+
+If we want to be more precise, we can use a more descriptive notation
+as in~\eqref{eq.simple.2}
+
+\begin{align}
+  f:\mathbb{N}\to\mathbb{N}~\text{by}~ f(x) &= 3x + 1 \label{eq.simple.2}
+\end{align}
+
+
+The domain and range of a function need not be the same, and need not
+be a set of simple numbers.  For example, we use the symbol
+$\mathbb{R}^2$ to denote the set of ordered pairs of real numbers;
+\ie,
+\[\mathbb{R}^2 = \{(x,y)\mid x\in \mathbb{R} \wedge y\in\mathbb{R}\}\,.\]
+Equation~\eqref{eq.simple.3} shows an example of such a function.
+
+\begin{align}
+  f:\mathbb{R}^2\to\mathbb{R}~\text{by}~ f(x,y) &= 3x - 2y + 1 \label{eq.simple.3}
+\end{align}
+
+We may also specify
+functions using cases, like in Equation~\eqref{eq.simple.4}
+
+
+\begin{equation}\label{eq.simple.4}
+  |x| = \begin{cases}
+    x &\,; \text{if $x>0$}\\
+    0 &\,; \text{if $x=0$}\\
+    -x &\,; \text{if $x<0$}
+  \end{cases}
+\end{equation}
+
+\section{What a function is not}
+
+A correspondence which associates multiple elements of $B$ with
+an element of $A$ is not a function from $A$ to $B$.  However the
+range of a function (or the domain for that matter) may be any set,
+for example we may talk about set-valued functions like a function
+whose value for each input is some subset of a given set.
+
+Consider the function which takes a finite set as input, and outputs
+the size of the set, \ie, the number of elements in the set.
+
+Consider the function that takes a whole number, $n$, as input and returns
+the set of integers between $0$ and $n$ as output.
+
+\noindent\begin{tabular}{cp{7cm}}
+  %%https://commons.wikimedia.org/wiki/File:Relación_binaria_12.svg
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.5\textwidth]{function.png}}
+  &  A function may map several inputs to the same output, but it may not
+  map an input to multiple outputs.
+\end{tabular}
+
+A function must also be well-defined.  \Ie, the value of the function
+for a given input must be a fixed value.  The value may be difficult
+to compute, or perhaps even unknown, but it must be some particular
+value.  A function cannot, for example, return a random integer for
+each input.
+
+
+\section{Functions: Programmatic Representation}
+
+To implement a function in the Python programming language we:
+\begin{itemize}
+\item specify the function name, such as \code{square}
+\item specify zero or more input parameters, such as \code{(x)}
+\item compute output value: \code{return x*x}
+\item follow the correct syntax
+\end{itemize}
+
+Input values come from the \emph{domain};  output values
+come from the \emph{range}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def square(x):
+    return x * x
+\end{lstlisting}\end{minipage}
+
+\section{Specifying functions by recurrence}
+\label{sec.recurrence}
+
+Functions can be defined in terms of themselves.  We might use an
+intuitive definition such as Equation~\eqref{eq.simple.5}.
+
+\begin{equation}\label{eq.simple.5}
+x^n = \underbrace{x \times x \times \ldots \times x}_{n~\text{times}}\,.
+\end{equation}
+
+We can define the same function more explicitly by using recursion as
+in Equation~\eqref{eq.slow.exponent}.
+
+\begin{equation}\label{eq.slow.exponent}
+  x^n = \begin{cases}
+    1 &\,; \text{if $n=0$}\\
+    x \times x^{n-1} &\,; \text{if $n > 0$}\\
+    \frac{1}{x^{-n}} &\,; \text{if $n < 0$ and $x\ne 0$}
+  \end{cases}
+\end{equation}
+
+
+Similarly, we can define the factorial as
+\begin{equation}\label{eq.intuitive.factorial}
+  n! = 1 \times 2 \times \ldots \times n
+\end{equation}
+
+or we can define it as
+\begin{equation}
+  n! = \begin{cases}
+    1 &\,; \text{if $n=0$}\\
+    n \times (n-1)! &\,; \text{if $n > 0$}
+  \end{cases}
+\end{equation}
+
+The first case need not be $n=0$.  We can define the Fibonacci
+numbers.  Let $F(n)$ denote the nth Fibonacci number.
+
+
+\begin{equation}
+  F(n) = \begin{cases}
+    1 &\,; \text{if $n=1$}\\
+    1 &\,; \text{if $n=2$}\\
+    F(n-1) + F(n-2)  &\,; \text{if $n > 2$}
+  \end{cases}
+\end{equation}
+
+\chapter{Programming with Functions}
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=0.8\textwidth]{cs.png}\\
+\small Image by Freepik, \code{https://www.freepik.com/free-vector}
+\end{figure}
+
+
+\clearpage
+
+\section{Programming constructs}
+
+In this section we look at several constructions which are essential to
+your programming experience.
+
+
+
+\subsection{Variables}
+
+A variable is an identifier used to hold a value.  In the Python
+language the value of a variable can either be constant or it can
+change depending on the instructions given by the programmer.
+
+Expressions can contain variables, constants, and function calls
+(which we'll see in Section~\ref{sec.functions}).
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  a = 12
+  b = -7
+  print(a*b - 3*a)
+
+  a = 13
+  print(a*b - 3*a)
+\end{lstlisting}\end{minipage}
+
+
+An assignment to a variable can also contain the same variable being
+modified.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  a = 12
+  b = -7
+  a = a + b
+  print(a*b - 3*a)
+\end{lstlisting}\end{minipage}
+
+
+Basic arithmetic can be performed using \code{+}, \code{-}, \code{*},
+and \code{**} for plus, minus, times, and exponentiation.  For example, $3^4$ is coded as
+\code{3 ** 4}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  1 + 2    # addition
+  3 - 4    # subtraction
+  5 * 6    # multiplication
+  3 ** 4   # exponentiation
+\end{lstlisting}\end{minipage}
+
+There are two types of division.  Floating point division may be
+performed as \code{10 / 5} which evaluates to the floating point
+number \code{2.0}, while \code{10 // 5} evaluates to the
+integer~\code{2}.  An important difference arises when the
+denominator does not evenly divide the numerator.  \code{20 / 8}
+evaluates to \code{2.5}, but \code{ 20 // 8} evaluates to~\code{2},
+because $20 \div 8 = 2$ with remainder~$4$.  To compute the remainder
+of $20\div 8$, use \code{20 \% 8} which evaluates to~\code{4}.
+
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  20 / 8   # division (as floating point)
+  20 // 8  # division (as integer, discarding the remainder)
+  20 % 8   # remainder of division (modulus)
+\end{lstlisting}\end{minipage}
+
+
+\subsection{Functions}
+\label{sec.functions}
+
+Whereas a variable evaluates to the same value every time you evaluate
+it, a function's value may be different depending on its input, or the
+variables it references.
+
+A function, defined with \code{def}, has several parts: name,
+parameters (zero or more), body (which may be empty), and an optional
+\code{return}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def f(a,b):
+    return a*b - 3*a
+
+  print(f(12,-7))
+\end{lstlisting}\end{minipage}
+
+A function without a \code{return}, returns the special value
+\code{None}.  It is often the case that if a function has no
+\code{return} then the programmer has forgotten something---it is
+often a bug in the program.
+
+A function may contain other functions within it.  The indentation
+indicates which lines of code are \emph{within} which function.
+
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def f(a):
+    def g(b):
+      return b + 3
+
+    return a + g(-7)
+\end{lstlisting}\end{minipage}
+
+
+A function may reference variables defined outside itself.  A function may
+reference its parameters, and the parameters of functions it is inside
+of.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def f(a):
+    def g(b):
+      return b + a
+
+    return a + g(-7)
+\end{lstlisting}\end{minipage}
+
+However, to reference variables (other than parameters) you must indicate which
+variable you mean, because there may be several variables of the same name.
+
+In the next example, in the expression \code{b+a}, the variables
+reference the parameters of functions \code{g} and \code{f},
+respectively.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  a = 100
+  b = 12
+
+  def f(a):
+    def g(b):
+      return b + a
+
+    return a + g(-7)
+\end{lstlisting}
+\end{minipage}
+
+
+In the next example, in the expression \code{a+b+c}, \code{a} is
+global, \code{b} be is the parameter of function \code{g}, and
+\code{c} is $-7$ as defined within function \code{h}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  a = 100
+  b = 12
+
+  def h(x):
+    c = -7
+    def g(b):
+      global a
+      nonlocal c
+
+      return a+b+c
+
+    return g(c)
+\end{lstlisting}\end{minipage}
+
+
+There are many built-in functions and constants, but you often need to
+\code{import} a library.  The \code{abs} function is built-in without
+importing, but the functions \code{sin}, \code{cos}, \code{log}, as
+well as the constants $\pi$ and $e$ (\code{pi} and \code{e}) are
+available in a library called \code{math}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+from math import sin, cos, log, pi, e
+
+sin(45 * pi / 180)
+cos(0.0)
+log(e ** 2)
+\end{lstlisting}\end{minipage}
+
+
+\subsection{Conditionals}
+
+Conditions are important in every programming language, and Python is
+no exception.  A simple conditional is specified as follows using
+\code{if} and \code{else}.  Notice which lines end in a colon,
+\code{:} and which do not.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  if x > 10:
+    print(x)
+\end{lstlisting}\end{minipage}
+
+A two-branch conditional is possible by specifying a
+\emph{condition}, \emph{consequent}, and \emph{alternative}.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  if x > 10:
+    print(x)
+  else:
+    print(y)
+\end{lstlisting}
+\end{minipage}
+
+
+A multi-branch condition is also supported using \code{if}, \code{elif}, and \code{else}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  if a < 1:
+    print(a)
+  elif a < 2:
+    print(a-1)
+  elif a < 3:
+    print(a-2)
+  else:
+    print(None)
+\end{lstlisting}\end{minipage}
+
+\subsection{Collections: Booleans, tuples, lists, sets}
+
+\subsubsection{Boolean}
+
+We've already seen the integer and float data types, but there several more
+data types which are important to understand.  The \code{bool} (Boolean)
+data type consists of the special values \code{True} and \code{False}.
+Operators such as \code{==} (equivalence test), as well as \code{>},
+\code{>=}, \code{<}, and \code{<=} evaluate to a \code{bool}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+print(1 > 2)
+print(1 <= 100)
+print(1 == 4)
+a = 1
+print(a == 1)
+\end{lstlisting}\end{minipage}
+
+Boolean values are useful in conditions such as the following example.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  a = 0
+  if a > 2:
+    print(a)
+  
+  b = 3
+  if a > b:
+    print(a+b)
+\end{lstlisting}\end{minipage}
+
+
+\subsubsection{Tuples}
+
+Tuples are like ordered pairs or ordered triples in math: $(x,y)$ or
+$(x,y,z)$.  Triples are not limited to three elements; you may have as many
+elements as you need. The Python syntax is easy:
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  a = 0
+  b = 2
+  c = 4
+  d = (a, b, c)
+  x = (3, 4)
+  y = (c, d, x)
+  print(y)
+  print(y[2])
+\end{lstlisting}
+\end{minipage}
+
+
+A tuple is read-only---you cannot modify the value stored in a tuple once the
+tuple has been created.  You can read any value out of a
+tuple, for example \code{a[2]}.  Careful, the first value in the tuple
+is \code{a[0]} and the second value is \code{a[1]}; so indexing is
+so-called zero-based, not one-based as is customary in mathematics.
+
+\subsubsection{Lists}
+
+A list is like a tuple except that the values can be modified in place if
+necessary.  A list is specified using the square brackets \code{[1, 2, 3]}, whereas
+we use round brackets (called parentheses) for tuples.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  a = 0
+  b = 2
+  c = 4
+  d = [a, b, c]
+  x = [3, 4]
+  y = [c, d, x]
+  print(y)
+  print(y[2])
+  y[2] = 4
+  print(y[2])
+  print(y)
+\end{lstlisting}\end{minipage}
+
+\subsubsection{Sets}
+
+A set is like a list except that it contains no duplicate elements,
+and Python does not maintain any particular order of the elements.
+Use the curly braces \code{\{1, 2, 1, 3\}} to specify a set, and note how
+Python ignores duplicate elements in a set.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  a = 0
+  b = 2
+  c = 4
+  d = {a, b, c, a, b, c, c}
+  print(d)
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Trees}
+
+Lists and tuples are not limited to containing numbers.  You may have
+lists of lists of tuples of lists as deep as you like.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  a = [1, 2, 5, 7]
+  b = (10, 20, 50, 70, 100)
+  c = [a, b, a, a]
+  d = (a, b, c, [(1, [2, 3, [c, a]])])
+  print(d)
+\end{lstlisting}
+\end{minipage}
+
+\subsection{Challenge for the student}
+
+If you construct a list containing the same list multiple times, what happens
+if you modify one of the elements?  Evaluate the following code and explain
+the results.
+
+\begin{minipage}[c]{0.95\textwidth}
+\begin{lstlisting}
+  a = [1, 2, 5, 7]
+  b = [a, a, a, [1, 2, 5, 7]]
+  b[0] = 100
+  print(b)
+  b[1][0] = 200
+  print(b)
+\end{lstlisting}
+\end{minipage}
+
+We have seen that you can create lists of tuples and tuples of lists.
+Can you also create sets of lists, sets of tupleslists, tuples of sets, and sets
+of tuples.  Experiment and find out.
+
+\section{Implement the Quadratic Formula}\label{sec.quadratic.formula}
+
+\includegraphics[width=0.8\textwidth]{school-quadratic.png}\\
+{\small \code{https://leverageedu.com/blog/mathematics-and-computing/}}
+
+\medskip
+
+As a first program in Python you will implement the quadratic formula.
+recall that if
+\[ a x^2 + b x + c = 0\,,a\ne 0\]
+then 
+\[x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4 a c}}{2 a}\,.\]
+
+\subsection{A Python function for roots of quadratic}
+
+Implement the function \code{quadraticFormula}.  The function should
+implement the mathematical function $x_{1,2}(a,b,c) = \frac{-b \pm
+  \sqrt{b^2 - 4a c}}{2a}$.  The function computes the roots of the
+polynomial $a x^2 + b x + c$, assuming $a>0$, and assuming $b^2 \geq
+4a c$.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def quadraticFormula(a, b, c):
+    from math import sqrt
+    # warning, this is a poor implementation,
+    # the student should improve this function by refactoring
+    return List((-b + sqrt(b*b - 4*a*c))/(2*a),
+                (-b - sqrt(b*b - 4*a*c))/(2*a))
+\end{lstlisting}\end{minipage}
+
+What are the problems with this implementation?  What does it do if
+there are no real roots?  What does it do if the there is only one
+root.
+
+
+\subsection{Challenges for the Student}
+
+Implement the following by refactoring the code above.
+
+\begin{itemize}
+
+\item Enhance \code{quadraticFormula}: Notice that the current
+  implementation is inefficient, because it computes almost the same
+  thing twice.
+
+\item What happens if $a x^2 + b x + c$ does not have real roots? If you
+  call the function with \code{a,b,c} what is returned?
+  
+  You should refactor the function to define a variable
+  \code{discriminant} whose value is
+  \[\Delta = b^2 - 4 a c\,.\]
+  Then there are three cases, if ${\Delta < 0}$, if ${\Delta = 0}$, and
+  if ${\Delta > 0}$.  Refactor the function so that if there are no
+  real roots it returns an empty list; if there is a unique 
+  solution, return a list of one number; and if there are two
+  distinct solutions, return a list of those two solutions
+  \textbf{in increasing order}.  \Ie, if the function returns \code{[a,b]},
+  assure that $a < b$.
+\end{itemize}
+
+
+\section{Recursive Functions}
+\label{sec.recursive.functions}
+
+A recursive function is a function which calls itself.
+
+\subsection{Recursive implementation of exponentiation}
+
+As an example, let's look at a function which computes $a^n$ for some
+integer or floating point number $a$, and for some integer $n\ge 0$.
+We saw a similar function in Equation~\eqref{eq.slow.exponent} on
+page~\pageref{eq.slow.exponent}.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def power(a, n):
+    if n == 0:
+      return 1
+    elif n == 1:
+      return a
+    else:
+      return a * power(a, n-1)
+\end{lstlisting}\end{minipage}
+
+This function can be extended to handle negative exponents, provided
+$a\in\R$; \ie if \code{a} is a floating point number.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  def power(a, n):
+    if n == 0:
+      return 1
+    elif n < 0:
+      return power(1/a, -n)
+    elif n == 1:
+      return a
+    else:
+      return a * power(a, n-1)
+\end{lstlisting}\end{minipage}
+
+\subsection{Challenges for the Student}
+
+Follow the pattern shown in the \code{power} function to implement 
+the following functions.
+
+\begin{itemize}
+\item Implement \code{String} concatenation using the power model.
+\item Implement \code{List} concatenation using the power model.
+\item Implement \code{factorial}. 
+\end{itemize}
+  
+\textbf{Discussion:} In the \code{factorial} function, do we
+  need a case for $n=0$ and also $n=1$?  How does this relate to the
+  principle of induction?  Look up \emph{Principle of Induction} if
+  you need to review it.
+
+
+\section{Fibonacci Sequence}
+\label{sec.fibonacci.numbers}
+\begin{itemize}
+\item Implement a recursive function such that given $n$, the function
+  returns the nth Fibonacci number, $F_n$.
+\item Analyze the recursive profile of the Fibonacci generator?
+\item Suppose that one recursive call requires $m$ bytes, and your
+  computer has a total of $M$ bytes of memory, can you find a bound
+  for the maximum Fibonacci number which is possible to compute?
+\item Can we use memoization to make the Fibonacci generator faster?
+\item We may compute any three
+  consecutive Fibonacci numbers as: $F_{n-1}$, $F_{n}$, and $F_{n+1}$,
+  \[\begin{bmatrix}1&1\\1&0\end{bmatrix}^n = \begin{bmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{bmatrix}\]
+  How can we implement such a multiplication in Python?  Hints:
+  \begin{enumerate}
+  \item How can we represent a $2\times 2$ matrix programmatically?
+  \item How can we multiply two matrices?
+  \item How can we compute $\begin{bmatrix}1&1\\1&0\end{bmatrix}^n$
+    with approximately $\log_2 n$ matrix multiplications?
+  \end{enumerate}
+  
+\item Search on the internet and find the Binet's formula for
+  computing the nth Fibonacci number.  Implement this function and
+  compare the results to the recursive implementation.  
+
+\item \textbf{Making code faster} Now you have a way which you suspect
+  is more efficient (faster).  Devise an experiment to determine which
+  of the approaches is faster in terms of execution time?  Hint, you
+  may need to construct a loop to do the same computation 100 times
+  or 1000 times, and then divide the total time by 100 or 1000 to
+  compute the average time per computation.
+
+\end{itemize}
+
+\section{Binary Search}
+\label{sec.binary.search}
+
+A binary search algorithm is a \emph{divide and conquer} algorithm.  Suppose
+we know that some \emph{event} occurs at a number between $x_{left}$
+and $x_{right}$.  For example, suppose $f(x) = 0$ for some $x_{left} < x < x_{right}$.
+Then if we take
+$x_{mid} = \frac{x_{left} + x_{right}}{2}$, then at least one of the following is true.
+
+\begin{align}
+  f(x) & = 0 & \text{ for some } x_{left} < x \leq x_{mid}\\
+  f(x) & = 0 & \text{ for some }  x_{mid} < x < x_{right}
+\end{align}
+
+This means if we split the interval $(x_{left},x_{right})$ in half,
+the \emph{event} occurs either in the left half or the right half.
+In such a case, we can write a (recursive) function which divides the
+interval in half, and \emph{recurs} either on the right half or left half.
+We end the recursion when we have found the event.
+
+If we don't find the exact value we are searching for, then we must have a
+termination condition to avoid looping forever.  Typically the way this is
+done is to recur until the interval is sufficiently small:  i.e., until
+${x_{right} - x_{left} < \varepsilon}$.
+
+\section{Roots of a Cubic Polynomial}
+
+
+\noindent\begin{tabular}{cp{7cm}}
+  %% Creative commons https://en.wikipedia.org/wiki/File:Polynomialdeg3.svg
+  \raisebox{-0.95\totalheight}{\includegraphics[width=0.5\textwidth]{cubic.png}}
+  &  Can we combine the technique of Sections~\ref{sec.recursive.functions}
+  and~\ref{sec.binary.search} to find the roots of a cubic equation?
+
+  If you know one root of a cubic, how can you use the quadratic formula to
+  find the remaining two roots, if they exist?
+
+  \textbf{Hint:} Factor a cubic into \[(x-r_1)(a x^2 + b x + c)\]
+  once you know that $r_1$ is a root.  But how can you find~$a$, $b$, and~$c$?
+\end{tabular}
+
+
+
+
+\chapter{Logic and Looping}
+
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=0.9\textwidth]{loops.png}\\
+\small \code{https://en.wikipedia.org/wiki/File:Polynomialdeg3.svg}
+\end{figure}
+
+
+\clearpage
+
+
+\section{Logic}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{full-adder.png}
+\end{figure}
+
+
+\begin{definition}[proposition]
+  A \emph{proposition} is a logical statement which has a truth value
+  of true or false.
+\end{definition}
+
+For example, let $p$ be the proposition: Light travels at 300,000 km/s
+in free space; and let $q$ be the proposition: the atomic number of
+carbon is 33.
+
+We may ask: Is $p$ true?  The answer is, yes.  Likewise, we may ask: Is
+$q$ true?  The answer is, no.
+
+\begin{definition}
+  A \emph{predicate} is a proposition valued function.  We talk about
+  the predicate being true in the case that the proposition which it
+  outputs is true.
+\end{definition}
+
+
+
+
+
+Examples of predicates are \emph{prime(x)}, or \emph{$x > 42$}.  For
+each of these, given an input value, we derive a proposition, then we
+can ask whether that proposition is true or false.  Given the
+predicate $prime(x)$ and given the value 13, we construct the
+proposition: 13 is prime; then we may ask whether that proposition is
+true. Given the value 15, we may as: Is 15 prime?  Given the value
+-12, we may ask: Is -12 greater than 42?
+
+For example, let $g(n)$ be the predicate $n is prime$.  Now we may ask
+$g(13)$ and $g(15)$.  $g(13)$ is true while $g(15)$ is false.
+Similarly if $h(n)$ is the predicate $n>42$, then we may ask $h(-12)$
+and get false.
+
+Given two propositions, we may combine them by conjunction.  The
+resulting proposition is true if and only if both of the original
+propositions are true.  \Eg, Proposition $p$: Light travels at 300,000
+km/s in free space. Proposition $q$: The atomic number of carbon is 33.
+Since $p$ true, and $q$ is false, the
+proposition \emph{conjoining} the two, $p\wedge q$, is consequently false.
+
+Likewise, predicates can be conjoined (or intersected).  If we can
+compute whether given an integer $n$, it is prime, and we can
+also compute whether it is greater than 42, we can therefore compute
+whether it is prime and greater than 42.
+
+$(g\wedge h)(n)$ is true if $g(n) \wedge h(n)$.
+
+
+Disjunction is the dual of conjunction.  The disjunction of two
+propositions is true if either of the original propositions is true.
+For example, given $p$ and $q$ as above, the disjunction $p\vee q$ is
+true because at least one of $p$ and $q$ is true.
+
+Similarly given an integer, $n$, we can decide whether it is prime or
+greater than 42, by testing both predicates and combining the output
+by disjunction.
+
+If a predicate is true, its logical negative is false. If a predicate
+is false, then its logical negative is true.  The if $p$ is a
+predicate then either $p$ is true or $\neg p$ is true.
+
+
+We may combine set mechanics and predicates with something called a
+\emph{set comprehension}.
+\[\{m\in\N \mid m > 42\}\]
+
+The idea is that we take the subset of some set ($\N$ in this case) by
+taking all the elements of that set which satisfy a given predicate.
+
+\subsection{Implication}
+
+If proposition $q$ is true whenever $p$ is true then we can say that
+$p$ implies $q$, or $p\implies q$.  Note that $p\implies q$ does not
+say anything about what happens if $p$ is false.
+
+An implication is yet again a proposition, and like any proposition it
+may be true or false.  For example the following is a false
+implication: ${n\in \Z \implies n>1}$. However, the following
+implication is true: ${n\in N \implies n= 0 \vee n\geq 1}$.
+
+
+\subsection{Quantifiers}
+
+$\forall$ specifies a proposition (whose value is either true or
+false) for which a given predicate is true for every element of a set.
+\[\forall x \in N, n > -1\]
+
+$\exists$ specifies a proposition (whose value is either true or
+false) for which a given predicate is true for at least one element of a
+set.
+\[\exists x \in N, n > 42\]
+
+$\forall$ is always true if the set is empty, we can see this with De
+Morgan's theorem below.  $\exists$ is always false if the set is
+empty.
+
+
+\[\forall x \in \emptyset, n > -1\]
+\[\exists x \in \emptyset, n > -1\]
+
+
+\subsection{De Morgan's theorem}
+
+We saw De Morgan's theorem for sets already.  But logic and set theory
+are duals, so De Morgan's theorem can also be stated for propositions
+and predicates.
+
+\[\neg \jparen{p(x) \vee q(x)} = \neg p(x) \wedge \neg q(x)\]
+\[\neg \jparen{p(x) \wedge q(x)} = \neg p(x) \vee \neg q(x)\]
+
+We may apply De Morgan's theorem to quantifiers
+
+\[\jparen{\forall x \in \N, p(n)} = \neg \jparen{\exists x \in \N, \neg p(n)}\]
+\[\neg \jparen{\forall x \in \N, p(n)} = \jparen{\exists x \in \N, \neg p(n)}\]
+
+\[\jparen{\exists x \in \N, p(n)} = \neg \jparen{\forall x \in \N, \neg p(n)}\]
+\[\neg \jparen{\exists x \in \N, p(n)} = \jparen{\forall x \in \N, \neg p(n)}\]
+
+Question: How can we use De Morgan's theorem to show that \[\forall x
+\in \emptyset, p(x)\] is true independent of $p$?
+
+\section{Looping}
+
+\begin{tabular}{cp{7cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.4\textwidth]{for-num-in-numbers.png}}&
+%% From Wikimedia Commons, the free media repository
+%% https://commons.wikimedia.org/wiki/File:Flowchart_en.svg
+Three very common styles of loops are
+
+\begin{itemize}
+\item loop for detection
+\item loop for collection
+\item loop for side-effect
+\end{itemize}
+
+
+\end{tabular}
+
+
+
+In all cases, the loops may be singular, or they may multiple loops running
+concentrically.  Loops may also contain conditions to skip certain
+iterations.
+
+\subsection{Loop for detection}
+
+Sometimes we need to loop to detect some condition or find an element
+which meets some condition.  For such a loop, use one of:
+
+\begin{enumerate}
+\item \code{any} --- Is something true at least once?
+$\exists a, 0 \leq a < 10, a\equiv 1 \mod{3}$
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # (exists?) is there a number 0 <= a < 10 for which a%3 == 1
+  any(a % 3 == 1 for a in range(10))
+
+  # can use multiple lines for readablity
+  any(a % 3 == 1
+      for a in range(10))
+\end{lstlisting}\end{minipage}
+
+\item  \code{all} --- Is something always true?
+$a > 2, \forall a\in\{2, 5, 12, -34\}$
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # (for every?) is something true for all elements in a list
+  all(a > 2
+      for a in [2, 6, 4, 12, -34])
+\end{lstlisting}\end{minipage}
+
+\item \code{next} --- Find an element which makes something true.
+
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # find the first element which satisfies a condition
+  next(a
+       for a in range(12)
+       if a*a > 100)
+\end{lstlisting}\end{minipage}
+
+What does \code{next} do when it fails to find an element matching the
+predicate?  If \code{next} fails to find an element which satisfies
+the logical query, an exception is thrown.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # find the first element which satisfies a condition
+  next(a
+       for a in [1, 2, 3]
+       if a*a > 100)
+\end{lstlisting}\end{minipage}
+
+The exception looks something like this in the output window:
+\begin{small}
+\begin{verbatim}
+/usr/local/bin/python3.9 mgs-2023/src/looping/examples.py 
+Traceback (most recent call last):
+  File "mgs-2023/src/looping/examples.py", line 12, in <module>
+    next(a
+StopIteration
+\end{verbatim}
+\end{small}
+\end{enumerate}
+
+We see that \code{any} and \code{all} correspond to the quantifiers
+$\exists$ and $\forall$, and we have seen how De Morgan's theorem
+applies to quantifiers.  How does De Morgan's theorem apply to
+\code{any} and \code{all}?
+
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # not all not === any
+  not all(a <= 2
+          for a in [2, 6, 4, 12, -34])
+  any(a > 2
+      for a in [2, 6, 4, 12, -34])
+
+  # not any not === all
+  not any(a <= 2
+          for a in [2, 6, 4, 12, -34])
+  all(a > 2
+      for a in [2, 6, 4, 12, -34])
+\end{lstlisting}\end{minipage}
+
+
+
+\subsection{Loop for collection}
+
+Similar to set comprehensions in set theory, we can express
+comprehensions in Python.  However, the programmer must decide whether
+to generate a set or a list.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # generate the list [0, 1, 4, 9, 16, 25]
+  [a*a for a in range(6)]
+
+  # generate the set {0, 1, 4, 9, 16, 25}
+  {a*a for a in range(6)}
+\end{lstlisting}\end{minipage}
+
+We sometimes use comprehension built atop concentric loops.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # generate the sums of pairs
+  [a+b for a in range(6)
+       for b in range(3)
+  ]
+\end{lstlisting}\end{minipage}
+
+
+We sometimes use comprehension build atop concentric loops with conditionals.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  # generate the sums of pairs
+  [a+b for a in range(6)
+       for b in range(3)
+       if a+b % 2 == 0
+  ]
+\end{lstlisting}\end{minipage}
+
+\subsection{Loop for side-effect}
+
+Sometimes (often) we need to loop for side-effect: printing, modifying
+an array, communicating with web browser, updating a database, etc.
+To look for side-effect, use \code{for}:
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  for a in range(6):
+    print(a*a)
+\end{lstlisting}\end{minipage}
+
+Of course we may use multiple loops concentrically and with conditionals.
+
+\begin{minipage}[c]{0.95\textwidth}\begin{lstlisting}
+  for a in range(10):
+    if f(a) > 2:
+      for b in range(a,15):
+        print(a*b)
+\end{lstlisting}\end{minipage}
+
+\section{Programming Projects}
+
+
+
+\begin{enumerate}
+\item Choose one challenge:
+  \begin{enumerate}
+  \item Collect all prime
+    numbers between $n$ and $m$.
+  \item Collect all Pythagorean triples between 1 and $n$.
+  \item Find (print or collect) all solutions to
+    $a^3 + b^3 + c^3 = 1$ for $a,b,c$ in range
+    of $-n$ to $n$.
+  \item Taxi cab numbers: For a given $n$, find numbers between
+    $-n$ and $n$ which are
+    the sum of two cubes in two different ways.  E.g., $1729 = 12^3 +
+    1^3 = 9^3 + 10^3$.
+  \item Linear Diophantine Equations: Given integers $a$, $b$, $c$,
+    and $n$, find all integer solutions ($|x|<n$ and $|y|<n$) to
+    the equation $ax + by = c$.  \Eg,
+    $2x + 4y = 28$ has $x=12$, $y=1$ as solution but also $x=2$, $y=6$.
+  \end{enumerate}
+  
+\item Work as team.
+\item Create a new file in the \code{looping} directory.
+\item Try to solve the challenge using \code{any}, \code{all}, \code{next}, \code{for}.
+\item (Optional) If possible, can you make it faster? \Eg, decrease the search space.
+\item When finished and and the code is working, submit a \emph{pull request}.
+\item Show, explain, and defend your solution to your fellow scholars.
+\end{enumerate}
+
+
+
+\chapter{Abstract Algebra}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{escher.jpg}
+\small \code{https://www.researchgate.net}
+%% /publication/339436680_A_1d_Up_Approach_to_Conformal_Geometric_Algebra_Applications_in_Line_Fitting_and_Quantum_Mechanics/figures?lo=1
+\end{figure}
+
+
+\clearpage
+
+
+
+
+
+
+In Section~\ref{sec.quadratic.formula}, you worked with a function
+which computes the (real) roots of a second-degree (quadratic)
+polynomial given only its coefficients.  There is an analogous formula
+to compute the roots of a cubic (degree-3) polynomial, and still
+another to compute the roots of a degree-4 polynomial.  Is there
+such formula for a polynomial of degree 5 (quintic) or higher?
+
+
+The question of whether such a formula exists for the quintic had been
+an open question for 250 years until Niels Henrik Abel proved its
+non-existence in 1823 at the age of 21.
+
+
+
+
+Around the same time a young, 20 year old, political activist of
+post-revolutionary France, Evariste Galois, attempted to explain why
+some higher-order polynomials are \emph{solvable in terms of radicals}
+and others are not.
+
+\bigskip
+
+\noindent\begin{tabular}{cp{6cm}}
+%%By https://www.parismuseescollections.paris.fr/fr/petit-palais/oeuvres/combat-devant-l-hotel-de-ville-le-28-juillet-1830, Public Domain, https://commons.wikimedia.org/w/index.php?curid=1280931
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.6\textwidth]{revolution.jpg}}&
+  Galois, as a staunch republican, would have wanted to
+  participate in the July Revolution of 1830 but was
+  prevented by the director of the École Normale.
+\end{tabular}
+
+\bigskip
+
+
+  I use the word \emph{attempted} not to imply that
+his explanation was wrong.  To the contrary, his ideas were correct
+but nobody understood his treatment of the subject. One well-respected
+mathematician of the time, Joseph Fourier, took home a sizable work of
+Galois to digest it but unfortunately died unexpectedly, and the work
+was nearly lost.
+
+\medskip
+
+\noindent\begin{tabular}{cp{3cm}}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.75\textwidth]{galois.png}}&
+  Evariste Galois died at 20 years old as a result of a duel.
+\end{tabular}
+
+
+\medskip
+
+
+The story of Evariste Galois who quickly wrote down the principles of
+abstract algebra before his death as a result of a duel, is depicted
+in several YouTube videos: notably \emph{Evariste Galois a
+documentary} \url{https://www.youtube.com/watch?v=J6dsanpnpt0} and
+\emph{Galois Theory Explained Simply}
+\url{https://www.youtube.com/watch?v=Ct2fyigNgPY}, both produced by
+Math Visualized.
+
+
+
+\medskip
+
+\noindent\begin{tabular}{p{5cm}c}
+
+It is not surprising that mathematicians did not understand the work
+of Galois during his short lifetime. 
+Galois's handwriting was confusing at best.
+&  \raisebox{-0.8\totalheight}{\includegraphics[width=0.65\textwidth]{galois-handwriting.jpg}}
+\end{tabular}
+
+\bigskip
+
+In this unit, we will study sets with mathematical structure.  This
+approach to \emph{abstract algebra} is of course much cleaner than
+that introduced by Galois.  Galois somewhat flippantly introduced the
+\emph{group} and the \emph{field} just as a tool to talk about the
+solvability of a polynomial, probably without realizing that they
+deserve in-depth study themselves.
+
+There are several mathematical structures defined by axioms.  We will
+thereafter write programs as individuals and as teams to manipulate
+these structures.
+
+
+
+
+\clearpage
+
+\begin{figure}
+\centering
+\includegraphics[width=0.85\textwidth]{math.jpg}\\
+\small \code{\code{https://www.freepik.com}}
+\end{figure}
+
+
+
+\section{Monoid}
+\label{sec.monoid}
+\begin{definition}[Monoid]
+$(S,\circ)$ is called a \emph{monoid} if
+\begin{enumerate}
+\item Closure: $a,b \in S \implies a\circ b \in S$.
+\item Associative: $a,b,c \in S \implies (a\circ b) \circ c = a \circ (b \circ c)$
+\item Identity: $\exists e\in S$ such that $a\in S \implies a\circ e = e\circ a = a$
+\end{enumerate}
+\end{definition}
+
+\noindent Notice that we assume that a monoid has an identity element, but we
+don't assume that it is unique.  Can a monoid have more than one
+identity element: $e_1$ and $e_2$?  The answer is no, but why?  
+
+\begin{theorem}\label{th.identity.unique}
+  The identity of a monoid is unique.
+\end{theorem}
+\begin{proof}
+  Suppose $e_1$ and $e_2$ are both identities of monoid, $M$.
+  Since $e_1$ is an identity, then $e_1\circ e_2=e_2$.  But since $e_2$ is an identity,
+  then $e_1\circ e_2 = e_1$. Thus
+  \[e_1 = e_1\circ e_2 = e_2\]
+\end{proof}
+
+\section{Examples of monoids}
+
+
+\begin{enumerate}
+\item $\N$, the set of natural numbers is a monoid.  What is the
+  operation?  What is the identity element?
+
+\item $(\mathbb{Z},-)$, the set of integers under subtraction is not a
+  monoid.  Why? Which axiom(s) fail?
+
+\item The set of even integers is a monoid.  What is the operation?
+  What is the identity element?
+
+\item The set of even integers under multiplication is a not monoid.
+  Why? Which axiom(s) fail?
+  
+\item The set of integers under exponentiation is not a monoid. Why?
+  Which axioms fail?
+
+\item $\R$, the set of positive real numbers is a monoid.  What is the
+  operation?  What is the identity element?
+
+\item The set of $2\times 3$ matrices is a monoid.
+  What is the operation?  What is the identity element?
+
+\item The set of $2\times 3$ matrices under multiplication is not a
+  monoid.  Which axiom(s) fail? However the set of $3\times 3$
+  matrices under multiplication is a monoid. Why?
+
+
+\item The set of subsets of a given set using the operation of union
+  is a monoid.  What is the identity element?
+\item The set of subsets of a given set using the operation of
+  intersection is a monoid.  What is the identity element?
+
+\item The set of logical predicates is a monoid.  There are multiple
+  possible operations. Which operations? What is the identity element
+  for each operation?
+  
+
+\item Let $\Sigma$ be any set of distinguishable elements: ${\Sigma = \{a,b,c,d\}}$.
+  Now consider the set, ${\mathcal{L}(\Sigma)}$, of all sequences of finite length
+  $(x_1, x_2, \ldots, x_n)$ for which $x_i \in \Sigma$ for $i=1, 2, \ldots, n$, $n\ge 0$.
+  I.e., ${\mathcal{L}(\Sigma)}$ includes all sequences
+  of length 12, and all sequences of length 54, and all sequences of length 10,051, etc.
+
+  Let $+$ denote sequence concatenation.  E.g.,
+  \[(a,c,a,a) + (d,a,c,a,b) = (a,c,a,a,d,a,c,a,b)\,.\]
+  ${\mathcal{L}(\Sigma)}$ is a monoid.
+
+  What is its identity element?
+
+  Is it a commutative monoid?
+  
+
+
+
+\item  The integers on the face of the clock form a
+  monoid under addition with the following
+  addition table.
+ 
+  \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|c|}
+      + & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &12\\
+      \hline
+      \hline 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 1\\
+      \hline 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 1& 2\\
+      \hline 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 1& 2& 3\\
+      \hline 4& 5& 6& 7& 8& 9& 10& 11& 12& 1& 2& 3& 4\\
+      \hline 5& 6& 7& 8& 9& 10& 11& 12& 1& 2& 3& 4& 5\\
+      \hline 6& 7& 8& 9& 10& 11& 12& 1& 2& 3& 4& 5& 6\\
+      \hline 7& 8& 9& 10& 11& 12& 1& 2& 3& 4& 5& 6& 7\\
+      \hline 8& 9& 10& 11& 12& 1& 2& 3& 4& 5& 6& 7& 8\\
+      \hline 9& 10& 11& 12& 1& 2& 3& 4& 5& 6& 7& 8& 9\\
+      \hline 10& 11& 12& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10\\
+      \hline 11& 12& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11\\
+      \hline 12& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12\\
+      \hline
+    \end{tabular}
+  \end{center}
+  
+\noindent\begin{tabular}{cp{4cm}}
+%% \footnote{Arturo Mann, CC BY-SA 3.0 \url{http://creativecommons.org/licenses/by-sa/3.0/}, via Wikimedia Commons}
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.6\textwidth]{512px-Big_Ben_Closeup.jpg}}&
+  The movement of the hands of the clock is an example of a monoid arithmetic.
+\end{tabular}
+
+
+    We may verify that for every $a\in\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$
+    we have  $12 + a = a + 12 = a$.
+
+
+
+\item   The integers on the face of the clock also form a
+  monoid under multiplication with the following
+  multiplication table.
+ 
+  \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|c|}
+      * & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+      \hline
+      \hline 1 & 1  & 2  & 3  & 4  & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+      \hline 2 & 2  & 4  & 6  & 8  & 10 & 12 & 2  & 4  & 6  & 8  & 10 & 12\\
+      \hline 3 & 3  & 6  & 9  & 12 & 3  & 6  & 9  & 12 & 3  & 6  & 9  & 12\\
+      \hline 4 & 4  & 8  & 12 & 4  & 8  & 12 & 4  & 8  & 12 & 4  & 8  & 12\\
+      \hline 5 & 5  & 10 & 3  & 8  & 1  & 6  & 11 & 4  & 9  & 2  & 7  & 12\\
+      \hline 6 & 6  & 12 & 6  & 12 & 6  & 12 & 6  & 12 & 6  & 12 & 6  & 12\\
+      \hline 7 & 7  & 2  & 9  & 4  & 11 & 6  & 1  & 8  & 3  & 10 & 5  & 12\\
+      \hline 8 & 8  & 4  & 12 & 8  & 4  & 12 & 8  & 4  & 12 & 8  & 4  & 12\\
+      \hline 9 & 9  & 6  & 3  & 12 & 9  & 6  & 3  & 12 & 9  & 6  & 3  & 12\\
+      \hline 10& 10 & 8  & 6  & 4  & 2  & 12 & 10 & 8  & 6  & 4  & 2  & 12\\
+      \hline 11& 11 & 10 & 9  & 8  & 7  & 6  & 5  & 4  & 3  & 2  & 1  & 12\\
+      \hline 12& 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12\\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  In the clock multiplication monoid, $1$ has the property that
+  ${1 \times a = a\times 1 = a}$ for every ${a\in\{1,2,\ldots,12\}}$.
+\end{enumerate}
+
+\clearpage
+\section{Fast Exponentiation in a Monoid}
+\label{sec.monoid.exponent}
+Recall the definition of exponentiation in
+Equation~\eqref{eq.slow.exponent}.  In any monoid with operation
+$\circ$ and identity element $e$, we can compute an integer power of
+an element more efficiently according to the following formula.
+
+
+
+\begin{equation}
+  x^n = \begin{cases}
+    e &\,; \text{if $n=0$}\\
+    x &\,; \text{if $n=1$}\\
+    x \circ x^{n-1} &\,; \text{if $n$ is odd}\\
+    (x^\frac{n}{2})\circ     (x^\frac{n}{2}) &\,; \text{if $n$ is even}\\
+  \end{cases}
+\end{equation}\label{eq.fast.exponent}
+
+If the monoid is also group, then inverse elements exist, so we can
+talk about \emph{negative} exponents in the sense that $x^{-n} =
+(x^{-1})^n = (x^n)^{-1}$, in which case we can efficiently compute both positive and
+negative powers.  Either we compute $x^{|n|}$ and then
+compute its inverse, or we can compute $x^{-1}$ and then raise that to
+the power of $|n|$.
+
+\begin{equation}
+  x^n = \begin{cases}
+    e &\,; \text{if $n=0$}\\
+    x &\,; \text{if $n=1$}\\
+    x \circ x^{n-1} &\,; \text{if $n>0$ is odd}\\
+    (x^\frac{n}{2})\circ     (x^\frac{n}{2}) &\,; \text{if $n>0$ is even}\\
+    (x^{-1})^{|n|} &\,; \text{if $n<0$}\\
+  \end{cases}
+\end{equation}\label{eq.fast.exponent.group}
+
+
+
+\textbf{Discussion:} What must you do to allow negative exponents?  Is
+it possible for a monoid?  Which algebraic structure is necessary to
+support negative exponents?
+
+
+
+
+\section{Proofs with Monoids}
+\begin{itemize}
+\item Give an example of a 2 element monoid.
+\item Given an example of a 3 element monoid.
+\end{itemize}
+
+\chapter{Groups, Rings, and Fields}
+
+\begin{figure}[h]
+\centering
+%% https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_4,9.svg
+\includegraphics[width=0.8\textwidth]{Symmetric-group.png}
+\end{figure}
+
+
+\clearpage
+
+
+\section{Group}
+
+
+\begin{tabular}{cp{5cm}}
+%%\footnote{\url{https://en.wikipedia.org/wiki/Monoid#/media/File:Magma_to_group4.svg} by Ethaniel, Wikipedia.}
+  \raisebox{-0.8\totalheight}{\includegraphics[width=0.6\textwidth]{Algebraic-structures-magma-to-group.png}}&
+  There are many algebraic structures which are linked by subset relations.
+\end{tabular}
+
+
+
+
+A notable property missing from a monoid is the ability to solve equations.  As an example,
+take the 12-clock above.  Which of these equations can be solved in the integers?
+\begin{enumerate}
+\item Solve for $a$ in $a\times 3 = 7$.
+\item Solve for $b$ in $4\times b = 8$.
+\item Solve for $c$ in $7\times c = 11$.
+\end{enumerate}
+
+We observe that some such equations have unique solutions, such as
+$4\times b = 8 \implies b=2$. However, to systematically solve such an
+equation we need to be able to find an inverse with respect to the
+operation of the monoid.
+
+\begin{align*}
+  a\times 3 &= 7\\
+  a\times 3 \times 3^{-1} &= 7 \times 3^{-1}\\
+\end{align*}
+
+But there is no integer, $3^{-1}\in\mathbb{Z}$, such that $1 = 3 \times 3^{-1}$.
+However, some monoids do have the property that every element is
+invertible. A monoid for which every element has a unique inverse is
+called a group.  Essential to the idea of inverse is that an inverse
+be unique.
+
+
+
+\begin{definition}[Group]
+$(G,\circ)$ is called a \emph{group} if
+\begin{enumerate}
+\item $(G,\circ)$ is a monoid.
+\item Inverse: $\forall a\in G~\exists a^{-1}\in G$ such that $a\circ a^{-1} = a^{-1} \circ a = e$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Abelian Group]
+  If $G$ is a group such that $a\circ b = b\circ a$ for all
+  $a,b\in G$, then we call $G$ an \emph{Abelian} group.
+\end{definition}
+
+
+
+A group has an identity which is also the identity of the monoid,
+which we already know to be unique.  See
+Theorem~\ref{th.identity.unique}.  But we can ask a similar question about uniquenes
+of the inverse.  Can an element $a\in S$ have two
+different inverses?  No, but why?
+
+\begin{theorem}
+  Each element of a group has exactly one inverse.
+\end{theorem}
+\begin{proof}
+  Let $G$ be a group with identity $e$. Let $a\in G$ have inverses $x$ and~$y$.
+  \begin{align*}
+    x &= x\circ e \\
+    &= x \circ ( a \circ y)\\
+    &= (x \circ  a) \circ y\\
+    &= e \circ y\\
+    &= y
+  \end{align*}
+\end{proof}
+
+
+\section{Examples of groups}
+\begin{enumerate}
+\item The set of integers, ${\mathbb{Z} = \{0, \pm 1, \pm 2, \ldots\}}$, is a group under
+integer addition.   Why?
+\begin{itemize}
+\item $(\mathbb{Z},+)$ is a monoid with $0$ being the identity.
+\item If $a \in \mathbb{Z}$ there exists $b\in\mathbb{Z}$ such that
+  $a+b=0$.  E.g.  ${12 + (-12) = 0}$
+\end{itemize}
+
+\item The set of integers under multiplication is not a group.  Why?
+
+\item The set of rotations of the $n\times n$ Rubik's cube is a group.
+
+\noindent\begin{tabular}{cp{4cm}}
+  %% This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.
+  %% From https://en.wikipedia.org/wiki/Rubik%27s_Cube_group
+  %% Converted to png
+  \raisebox{-0.6\totalheight}{\includegraphics[width=0.4\textwidth]{Rubiks_cube.png}}&
+  The set of rotations of the Rubik's cube is a group.
+\end{tabular}
+
+  Every rotation has an inverse rotation, and the null-rotation is the identity.
+
+\item The set of $3\times 3$ matrices of real numbers is not a group.
+  Why?  What about the set of \emph{invertible} $3\times 3$ real
+  matrices?
+
+\item The set of subsets of a given set using the operation of union is not a group.  Why?
+\item The set of subsets of a given set using the operation of intersection is not a group.  Why?
+\item The set of subsets of a given set, $G$, using
+  \[A\circ B = (A\cap  \overline{B}) \cup (\overline{A}\cap B)\]
+  as the operation, is a group.  Every element is its own inverse.
+  The identity element is the empty set, $\emptyset$.
+
+\item Imagine a clock going from 1 to 11, rather than 1 to 12.
+  Similar to the clock monoid seen above, here is the multiplication
+  table of the strange 11-clock.
+  
+  \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|}
+      * & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+      \hline
+\hline 1& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11\\
+\hline 2& 2& 4& 6& 8& 10& 1& 3& 5& 7& 9& 11\\
+\hline 3& 3& 6& 9& 1& 4& 7& 10& 2& 5& 8& 11\\
+\hline 4& 4& 8& 1& 5& 9& 2& 6& 10& 3& 7& 11\\
+\hline 5& 5& 10& 4& 9& 3& 8& 2& 7& 1& 6& 11\\
+\hline 6& 6& 1& 7& 2& 8& 3& 9& 4& 10& 5& 11\\
+\hline 7& 7& 3& 10& 6& 2& 9& 5& 1& 8& 4& 11\\
+\hline 8& 8& 5& 2& 10& 7& 4& 1& 9& 6& 3& 11\\
+\hline 9& 9& 7& 5& 3& 1& 10& 8& 6& 4& 2& 11\\
+\hline 10& 10& 9& 8& 7& 6& 5& 4& 3& 2& 1& 11\\
+\hline 11& 11& 11& 11& 11& 11& 11& 11& 11& 11& 11& 11\\
+      \hline
+    \end{tabular}
+  \end{center}
+
+In this example, we see that the set is NOT a multiplicative group,
+because the element 11 has no inverse.  
+
+
+\item Every non-11 element in the table above 
+has an inverse.  We can tediously verify the existence of a unique
+inverse for every non-11 element.
+
+The set of non-11 elements of the 11-clock is a multiplicative group
+with the following multiplication table.
+
+  \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|}
+      * & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+      \hline
+\hline 1& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10\\
+\hline 2& 2& 4& 6& 8& 10& 1& 3& 5& 7& 9\\
+\hline 3& 3& 6& 9& 1& 4& 7& 10& 2& 5& 8\\
+\hline 4& 4& 8& 1& 5& 9& 2& 6& 10& 3& 7\\
+\hline 5& 5& 10& 4& 9& 3& 8& 2& 7& 1& 6\\
+\hline 6& 6& 1& 7& 2& 8& 3& 9& 4& 10& 5\\
+\hline 7& 7& 3& 10& 6& 2& 9& 5& 1& 8& 4\\
+\hline 8& 8& 5& 2& 10& 7& 4& 1& 9& 6& 3\\
+\hline 9& 9& 7& 5& 3& 1& 10& 8& 6& 4& 2\\
+\hline 10& 10& 9& 8& 7& 6& 5& 4& 3& 2& 1\\
+      \hline
+    \end{tabular}
+  \end{center}
+
+
+
+
+\item In Section~\ref{sec.monoid}, we defined the set
+  ${\mathcal{L}(\Sigma)}$ of finite-length sequences using list
+  concatenation as the monoid operation.  This set is not a group.
+  Why?
+
+
+\end{enumerate}
+
+\subsection{Challenge}
+
+\begin{enumerate}
+
+
+\item Can you find a 3-element non-Abelian group (or non-commutative monoid)?
+
+\item How many possible multiplication tables are there if a group (or
+monoid) has exactly 3 elements?
+
+\item Not every group is Abelian.  However, every group has at least one element which commutes with every other element of the group.
+  What is that element?
+
+\item Experimentally determine whether the set of all elements of a
+  group which commute with all other elements is a group.  Stated more
+  clearly.  Let $G$ be a group, and let \[H = \{x\in G \mid x\circ y =
+  y\circ x,\quad \forall y\in G\}\,.\]  $H$ is called the \emph{center} of $G$.
+  Is the center of a group also a group?
+\end{enumerate}
+
+
+\section{Exponentiation in a Group}
+
+Create an exponentiation function for a group which also handles
+negative exponents.
+
+Why can we compute negative exponents in a group but not in a monoid?
+Recall Section~\ref{sec.monoid.exponent}.
+
+\clearpage
+\section{Ring}
+
+A monoid and a group are both sets with a single operation for which
+the elements of the set interact to obey a set of axioms (the monoid
+axioms or the group axioms).  Now we will look at sets with two
+operations, which you can na\"ively think of as addition and
+multiplication. 
+
+\begin{definition}[Ring]
+$(S,+,\times)$ is called a \emph{ring} if
+\begin{enumerate}
+\item $(S,+)$ is an Abelian group.
+\item $(S,\times)$ is a monoid.
+\item Left-to-right distribution: \\$a,b,c  \in S \implies a\times(b+c)=(a\times b)+(a\times c)$.
+\item Right-to-left distribution: \\$a,b,c  \in S \implies (b+c)\times a=(b\times a)+(c\times a)$.
+\end{enumerate}    
+
+\noindent In the special case that $(S,\times)$ is commutative,
+$(S,+,\times)$ is called an Abelian ring.
+\end{definition}
+
+
+
+
+In the set of whole numbers we can think of multiplication as repeated
+addition.  However, in many cases this does not hold.  For example,
+matrix multiplication cannot be expressed simply as repeated matrix
+addition.  In fact, in a ring, the only thing that connects the
+addition and the multiplication is the distributive axiom.
+Multiplication or addition may be defined in strange ways, but if the
+ring axioms are satisfied, the ring is valid.
+
+In the integers $0\cdot a = a\cdot 0 = 0$.  Actually this principle,
+called \emph{annihilation} is true for rings in general as shown in
+Theorem~\ref{th.ring.annihilation}.  Several other familiar
+connections between multiplication and addition also hold 
+for rings, in general.  In particular $-1 \cdot -1 = 1$
+(Theorem~\ref{th.ring.-1}), and $-1\cdot a = -a$
+(Theorem~\ref{th.ring.-a}).
+
+\begin{theorem}\label{th.ring.annihilation}
+  For ring, $S$ with additive identity, $z$, we have $za = az = z$ for all $a\in S$.
+\end{theorem}
+Let's denote the additive inverse of any element $x$ by $\overline{x}$
+\begin{proof}
+  \begin{align*}
+    z a &= z a + z\\
+    &= z a + (z a + \overline{z a})\\
+    &= (z a + z a) + \overline{z a}\\
+    &= (z + z)a  + \overline{z a}\\
+    &= z a  + \overline{z a}\\
+    &= z
+  \end{align*}
+  Likewise,
+  \begin{align*}
+    a z &= a z + z\\
+    &= a z + (a z + \overline{a z})\\
+    &= (a z + a z) + \overline{a z}\\
+    &= a(z + z)  + \overline{a z}\\
+    &= a z  + \overline{a z}\\
+    &= z
+  \end{align*}
+  
+\end{proof}
+\begin{theorem}\label{th.ring.-1}
+  For ring, $S$, with multiplicative identity
+  $e$, we have $\overline{e}\cdot\overline{e} = e$.
+\end{theorem}
+\begin{proof}
+ Let $z$ be the additive identity of the ring.
+  \begin{align*}
+    \overline{e}\cdot\overline{e} &= \overline{e}\cdot\overline{e} + z\\
+    &= \overline{e}\cdot\overline{e} + (\overline{e} + e)\\
+    &= \overline{e}\cdot\overline{e} + (\overline{e}\cdot e + e)\\
+    &= (\overline{e}\cdot\overline{e} + \overline{e}\cdot e) + e\\
+    &= \overline{e}\cdot(\overline{e} + e) + e\\
+    &= \overline{e}z + e\\
+    &= z + e & \text{By Theorem~\ref{th.ring.annihilation}}\\
+    &=  e 
+\end{align*}
+\end{proof}
+
+\begin{theorem}\label{th.ring.-a}
+  For ring, $S$, with multiplicative identity,
+  $e$, we have $\overline{e}\cdot a = \overline{a}$ for all $a\in S$.
+\end{theorem}
+\begin{proof}
+  Let $z$ be the additive identity.
+  \begin{align*}
+    \overline{e}\cdot a &=     \overline{e}\cdot a  + z \\
+    &=     \overline{e}\cdot a + (a + \overline{a})\\
+    &=     (\overline{e}\cdot a + a) + \overline{a}\\
+    &=     (\overline{e}\cdot a + e\cdot a) + \overline{a}\\
+    &=     (\overline{e} + e)\cdot a + \overline{a}\\
+    &=     z\cdot a + \overline{a}\\
+    &=     z + \overline{a} & \text{By Theorem~\ref{th.ring.annihilation}}\\
+    &=     \overline{a}
+  \end{align*}
+\end{proof}
+
+\section{Examples of rings}
+\begin{enumerate}
+\item The integers $(\mathbb{Z},+,\times)$ is a ring.
+\item The integers $(\mathbb{N},+,\times)$ is not a ring.  Why?
+\item The set of $n\times n$ matrices, for a fixed value of $n>0$ is a ring.
+\item The set of $2\times 3$ matrices is not a ring.  Why?
+\item $\mathbb{Z}[x]$, the set of polynomials with integer
+  coefficients such as ${3x^4+2x^2-5x+1}$ is a ring.
+\item $\mathbb{Q}[x]$, $\mathbb{R}[x]$, $\mathbb{C}[x]$,
+  $(\mathbb{Z}/p)[x]$.
+\item The set of polynomials with rational coefficients with leading
+  coefficient equal to 1 is not a ring.
+  ($x^3 + \frac{1}{2}x^2+ 5x - \frac{2}{3}$)  Why?
+\item The set of subsets of a given set using intersection as
+  multiplication and exclusive or as addition forms a ring.
+\item The set of 8-bit sequences (bytes) consisting of 0 and 1, such
+  as 00101101, with the two operations AND and XOR, defined as bit-wise operations,
+  using the following tables is a ring.
+\begin{center}
+    \begin{tabular}{c||c|c|}
+      XOR & 0 & 1 \\
+\hline
+\hline0& 0& 1\\
+\hline1& 1& 0\\
+\hline
+\end{tabular}\quad\quad
+    \begin{tabular}{c||c|c|}
+      AND & 0 & 1 \\
+      \hline
+\hline0& 0& 0\\
+\hline1& 0& 1\\
+\hline
+\end{tabular}
+\end{center}
+  
+For example
+\begin{itemize}
+\item 00101101 XOR 00110011 = 00011110
+\item 00101101 AND 00110011 = 00100001
+\end{itemize}
+
+\end{enumerate}
+
+\clearpage
+\section{Field}
+
+The most complicated structure we will examine is the field.  You can
+think of a field as a set which is a ring but more than that.  In a ring
+you can add, subtract, and multiply.  But in a field you can also
+divide with the exception that you cannot divide by zero. 
+
+\begin{definition}[Field]
+$(F,+,\times)$ is called a \emph{field} if
+\begin{enumerate}
+\item $(F,+, \times)$ is an Abelian Ring.
+\item $(F \setminus \{0\}, \times)$ is a (Abelian) group, where $0$ is
+  the identity for $+$.
+\end{enumerate}    
+\end{definition}
+
+
+\section{Examples of fields}
+\begin{enumerate}
+\item The rational numbers, $\mathbb{Q}$.
+\item The set of $n\times n$ matrices is not a field.  Why?
+\item The set of $2\times 2$ matrices of the form
+  $\begin{bmatrix}a&-b\\b&a\end{bmatrix}$ where $a,b\in\mathbb{Q}$.
+\item The integers modulo $12$.
+\item The integers modulo any prime such as $7$.
+
+\begin{center}
+    \begin{tabular}{c||c|c|c|c|c|c|c|}
+      $+$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline0& 0& 1& 2& 3& 4& 5& 6\\
+\hline1& 1& 2& 3& 4& 5& 6& 0\\
+\hline2& 2& 3& 4& 5& 6& 0& 1\\
+\hline3& 3& 4& 5& 6& 0& 1& 2\\
+\hline4& 4& 5& 6& 0& 1& 2& 3\\
+\hline5& 5& 6& 0& 1& 2& 3& 4\\
+\hline6& 6& 0& 1& 2& 3& 4& 5\\
+\hline
+\end{tabular}\quad\quad
+    \begin{tabular}{c||c|c|c|c|c|c|c|}
+      $\times$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline0& 0& 0& 0& 0& 0& 0& 0\\
+\hline1& 0& 1& 2& 3& 4& 5& 6\\
+\hline2& 0& 2& 4& 6& 1& 3& 5\\
+\hline3& 0& 3& 6& 2& 5& 1& 4\\
+\hline4& 0& 4& 1& 5& 2& 6& 3\\
+\hline5& 0& 5& 3& 1& 6& 4& 2\\
+\hline6& 0& 6& 5& 4& 3& 2& 1\\
+\hline
+\end{tabular}
+\end{center}
+
+With these addition and multiplication tables we can tediously verify
+that
+\begin{itemize}
+\item $0$ is the additive identity.
+\item $1$ is the multiplicative identity.
+\item Every element has an additive inverse.
+\item Every non-zero element has a multiplicative inverse.
+\item Addition and multiplication are associative.
+\item Addition and multiplication are commutative.
+\item The distributive property holds.
+\end{itemize}
+
+\item The set $\mathbb{Q}\{\sqrt{2}\} = \{a+b\sqrt{2} \mid a,b\in\mathbb{Q}\}$
+  is a field.   Moreover, each of the following can be expressed in the same form ${a+b\sqrt{2}}$.
+  \begin{itemize}
+  \item $(a_1 + b_1\sqrt{2}) + (a_2 + b_2\sqrt{2})$
+  \item $-(a + b\sqrt{2})$
+  \item $(a_1 + b_1\sqrt{2}) \times (a_2 + b_2\sqrt{2})$
+  \item {\Large $\frac{1}{a + b\sqrt{2}}$}, provided $a,b$ are not both 0.
+  \end{itemize}
+  In particular
+  \begin{align*}
+  (a_1 + b_1\sqrt{2}) + (a_2 + b_2\sqrt{2}) &= \underbrace{(a_1+a_2)}_{\in \mathbb{Q}}+\underbrace{(b_1+b_2)}_{\in \mathbb{Q}}\sqrt{2}\\
+  -(a + b\sqrt{2}) &= \underbrace{\jparen{-a}}_{\in \mathbb{Q}} + \underbrace{\jparen{-b}}_{\in \mathbb{Q}}\sqrt{2}\\
+  (a_1 + b_1\sqrt{2}) \times (a_2 + b_2\sqrt{2}) &= \underbrace{(a_1a_2+2b_1b_2)}_{\in \mathbb{Q}} + \underbrace{(a_1b_2+a_2b_1)}_{\in \mathbb{Q}}\sqrt{2}\\
+  \frac{1}{a + b\sqrt{2}} &= \underbrace{\frac{a}{a^2-2b^2}}_{\in \mathbb{Q}} + \underbrace{\frac{-b}{a^2-2b^2}}_{\in \mathbb{Q}}\sqrt{2}
+  \end{align*}
+  Why do we know $a^2 -2b^2 \ne 0$ and $a+b\sqrt{2} \ne 0$?
+
+\end{enumerate}
+
+\clearpage
+\section{Summary of Algebraic Structures}
+
+
+\begin{enumerate}
+\item A \emph{monoid} is a set where we can add.
+\item A \emph{group} is a set where we can add and subtract.
+\item A \emph{ring} is a set where we can add, subtract, and multiply.
+\item A \emph{field} is a set where we can add, subtract, multiply, and divide.
+\end{enumerate}
+
+For simplicity we omit the formal definition of \emph{semi-ring} which is a
+set in which we can add and multiply, but not necessarily subtract and divide.
+
+These summaries are vague.  For example when we say ``add'' in a
+monoid, the actual operation may be addition, multiplication,
+concatenation, or many other operations depending on the actual
+monoid.  The distinction between adding and multiplying requires that
+both exist, thus they can only be distinguished in a semi-ring.
+
+If a set has both a $1$ and a $0$, then dividing by $0$ does not make
+sense.  For example, in a field, we require all non-zero elements to
+have a multiplicative inverse even though all elements have an
+additive inverse.
+
+\clearpage
+\chapter{Coding Challenges}\label{sec.coding.2}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{coding.jpg}\\
+\small \code{https://beaccessible.com/post/html-css-accessibility/}
+\end{figure}
+
+\clearpage
+
+\section{Compute number of combinations}
+Recall the definition
+\[{n\choose k} = \frac{n!}{k!(n-k)!}\,.\]
+Write function to compute this quantity several different ways.
+
+\subsection{Direct computation}
+Compute $n\choose k$ directly by computing the three factorials and
+performing the integer division.
+
+Examine the values of the numerator and denominators.  How many bits
+are necessary for these computations to occur successfully?
+
+In Python, integers have arbitrary precision.  What would happen in
+another language whose integers are limited to 64 or 32 bits?
+
+\subsection{Compute the list of prime factors}
+Rather than computing $n!$ directly, express it as a list of
+  prime factors.  \Ie,
+  \begin{itemize}
+  \item Implement a function which, given $n$, uses
+    recursion to compute and return the list of prime factors of $n$.
+  \item Use that function to implement another function which, given $n$,
+    returns the prime factors of $n!$.
+  \item Effectively perform the division by
+    removing all the prime factors in the denominator, $k!(n-k)!$, from
+    those of the numerator, $n!$.
+  \item Finally, multiply the remaining
+    factors to compute~$n\choose k$.
+  \end{itemize}
+
+
+\Eg,
+\begin{align*}
+  {7\choose 3} &= \frac{7}{3!(7-3)!}\\
+  &= \frac{7}{3!~\cdot~4!}\\
+  &= \frac{7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2}{(3\cdot 2)(4\cdot 3\cdot 2)}\\  &= \frac{7\cdot \cancel{3}\cdot \cancel{2}
+    \cdot 5\cdot \cancel{2\cdot 2\cdot 3\cdot 2}}{(\cancel{3}\cdot \cancel{2})(\cancel{2\cdot 2\cdot 3\cdot 2})}\\
+  &= 7 \cdot 5\\
+  &= 35
+\end{align*}
+
+
+\subsection{Recursive computation}
+
+How is $n\choose k$ related to ${n-1} \choose {k-1}$?
+
+Notice that if ${n\choose k} = \frac{n!}{k!~(n-k)!}$, and if $n>1$ and $k>1$, then we have
+\begin{align*}
+  {{n-1}\choose {k-1}} &= \frac{(n-1)!}{(k-1)!~\jparen{\jparen{n-1}-\jparen{k-1}}!}\\
+  &= \frac{(n-1)!}{(k-1)!~(n-k)!} \\
+  &= \frac{\frac{n!}{n}}{\frac{k!}{k}~(n-k)!} \quad\quad \text{; because $n! = n  (n-1)!$ and $k! = k  (k-1)!$}\\
+  &= \frac{k}{n} \times \frac{n!}{k!~(n-k)!}\\
+  &= \frac{k}{n} {n\choose k}
+\end{align*}
+
+So we can solve for ${n\choose k}$ to obtain:
+\begin{equation}
+  {n\choose k} = \frac{n}{k}{{n-1}\choose {k-1}}\,.\label{eq.1784}
+\end{equation}
+
+Notice that that 
+\begin{equation}
+  {n \choose 1} = \frac{n!}{1!~(n-1)!} = \frac{n ~\cancel{(n-1)!}}{1!~\cancel{(n-1)!}} = n\label{eq.1785}
+\end{equation}
+and that 
+\begin{equation}\label{eq.2094}
+{n \choose {n-k}} = \frac{n!}{\jparen{n-k}!~\jparen{n-\jparen{n-k}}!} = \frac{n!}{\jparen{n-k}!~k!} = {n \choose k}  \,.
+\end{equation}
+
+Finally by \eqref{eq.2094}, we have
+\begin{equation}\label{eq.1786}
+  {n \choose k} = {n \choose {\min\{k,n-k\}}}
+\end{equation}
+
+As an example of \eqref{eq.1786}, suppose we need to compute $17 \choose 12$.
+We chose the minimum of $12$ and $17-12$ which is 5. We know
+by \eqref{eq.2094} that ${17 \choose 12} = {17 \choose 5}$, and since
+${17 \choose 5}$ is easier to compute than ${17 \choose 12}$, we compute~${17 \choose 5}$.
+
+
+
+How can we use the equalities~\eqref{eq.1784}, \eqref{eq.1785}, and~\eqref{eq.1786}
+to write yet another implementation of \code{choose} in Python?
+
+\begin{example}
+Let's look at an example: Compute ${7 \choose 3}$.
+\begin{equation*}
+  {7 \choose 3} =   \frac{7}{3}{6 \choose 2}
+  = \frac{7}{3}\frac{6}{2} {5 \choose 1}
+  = \frac{7}{3}\frac{6}{2} 5
+  = \frac{7}{\cancel{3}}\frac{\cancel{6}}{\cancel{2}} 5 = 7 \cdot 5 = 35
+\end{equation*}
+
+However, if we compute ${7 \choose 4}$, we should get the same thing.  Do we?
+
+\begin{equation*}
+  {7 \choose 4} =   \frac{7}{4}{6 \choose 3}
+  = \frac{7}{4} \frac{6}{3} {5 \choose 2}
+  = \frac{7}{4} \frac{6}{3} \frac{5}{2} {4 \choose 1}
+  = \frac{7}{4} \frac{6}{3} \frac{5}{2} 4
+  = \frac{7}{\cancel{4}} \frac{\cancel{6}}{\cancel{3}} \frac{5}{\cancel{2}} \cancel{4}
+  = 7 \cdot 5 = 35
+\end{equation*}
+
+
+\end{example}
+
+
+\subsection{Review of different approaches}
+
+
+Compare the functions both in terms of computation time, and also
+find values of $n\choose k$ which are computable by one function but
+not the other because of integer overflow.
+
+
+
+\section{Modulo Arithmetic}
+
+\begin{enumerate}
+\item For a given $n$, implement addition, subtraction, and
+  multiplication modulo $n$.
+\item If $n$ is prime, implement division.
+\item A number can have  multiple square roots modulo $n$, find such a case.
+\item Implement exponentiation modulo (prime) $p$.  How many
+  multiplications are necessary to compute $a^b \mod{p}$?
+\item If $p$ is prime, and $a\not\in\{0,1\}$, what are $a^0$, $a^1$, $a^2$,
+  \ldots, $a^{p-1}$,  $a^p \mod{p}$ ?
+\item If $n$ is composite, and $a^b = a^c$ for $a\not\in\{0,1\}$, what do we
+  know about $b$ and $c$?
+\item If $p$ is prime, find Pythagorean triples modulo $p$.
+\end{enumerate}
+
+
+
+
+\section{Team Project: Structure Recognition}
+\label{sec.team.project.structures}
+\begin{itemize}
+\item Implement functions to detect monoid, group,
+  ring, and field given a finite set, and the $+$ and $\times$
+  operations.
+\item When finished with your function, commit, push, and send a
+  pull request.
+\item To test your code, you will need to pull the changes in the
+  repository.
+\item Define $\mathbb{Z}/n$, the integers modulo $n$. Is it a
+  monoid? Is it a group (Abelian)? etc. \ldots
+\item For which values of $n$ is $\mathbb{Z}/n$ a field?
+\end{itemize}
+  
+
+
+
+\end{document}
+
+
+
+% LocalWords:  EPITA priori epita www luke edu Sentier Etroites Issy
+% LocalWords:  Moulineaux gmail les des GitHub IDE GitKraken IntelliJ
+% LocalWords:  gitkraken dev MUW GitLab Collaboratory msstate cse com
+% LocalWords:  HDMI Lethbridge https uleth ca jpg Programmatic meetup
+% LocalWords:  BucharestJS ozassignments png colorized jnewton jimka
+% LocalWords:  issy pastpresentfuture thispublicdiary illinois pdf CC
+% LocalWords:  NevadaClassClose techservices teamwork MCCRS MDE usna
+% LocalWords:  SEC OAE org mdek xkcd lrde mgs Modularity Scala monoid
+% LocalWords:  invertability Scalerderivative SA wikimedia php curid
+% LocalWords:  trapezes num Folgenglieder KSmrq Pbroks Lim Shizhao en
+% LocalWords:  CSTAR IkamusumeFan Epsilonschlauch Ceranilo github svg
+% LocalWords:  Abelian magma surjective surjection mathsisfun html
+% LocalWords:  Ethaniel wikipedia wiki Int forall Fredrik Krupinski
+% LocalWords:  FredrikVector Leszek sintay summability foldLeft foldM
+% LocalWords:  klein Leibniz uploader reduceOption groupBy clearpage
+% LocalWords:  leibniz hfill scala includegraphics noindent url ldots
+% LocalWords:  setminus exp internet quadraticFormula NaN destructure
+% LocalWords:  fixedSizedSubsets SetsAndFunctions buildserver galois
+% LocalWords:  SetsAndFunctionsTestSuite Monoid Cdang cubically cfm
+% LocalWords:  mathtutordvd betterexplained programmatically Bolzano
+% LocalWords:  Augustin Gottfried matrixMultiple complexAdd rundebug
+% LocalWords:  complexSubtract Binet's refactor fastPower matrixAdd
+% LocalWords:  matrixIdentity matrixTabulate matrixMultiply rebase
+% LocalWords:  matrixScale almostEqual matrixSubtract isGroup monoids
+% LocalWords:  isMonoid IDEs GitPod gitpodenv functionalvsimperative
+% LocalWords:  monoidic Mann Wvbailey Evariste youtube Arturo bolzano
+% LocalWords:  creativecommons matrixPower polynomialPower perim
+% LocalWords:  infsum Destructuring memoization concentrically
+% LocalWords:  Rubik's
