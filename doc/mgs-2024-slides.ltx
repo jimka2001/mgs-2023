@@ -1,0 +1,1331 @@
+\documentclass[xcolor={dvipsnames}]{beamer}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{lisp}
+{
+  language=Lisp,
+  emph={[2]algorithm},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  emphstyle={[2]\color{coltypes}},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  columns=fixed,
+  keepspaces=true,
+  upquote=true,   %% correct ` character
+  basicstyle={\small\ttfamily}
+}
+
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xspace}
+\usepackage{relsize}
+
+
+\newcommand\code[1]{\textcolor{code}{\texttt{#1}}\xspace}
+\newcommand\etc{\textit{etc.}\xspace}
+\newcommand\etal{\textit{et~al.}\xspace}
+\newcommand\vs{\textit{vs.}\xspace}
+\newcommand\eg{\textit{e.g.}\xspace}
+\newcommand\Eg{\textit{E.g.}\xspace}
+\newcommand\ie{\textit{i.e.}\xspace}
+\newcommand\Ie{\textit{I.e.}\xspace}
+\newcommand\redto{\textcolor{red}{\to}}
+\newcommand\greento{\textcolor{greeny}{\to}}
+
+\usepackage{color,colortbl}
+\definecolor{greeny}{rgb}{0.1, 0.6, 0.2}
+\definecolor{blueye}{rgb}{0, 0.2, 0.5}
+\definecolor{coltypes}{rgb}{0.1, 0.5, 0.5}
+\definecolor{surblueye}{rgb}{0, 0.2, 0.5}
+\definecolor{dark-cyan}{rgb}{0.0, 0.55, 0.55}
+\definecolor{goldenrod}{rgb}{0.85, 0.65, 0.13}
+\definecolor{lavender}{rgb}{0.55,0.55,0.80}
+\definecolor{light-blue}{rgb}{0.68, 0.85, 0.9}
+\definecolor{lemon}{rgb}{1.0, 1.0, 0.4} %% 255, 255, 102
+\definecolor{blush}{rgb}{0.87, 0.36, 0.51}
+\definecolor{code}{rgb}{ 0.6, 0.2, 0.8}
+
+\newcommand\green[1]{\textcolor{greeny}{#1}}
+
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+%\usetheme{Boadilla}
+\usetheme{Madrid}
+
+\usecolortheme{lily}   %% beaver
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\title{Duels and Duals,   Mathematical Abstraction and Programming}
+\subtitle{2023 Mississippi Governor's School}
+\author{Dr. Jim Newton}
+
+\addtobeamertemplate{title page}{\includegraphics[scale=.20]{Mathematics-and-Computing.jpg}}{}
+
+\usepackage{xspace}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+  \includegraphics[width=\textwidth]{mgs-2023-fb-cover.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bias, Inclusion, Belonging}
+  Mathematics is unbiased.  It is one of the few pursuits which is
+  free of politics, nationality, religion, gender, sexuality, age,
+  race, handicap, or of anything else that so often divides us.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Overview}
+  \setcounter{tocdepth}{1}
+  \tableofcontents
+\end{frame}
+
+\begin{frame}
+  \frametitle{Objectives}
+\begin{description}
+\item[Mathematics:] Ameliorate your love for Mathematics.
+  \only<2>{
+    \begin{itemize}
+    \item     \textcolor{greeny}{Theory}
+    \item     \textcolor{greeny}{Abstraction}
+    \item     \textcolor{greeny}{Language}
+    \end{itemize}
+  }
+\item[Computer Science:] Develop a sense of programming.
+  \only<3>{
+    \begin{itemize}
+    \item \textcolor{orange}{Put abstract ideas into practice}
+    \item \textcolor{orange}{Algorithms}
+    \item \textcolor{orange}{Language}
+    \end{itemize}
+  }
+\item[Communication:] Defend your ideas.
+  \only<4>{
+    \begin{itemize}
+    \item \textcolor{blue}{Confidence}
+    \item \textcolor{blue}{Integrity}
+    \item \textcolor{blue}{You will have strong ideas.}
+    \item \textcolor{blue}{However if you fail to communicate them, someone else's ideas will win.}
+    \item     \textcolor{blue}{Language}
+    \end{itemize}
+  }
+\end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Syllabus}
+\begin{tabular}{ll|l|l}
+Week & Day & Unit & Activities\\
+\hline
+~&&&\\
+1 & Mon & 0, 1 & Hello World on the Cloud\\
+1 & Tue & 2 & Sets and Functions\\
+1 & Wed & 2 & \\
+1 & Thu & 3 & Logic and Loops\\
+1 & Fri & 3 & Exhaustive search\\
+~&&&\\
+\hline
+~&&&\\
+2 & Mon & 3 & Performance, refactoring\\
+2 & Tue & 4,5 & Abstract Algebra\\
+2 & Wed & 4,5 & \\
+2 & Thu & 6,7 & \\
+2 & Fri & 6,7 & \\
+~&&&\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\section{Environment}
+
+\begin{frame}
+  \centering \LARGE
+
+  Setup the Environment
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Create GitHub Account}
+
+  Create a GitHub account using an abstract user name.
+
+  Don't use your real name.
+
+  Open: \url{https://github.com/join}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{GitHub Project}
+\centering
+  Open: \url{https://github.com/jimka2001/mgs-2023}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fork the Repository}
+\centering
+  \includegraphics[width=0.85\textwidth]{fork-repo.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Open the GitPod Workspace}
+
+Prepend
+
+\includegraphics{prepend-gitpod.png}
+
+to the URL already in the web browser.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Open Main.scala}
+\centering
+  \includegraphics[width=0.5\textwidth]{explorer.png}
+
+\end{frame}
+
+
+\begin{frame}
+  \centering \LARGE
+
+  Understanding the Development Flow
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{git and GitHub}
+  \includegraphics[width=0.75\textwidth]{GitHub-How-to-use-GitHub-Edureka-300x241.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{GitPod}
+  \includegraphics[width=0.9\textwidth]{gitpod-teaser.jpg}
+\end{frame}
+
+\section{Sets and Functions}
+
+\begin{frame}
+  \centering \LARGE
+
+  Sets and Functions
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{What is a set?}
+  \centering
+  \centering
+    \includegraphics[width=0.75\textwidth]{Venn-A-Intersect-B.png}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{What is a set?}
+  \centering
+  We won't really answer this question, because it is \emph{too complicated}.
+
+  \medskip
+  
+  We will rely on intuition.
+
+  \bigskip
+
+  For more information see: Zermelo--Fraenkel Set Theory (ZF or ZFC).
+  
+  \medskip
+
+  YouTube:  Axioms of set Theory -- Lecture 2, Frederic Schuller
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Some Important Sets}
+  \begin{itemize}
+  \item $\mathbb{N}$ --- natural numbers
+  \item $\mathbb{Z}$ --- integers
+  \item  $\mathbb{Q}$ --- rational numbers
+  \item $\mathbb{R}$ --- real numbers
+  \item $\mathbb{R}^2$ --- ordered pairs of real numbers
+  \item  $\mathbb{C}$ --- complex numbers
+  \end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{What is a function?}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a function?}
+  \centering
+    \includegraphics[width=0.75\textwidth]{Function_machine2.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a function?}
+
+  You may already have some intuition about functions.
+
+  \medskip
+  
+\begin{itemize}  
+
+
+  \item A functions may have a name: $\sin$, $\cos$, and $\log$.
+
+  \item A function may lack a name:  $\frac{x^2-1}{x^2+2x+1}$.
+
+\end{itemize}  
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a function?}
+
+  \begin{definition}[function]
+  A \emph{function}, $f$, with domain $X$ and range $Y$, denoted
+\[f : X \to Y\]
+is a correspondence between two sets. 
+
+\medskip
+
+If $x\in X$, then~$f(x)$ designates a unique,
+well-determined, element of~$Y$.
+
+\[x \in X \implies f(x) \in Y\,.\]
+\end{definition}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Correspondence between sets}
+  \centering
+    \includegraphics[width=8cm]{Function_color_example_3.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of Functions}
+  
+\[  f(x) = 3x + 1 \]
+
+\[  f:\mathbb{N}\to\mathbb{N}~\text{by}~ f(x) = 3x + 1\]
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Domain and range may be different}
+
+  \[f:\mathbb{R}^2\to\mathbb{R}~\text{by}~ f(x,y) = 3x - 2y + 1\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Functions defined by cases}
+
+  \begin{equation*}
+  |x| = \begin{cases}
+    x &\,; \text{if $x>0$}\\
+    0 &\,; \text{if $x=0$}\\
+    -x &\,; \text{if $x<0$}
+  \end{cases}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Functions defined by recurrence}
+\begin{align*}
+  m^n &= \underbrace{m \times m \times \ldots \times m}_{n~\text{times}}\\
+  m^n &= \begin{cases}
+    1 &\,; \text{if $n=0$}\\
+    m \times m^{n-1} &\,; \text{if $n > 0$}\\
+    \frac{1}{m^{-n}} &\,; \text{if $n < 0$ and $m\ne 0$}
+  \end{cases}
+\end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Functions defined by recurrence}
+
+\begin{align*}
+  n! &= 1 \times 2 \times \ldots \times n\\
+  n! &= \begin{cases}
+    1 &\,; \text{if $n=0$}\\
+    n \times (n-1)! &\,; \text{if $n > 0$}
+  \end{cases}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fibonacci numbers by recurrence}
+\begin{equation*}
+  F(n) = \begin{cases}
+    1 &\,; \text{if $n=1$}\\
+    1 &\,; \text{if $n=2$}\\
+    F(n-1) + F(n-2)  &\,; \text{if $n > 2$}
+  \end{cases}
+\end{equation*}
+
+\end{frame}
+
+
+\section{Looping}
+\begin{frame}
+  \centering \LARGE
+  Looping
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why do we need loops?}
+  \begin{itemize}
+  \item to do something (no)
+  \item to collect something
+  \item to detect something
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Why do we need loops?}
+  \begin{itemize}
+  \item to do something (side effect)
+    \begin{itemize}
+    \item \code{for}
+    \end{itemize}
+  \item to collect something
+    \begin{itemize}
+    \item \code{[ ... for ...]}
+    \end{itemize}
+  \item to detect something
+    \begin{itemize}
+    \item \code{any}, \code{all}, and \code{next}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Simple loops}
+
+Construct simple loops with \code{for}.
+
+  \bigskip
+
+\begin{verbatim}
+  for x in [1, 2, 3, 4]:
+    print(x)
+
+  for x in {10, 20, 30, 40}:
+    print( x * x )
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Concentric loops}
+
+  We can have loops inside loops.
+
+  \bigskip
+
+\begin{verbatim}
+  for x in {10, 20, 30, 40}:
+    for y in [5, 6, 7]:
+      print(x + y)
+\end{verbatim}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Build collections by looping}
+  Add square brackets \code{[ ... for ... in .... ]} collect results.
+
+  \bigskip
+  
+\begin{verbatim}
+  [x + y
+    for x in {10, 20, 30, 40}
+    for y in [5, 6, 7]
+  ]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Loops with conditionals}
+
+Use \code{if} to filter out certain iterations.
+  \bigskip
+  
+\begin{verbatim}
+  [x + y
+    for x in {10, 20, 30, 40}
+    for y in [5, 6, 7]
+    if (x + y) % 2 == 0 
+  ]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Loops with temporary variables}
+
+Use \code{in [...]} to capture intermediate values
+  \bigskip
+  
+\begin{verbatim}
+  [ x + y
+    for x in {10, 20, 30, 40}
+    for y [5, 6, 7]
+    for z in [x + y]
+    if z > 21
+  ]
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Boolean valued loops}
+
+Use \code{any} to detect whether \emph{at least one} value in a
+collection meets some condition: matches a \emph{predicate}
+
+  \bigskip
+  
+\begin{verbatim}
+  any(x < 0
+      for x in {10, 20, 30, 31, 32})
+
+  any(x % 2 == 1
+      for x in [10, 20, 30, 31, 32])
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Boolean valued loops}
+
+Use \code{all} to detect whether \emph{every} value in a collection
+meets some condition: matches a \emph{predicate}
+
+  \bigskip
+  
+\begin{verbatim}
+  all(x > 0 
+      for x in {10, 20, 30, 31, 32})
+
+  all(x % 2 == 0
+      for x in [10, 20, 30, 31, 32])
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Looping between bounds}
+
+Use \code{to} create a collection of integers in a \code{range}.
+
+  \bigskip
+  
+\begin{verbatim}
+  all(factorial(x) < 100
+      for x in range(10))
+
+  any(x * x == 64
+      for x in range(1, 100 ,2))
+
+  for x in range(1000, 1, -3):
+    print(n)
+
+  [n
+   for n in range(2, 1000)
+   if n % 2 == 0
+  ]
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Concentric Boolean loops}
+
+\begin{verbatim}
+  any(all(a*a + b*b > 100
+          for a in [1, 2, 3, 4])
+      for b in range(1,100))
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Find an element by looping}
+
+\begin{verbatim}
+  next(x
+       for x in range(100)
+       x * x > 56)
+\end{verbatim}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Challenging exercises}
+  \begin{enumerate}
+  \item Collect all prime
+    numbers between $n$ and $m$.
+  \item Collect all Pythagorean triples between 1 and $n$.
+  \item Find (print or collect) all solutions to
+    $a^3 + b^3 + c^3 = 1$ for $a,b,c$ in range
+    of $-n$ to $n$.
+  \item Taxi cab numbers: For a given $n$, find numbers between
+    $-n$ and $n$ which are
+    the sum of two cubes in two different ways.  E.g., $1729 = 12^3 +
+    1^3 = 9^3 + 10^3$.
+  \item Linear Diophantine Equations: Given integers $a$, $b$, $c$,
+    and $n$, find all integer solutions ($|x|<n$ and $|y|<n$) to
+    the equation $ax + by = c$.  \Eg,
+    $2x + 4y = 28$ has $x=12$, $y=1$ as solution but also $x=2$, $y=6$.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Instructions}
+  \begin{enumerate}
+  \item Choose one challenge:
+  \item Work as individual or team.
+  \item Create a new file in the \code{looping} directory.
+  \item Try to solve the challenge using \code{for}, \code{[ ... for ...]},
+    \code{any}, and \code{all}.
+  \item (Optional) If possible, can you make it faster? \Eg, decrease the search space.
+  \item When finished and working, submit a \emph{pull request}
+  \item Show, explain, and defend your solution to your fellow scholars.
+  \end{enumerate}
+\end{frame}
+
+
+\section{Abstract Algebra}
+
+\begin{frame}
+  \frametitle{Prepare the following Vocabulary}
+  \begin{enumerate}
+  \item Napoleon
+  \item Monarchist
+  \item Republican
+  \item Democratic
+  \item Maths
+  \item Continued fractions
+  \item Apocryphal
+  \item Pont Neuf
+  \item Alexander Dumas
+  \item Victor Hugo
+  \item Joseph Fourier
+  \end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}
+  \centering \LARGE
+  Abstract Algebra
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Finding roots of polynomial}
+  If
+  \[ax^2 + bx + c = 0\,,a\ne 0\]
+  then 
+  \[x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\,.\]
+  
+  \centering
+  What about higher order polynomials?
+\end{frame}
+
+\begin{frame}
+  Given the roots, we can \emph{easily} find the coefficients.
+
+  \medskip
+
+  Simply multiply
+  \[(x - r_1)(x - r_2)\ldots(x - r_n)\]
+  to arrive at
+  \[x^n + a_{1}x^{n-1}+ a_{2}x^{n-2}\ldots + a_{n-2}x^{2} + a_{n-1}x^{1} + a_{n}\]
+
+  \medskip
+
+  However, given the coefficients, it is extremely difficult to find the roots.
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Example quartic polynomial}
+  
+  \[(x - p)(x - q)(x - r)(x - s) =\]
+  \begin{align*}
+    x^4     &- (p + q + r + s)x^3\\
+    &+ (pq + pr + ps + qr + qs +  rs)x^2 \\
+    &- (pqr + pqs + prs + qrs )x\\
+    &+ pqrs
+  \end{align*}
+  \[= x^4 + a_3x^3 + a_2x^2 + a_1x + a_0\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example quintic polynomial}
+  
+  \[(x - p)(x - q)(x - r)(x - s)(x - t) =\]
+  \begin{align*}
+    x^5     &- (p + q + r + s + t)x^4\\
+    &+ (pq  + pr  + ps  + pt  + qr  + qs  + qt  + rs  + rt  + st)x^3 \\
+    &- (rst + qst + qrt + qrs + pst + prt + prs + pqt + pqs + pqr )x^2\\
+    &+ (pqrs + pqrt + pqst + prst + qrst )x^2\\
+    &- pqrst
+  \end{align*}
+  \[= x^5 + a_4x^4 + a_3x^3 + a_2x^2 + a_1x + a_0\]
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Subsets of size $n$}
+
+  A polynomial of degree $n$ has $n$ roots $\{r_1, r_2, r_3, \ldots, r_n\}$.  Thus it has $n$ coefficients, $\{a_n, a_{n-1}, \ldots, a_1, a_0\}$.
+
+  \medskip
+
+  To compute coefficient, $a_k$, we must find all the subsets of size $k$,
+  multiply each subset together, and add up the products.
+
+  \bigskip
+  
+  Recall this recursive function?
+
+  \medskip
+
+\begin{equation*}
+  \mathbb{P}_n(S) = \begin{cases}
+    \{\emptyset\} &\,; \text{if $n=0$}\\
+    \big\{\{x\} \cup y \mid x \in S, y \in \mathbb{P}_{n-1}(S \setminus \{x\})\big\}  &\,; \text{if $n > 0$}
+  \end{cases}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Counting subsets}
+  How many subsets of size $k$ are there from a subset of size $n$? 
+  \only<2>{
+    \[{n\choose k} = \frac{n!}{k! \times (n-k)!}\]
+    }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Summary}
+
+  \centering
+
+  Given the roots of a polynomial of degree 5 or greater, it is
+  \emph{easy} to compute the coefficient.  However, given the
+  coefficients, it is \emph{difficult} to compute the roots.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exceptions}
+
+  Even if sometimes finding the roots is \emph{difficult}, sometimes
+  it is \emph{easy}.  Consider this 5th degree polynomial.
+
+  \[x^5 - 1\]
+
+  An obvious root is $1$, because $1^5-1=0$. Voil\`a!
+
+  Therefore, we can factor out $x-1$ to achieve:
+
+  \[x^5 - 1 = (x - 1)(x^4+x^3+x^2+x+1)\]
+
+  But we have a formula (albeit unwieldy) to find the roots of a
+  quartic (degree-4).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Story of Evariste Galois}
+  \centering
+  \includegraphics[width=\textwidth]{galois.png}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Questions about the video}
+  \begin{enumerate}
+  \item What were Galois's important contributions?
+  \item Why was Galois misunderstood?
+  \item Why did he \emph{think} he was begin constantly rejected by
+    the best schools?
+  \item What are some of the disappointments he faced?
+  \item Which of the events were beyond his control?  And which were
+    his own fault?
+
+  \item Besides Galois, which other two people died?  How did these deaths effect Galois?
+  \item Why was Galois arrested the first time?  Second time?
+  \item How did he die?
+  \item What were his last words?
+  \item Before his death he wrote three letters?  What were their contents?
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vocabulary}
+  \begin{enumerate}
+  \item Napoleon
+  \item Monarchist
+  \item Republican
+  \item Democratic
+
+  \item \'Ecole Polytechnique
+  \item Continued fractions
+  \item Apocryphal
+  \item Pont Neuf
+  \item Alexander Dumas
+  \item Victor Hugo
+  \item Joseph Fourier
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Story of Evariste Galois}
+  \centering
+  \includegraphics[width=0.75\textwidth]{revolution.jpg}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Story of Evariste Galois}
+  \centering
+  \includegraphics[width=0.5\textwidth]{galois-handwriting.jpg}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Monoid}
+  \begin{definition}[Monoid]
+    $(S,\circ)$ is called a \emph{monoid} if
+    \begin{enumerate}
+    \item Closure: $a,b \in S \implies a\circ b \in S$.
+    \item Associative: $a,b,c \in S \implies (a\circ b) \circ c = a \circ (b \circ c)$
+    \item Identity: $\exists e\in S$ such that
+      $a\in S \implies a\circ e = e\circ a = a$
+    \end{enumerate}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of monoid}
+  
+  \begin{itemize}
+  \item $(\mathbb{N},+)$, the set of natural numbers under addition is
+    a monoid.
+    
+  \item $(\mathbb{Z},-)$, the set of integers under subtraction is NOT
+    a monoid.  Why?
+    
+  \item The set of even integers under addition is a monoid.
+    
+  \item The set of even integers under multiplication is a NOT monoid.
+    Why?
+    
+  \item ${(\mathbb{R},\times)}$, the set of positive real numbers
+    under multiplication is a monoid.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of monoid}
+  
+  \begin{itemize}
+  \item The set of $2\times 3$ matrices under addition is a monoid.
+    
+  \item The set of $2\times 3$ matrices under multiplication is not a
+    monoid. Why?
+    
+  \item However the set of $3\times 3$ matrices under multiplication
+    is a monoid.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of monoid}
+  
+  \begin{itemize}
+  \item The set of subsets of a given set using the operation of union
+    is a monoid.  What is the identity element?
+    
+  \item The set of subsets of a given set using the operation of
+    intersection is a monoid.  What is the identity element?
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Examples of monoid}
+  
+  \begin{itemize}
+  \item The set polynomials with integer coefficients,
+    $\mathbb{Z}[x]$,
+    using the operation of multiplication.
+    
+  \item What about $(\mathbb{R}[x],\times)$
+  \item \ldots     $(\mathbb{R}[x],+)$?
+  \item \ldots     $(\mathbb{Q}[x],+)$?
+
+  \item What about polynomials with $3 \times 3$ matrices of reals as
+    coefficients?   
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Examples of monoid}
+
+  Let $S$ be the set of functions with $\mathbb{R}$ as domain and range.
+
+  If $f,g\in S$, let $f \circ g$ be defined as follows:
+  $x\in \mathbb{R} \implies (f\circ g)(x) = f(g(x))$.
+
+  \begin{itemize}
+  \item Is $S$ a monoid under this definition of $\circ$.
+    
+  \item What if we change $\mathbb{R}$ to $\mathbb{Z}$?
+
+  \item What if we change $\mathbb{R}$ to $\mathbb{Q}[x]$?
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{The free monoid}
+  
+  Let ${\Sigma = \{a,b,c,d\}}$.
+  
+  The set, ${\mathcal{L}(\Sigma)}$, of all sequences of finite length
+  $(x_1, x_2, \ldots, x_n)$ for which $x_i \in \Sigma$ for
+  $i=1, 2, \ldots, n$, ($n\ge 0$).
+  
+  
+  Let $+$ denote sequence concatenation.  \Eg,
+  \[(a,c,a,a) + (d,a,c,a,b) = (a,c,a,a,d,a,c,a,b)\,.\]
+  ${\mathcal{L}(\Sigma)}$ is a monoid.
+  
+  What is its identity element?
+  
+  Is it a commutative monoid?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Clock addition}
+  The integers, $\{1, 2, 3, ..., 12\}$ form a additive monoid.
+    \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|c|}
+      + & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &12\\
+      \hline
+      \hline 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 1\\
+      \hline 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 1& 2\\
+      \hline 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 1& 2& 3\\
+      \hline 4& 5& 6& 7& 8& 9& 10& 11& 12& 1& 2& 3& 4\\
+      \hline 5& 6& 7& 8& 9& 10& 11& 12& 1& 2& 3& 4& 5\\
+      \hline 6& 7& 8& 9& 10& 11& 12& 1& 2& 3& 4& 5& 6\\
+      \hline 7& 8& 9& 10& 11& 12& 1& 2& 3& 4& 5& 6& 7\\
+      \hline 8& 9& 10& 11& 12& 1& 2& 3& 4& 5& 6& 7& 8\\
+      \hline 9& 10& 11& 12& 1& 2& 3& 4& 5& 6& 7& 8& 9\\
+      \hline 10& 11& 12& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10\\
+      \hline 11& 12& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11\\
+      \hline 12& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12\\
+      \hline
+    \end{tabular}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Clock multiplication}
+  The integers, $\{1, 2, 3, ..., 12\}$ form a multiplicative monoid.
+    \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|c|}
+      * & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+      \hline
+      \hline 1 & 1  & 2  & 3  & 4  & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\\
+      \hline 2 & 2  & 4  & 6  & 8  & 10 & 12 & 2  & 4  & 6  & 8  & 10 & 12\\
+      \hline 3 & 3  & 6  & 9  & 12 & 3  & 6  & 9  & 12 & 3  & 6  & 9  & 12\\
+      \hline 4 & 4  & 8  & 12 & 4  & 8  & 12 & 4  & 8  & 12 & 4  & 8  & 12\\
+      \hline 5 & 5  & 10 & 3  & 8  & 1  & 6  & 11 & 4  & 9  & 2  & 7  & 12\\
+      \hline 6 & 6  & 12 & 6  & 12 & 6  & 12 & 6  & 12 & 6  & 12 & 6  & 12\\
+      \hline 7 & 7  & 2  & 9  & 4  & 11 & 6  & 1  & 8  & 3  & 10 & 5  & 12\\
+      \hline 8 & 8  & 4  & 12 & 8  & 4  & 12 & 8  & 4  & 12 & 8  & 4  & 12\\
+      \hline 9 & 9  & 6  & 3  & 12 & 9  & 6  & 3  & 12 & 9  & 6  & 3  & 12\\
+      \hline 10& 10 & 8  & 6  & 4  & 2  & 12 & 10 & 8  & 6  & 4  & 2  & 12\\
+      \hline 11& 11 & 10 & 9  & 8  & 7  & 6  & 5  & 4  & 3  & 2  & 1  & 12\\
+      \hline 12& 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12 & 12\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Examples of power() function for monoid}
+\begin{verbatim}
+  def power(b: Int, n: Int): Int = {
+    if (n == 0)
+      1
+    else
+      b * power(b, n - 1)
+  }
+
+  def power(b: String, n: Int): Int = {
+    if (n == 0)
+      ???
+    else
+      ???
+  }
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+  \frametitle{(Slow) Power (exponentiation)}
+  
+  In which algebraic structures can we use these equations?
+  
+  \bigskip
+  
+  \begin{align}
+    x^n &= \begin{cases}
+      e &\,; \text{if $n=0$}\\
+      x \circ x^{n-1}&\,; \text{if $n>0$}
+    \end{cases}
+  \end{align}
+  
+  \bigskip
+  
+  How many applications of $\circ$ are needed for this algorithm?
+\end{frame}
+
+\begin{frame}
+  \frametitle{The \code{power} function for monoid}
+
+  For a monoid, $M$, with operation $\circ$, the previous algorithm,
+  \emph{slow power}, computes $x^n$, for $x\in M$, by $n-1$
+  applications of $\circ$.
+
+  \bigskip
+
+  Question: Can we do better?
+
+  \bigskip
+
+  What is the minimum number of applications necessary to
+  compute $x^n$?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fast Power (exponentiation)}
+  
+  Which algebraic structures can we use these equations?
+  
+  \bigskip
+  
+  \begin{align}
+    x^n &= \begin{cases}
+      e &\,; \text{if $n=0$}\\
+      x &\,; \text{if $n=1$}\\
+      x \circ x^{n-1} &\,; \text{if $n$ is odd}\\
+      (x^\frac{n}{2})\circ     (x^\frac{n}{2}) &\,; \text{if $n$ is even}\\
+    \end{cases}
+  \end{align}
+  
+  \bigskip
+  
+  Question: Is the case for $n=1$ necessary?
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a group?}
+  
+\begin{definition}[Group]
+$(S,\circ)$ is called a \emph{group} if
+\begin{enumerate}
+\item $(S,\circ)$ is a monoid.
+\item Inverse: $\forall a\in S~\exists a^{-1}\in S$ such that
+  $a\circ a^{-1} = a^{-1} \circ a = e$
+\end{enumerate}
+
+\medskip
+
+If $a\circ b = b\circ a$ for all $a,b\in S$, then we call S an \emph{Abelian} group.
+\end{definition}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of group}
+  \begin{itemize}
+\item The set of integers, ${\mathbb{Z} = \{0, \pm 1, \pm 2, \ldots\}}$, is a group under
+integer addition.   Why?
+\begin{itemize}
+\item $(\mathbb{Z},+)$ is a monoid with $0$ being the identity.
+\item If $a \in \mathbb{Z}$ there exists $b\in\mathbb{Z}$ such that $a+b=0$.  \Eg,   ${12 + (-12) = 0}$
+\end{itemize}
+\item The integers under multiplication is not a group.  Why?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of group}
+  Is the set of rotations of the Rubik's cube a group?
+
+  \medskip
+  
+  If so, what is the identity, and what are the inverses?
+  \centering
+  \includegraphics[width=5cm]{Rubiks_cube.png}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of group}
+
+  Is the set of $3\times 3$ matrices of real numbers is a group.
+
+  \medskip
+
+  Why? or Why not?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of group}
+  \begin{itemize}
+
+  \item Is the set of subsets of a given set, $G$, using the operation of union a group.  Why? Why not?
+  \item The set subsets of a given set, $G$, using
+  \[A\circ B = (A\cap  \overline{B}) \cup (\overline{A}\cap B)\]
+  as the operation, is a group.
+  \begin{itemize}
+  \item Every element is its own inverse.
+  \item The identity element is the empty set, $\emptyset$.
+  \end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Clock multiplication}
+  The 11-clock
+
+    \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|}
+      * & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+      \hline
+\hline 1& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11\\
+\hline 2& 2& 4& 6& 8& 10& 1& 3& 5& 7& 9& 11\\
+\hline 3& 3& 6& 9& 1& 4& 7& 10& 2& 5& 8& 11\\
+\hline 4& 4& 8& 1& 5& 9& 2& 6& 10& 3& 7& 11\\
+\hline 5& 5& 10& 4& 9& 3& 8& 2& 7& 1& 6& 11\\
+\hline 6& 6& 1& 7& 2& 8& 3& 9& 4& 10& 5& 11\\
+\hline 7& 7& 3& 10& 6& 2& 9& 5& 1& 8& 4& 11\\
+\hline 8& 8& 5& 2& 10& 7& 4& 1& 9& 6& 3& 11\\
+\hline 9& 9& 7& 5& 3& 1& 10& 8& 6& 4& 2& 11\\
+\hline 10& 10& 9& 8& 7& 6& 5& 4& 3& 2& 1& 11\\
+\hline 11& 11& 11& 11& 11& 11& 11& 11& 11& 11& 11& 11\\
+      \hline
+    \end{tabular}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of group}
+  The non-11 elements of the 11-clock
+
+    \begin{center}
+    \small
+    \begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|}
+      * & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+      \hline
+\hline 1& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10\\
+\hline 2& 2& 4& 6& 8& 10& 1& 3& 5& 7& 9\\
+\hline 3& 3& 6& 9& 1& 4& 7& 10& 2& 5& 8\\
+\hline 4& 4& 8& 1& 5& 9& 2& 6& 10& 3& 7\\
+\hline 5& 5& 10& 4& 9& 3& 8& 2& 7& 1& 6\\
+\hline 6& 6& 1& 7& 2& 8& 3& 9& 4& 10& 5\\
+\hline 7& 7& 3& 10& 6& 2& 9& 5& 1& 8& 4\\
+\hline 8& 8& 5& 2& 10& 7& 4& 1& 9& 6& 3\\
+\hline 9& 9& 7& 5& 3& 1& 10& 8& 6& 4& 2\\
+\hline 10& 10& 9& 8& 7& 6& 5& 4& 3& 2& 1\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is a ring?}
+  \begin{definition}[Ring]
+    $(S,+,\times)$ is called a \emph{ring} if
+    \begin{enumerate}
+    \item $(S,+)$ is an Abelian group.
+    \item $(S,\times)$ is a monoid.
+    \item Distributive: $a,b,c  \in S \implies a\times(b+c)=(a\times b)+(a\times c)$.
+    \end{enumerate}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of ring}
+  \begin{itemize}
+  \item The integers $(\mathbb{N},+,\times)$ is not a ring.  Why?
+  \item The integers $(\mathbb{Z},+,\times)$ is a ring.
+  \item The integers $(\mathbb{Q},+,\times)$ is a ring.
+  \item The integers $(\mathbb{R},+,\times)$ is a ring.
+  \item The integers $(\mathbb{C},+,\times)$ is a ring.
+  \item The set of $n\times n$ matrices, for a fixed value of $n>0$ is a ring.
+  \item The set of $2\times 3$ matrices is not a ring.  Why?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of ring}
+  \begin{itemize}
+  \item $\mathbb{Z}[x]$, polynomials with integer coefficients such as ${3x^4+2x^2-5x+1}$?
+  \item The \emph{normalized} subset of $\mathbb{Q}[x]$ with leading coefficient equal to 1?
+    \begin{itemize}
+      \item What are the additive inverses?
+    \end{itemize}
+  \item Let $S$ be a ring, the consider the set of polynomials with coefficients in $S$.
+  %% \item Go one bizarre step forward.\\ Let $S$ be a ring, and let $M$
+  %%   be a monoid.  What about the set of polynomials whose coefficients
+  %%   come from $S$ and whose exponents come from $M$.\\ What are the
+  %%   rules for addition, additive inverse, and multiplication if this
+  %%   is a ring?
+    
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{What is a field?}
+  \begin{definition}[Field]
+$(F,+,\times)$ is called a \emph{field} if
+\begin{enumerate}
+\item $(F,+, \times)$ is an Abelian Ring.
+\item $(F \setminus 0, \times)$ is a (Abelian) group, where $0$ is the identity under $+$.
+\end{enumerate}    
+\end{definition}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of field}
+\begin{enumerate}
+  \item The rational numbers, $\mathbb{Q}$?
+\item The set of $n\times n$ matrices?
+\item The set of $2\times 2$ matrices of the form $\begin{bmatrix}a&-b\\b&a\end{bmatrix}$ where $a,b\in\mathbb{Q}$?
+\item The complex numbers
+\item The integers modulo $12$?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Examples of field}
+  The integers modulo any prime such as $7$?
+
+  \medskip
+  
+\centering
+    \begin{tabular}{c||c|c|c|c|c|c|c|}
+      $+$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline0& 0& 1& 2& 3& 4& 5& 6\\
+\hline1& 1& 2& 3& 4& 5& 6& 0\\
+\hline2& 2& 3& 4& 5& 6& 0& 1\\
+\hline3& 3& 4& 5& 6& 0& 1& 2\\
+\hline4& 4& 5& 6& 0& 1& 2& 3\\
+\hline5& 5& 6& 0& 1& 2& 3& 4\\
+\hline6& 6& 0& 1& 2& 3& 4& 5\\
+\hline
+\end{tabular}\quad\quad
+    \begin{tabular}{c||c|c|c|c|c|c|c|}
+      $\times$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline0& 0& 0& 0& 0& 0& 0& 0\\
+\hline1& 0& 1& 2& 3& 4& 5& 6\\
+\hline2& 0& 2& 4& 6& 1& 3& 5\\
+\hline3& 0& 3& 6& 2& 5& 1& 4\\
+\hline4& 0& 4& 1& 5& 2& 6& 3\\
+\hline5& 0& 5& 3& 1& 6& 4& 2\\
+\hline6& 0& 6& 5& 4& 3& 2& 1\\
+\hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Review of algebraic structures}
+
+  \begin{enumerate}
+  \item A \emph{monoid} is a set where we can add.
+  \item A \emph{group} is a set where we can add and subtract.
+  \item A \emph{ring} is a set where we can add, subtract, and multiply.
+  \item A \emph{field} is a set where we can add, subtract, multiply, and divide.
+  \end{enumerate}
+
+\end{frame}
+
+
+
+
+\end{document}
+
+%%  LocalWords: fixnum eql destructuring basicstyle typecase llist
+%%  LocalWords: dfa defun subtypep SUBTYPEP Boadilla AnnArbor EPITA
+%%  LocalWords: LRDE oddp evenp plist deftype typep Scala izing API
+%%  LocalWords: subtype okT typedef greeny rgb blueye coltypes emph
+%%  LocalWords: surblueye emphstyle keywordstyle commentstyle epita
+%%  LocalWords: stringstyle showspaces showstringspaces emphstyle gc
+%%  LocalWords: lrde currentsection compat asdf bignum BDD BDDs bool
+%%  LocalWords: homoiconicity bdd ltxdat subtypes setf bdd etypecase
+%%  LocalWords: funcall tagbody frametitle supertypes textcolor vee
+%%  LocalWords: includegraphics textwidth texttt textit lstlisting
+%%  LocalWords: overline pgfpicture documentclass beamer usepackage
+%%  LocalWords: subpreambles fancyvrb definecolor booktabs pgfplots
+%%  LocalWords: lstset showtabs ttfamily RecustomVerbatimEnvironment
+%%  LocalWords: usetheme titlegraphic hfill tikz AtBeginSection frac
+%%  LocalWords: tableofcontents pgfplotsset titlepage rightarrow sys
+%%  LocalWords: footnotesize mathcal ROBDD cdot textbf ROBDDs OBDD
+%%  LocalWords: disjointness ORBDDs ORBDD Subtype Subtypes cccc sep
+%%  LocalWords: programmatically BddNode BddTerm myScalastyle scala
+%%  LocalWords: DynamicVariable withNewBddHash newHash withNewHash ADT
+%%  LocalWords: delayedCode BddFalse BddTrue aboveskip dkgreen tabsize
+%%  LocalWords: belowskip numberstyle breaklines breakatwhitespace DSL
+%%  LocalWords: footline tocdepth Vennandornot ShareAlike Eierlegende
+%%  LocalWords: Wollmilchsau Georg Mittenecker AndNot validateChild
+%%  LocalWords: identityHashCode hashCode maybeHash withValue Unary
+%%  LocalWords: unary venn BinaryOperation bddOp reduceLeft HashMap
+%%  LocalWords: png cyan sbcl pdf kolmogorov defvar consed RND github
+%%  LocalWords: GitHub GitPod monoid galois jpg Abelian Rubiks Rubik
+%%  LocalWords: forall quartic
